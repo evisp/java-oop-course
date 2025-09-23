@@ -1,0 +1,98 @@
+site_name: Java OOP Course
+site_url: https://evisp.github.io/java-oop-course/
+site_author: evisp
+site_description: Master Java Object-Oriented Programming with comprehensive tutorials and hands-on examples
+repo_name: evisp/java-oop-course
+repo_url: https://github.com/evisp/java-oop-course
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Fundamentals:
+      - Classes & Objects: fundamentals/classes-objects.md
+      - Inheritance: fundamentals/inheritance.md
+      - Polymorphism: fundamentals/polymorphism.md
+      - Encapsulation: fundamentals/encapsulation.md
+  - Advanced Topics:
+      - Design Patterns: advanced/design-patterns.md
+      - Collections Framework: advanced/collections.md
+      - Generics: advanced/generics.md
+  - Hands-on:
+      - Exercises: exercises/index.md
+      - Projects: projects/index.md
+  - Resources: resources/index.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - minify:
+      minify_html: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/evisp
+  analytics:
+    provider: google
+
+copyright: Copyright &copy; 2025 evisp - Course Materials
