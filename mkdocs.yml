@@ -38,19 +38,34 @@ theme:
 
 nav:
   - Home: index.md
-  - Fundamentals:
-      - Classes & Objects: fundamentals/classes-objects.md
-      - Inheritance: fundamentals/inheritance.md
-      - Polymorphism: fundamentals/polymorphism.md
-      - Encapsulation: fundamentals/encapsulation.md
-  - Advanced Topics:
-      - Design Patterns: advanced/design-patterns.md
-      - Collections Framework: advanced/collections.md
-      - Generics: advanced/generics.md
-  - Hands-on:
-      - Exercises: exercises/index.md
-      - Projects: projects/index.md
+  - Foundations:
+      - Introduction to OOP: 01-foundations/intro-oop.md
+      - Classes & Objects: 01-foundations/classes-objects.md
+      - Arrays & Collections: 01-foundations/arrays-lists.md
+      - Thinking in Objects: 01-foundations/thinking-objects.md
+      - Exercises: 01-foundations/exercises.md
+  - Core OOP Principles:
+      - Inheritance: 02-core-oop/inheritance.md
+      - Polymorphism: 02-core-oop/polymorphism.md
+      - Encapsulation: 02-core-oop/encapsulation.md
+      - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
+      - Exercises: 02-core-oop/exercises.md
+  - File and Exception Handling:
+      - Exception Handling: 03-io-exceptions/exception-handling.md
+      - Files & Streams: 03-io-exceptions/files-streams.md
+      - Exercises: 03-io-exceptions/exercises.md
+  - Modern Java:
+      - Generics: 04-modern-java/generics.md
+      - Lambdas & Streams: 04-modern-java/lambdas-streams.md
+      - JavaFX & GUI: 04-modern-java/javafx-gui.md
+      - Exercises: 04-modern-java/exercises.md
+  - Projects:
+      - Sprint 1 - Early Concepts: projects/sprint-1.md
+      - Sprint 2 - OOP Principles: projects/sprint-2.md
+      - Sprint 3 - Advanced Integration: projects/sprint-3.md
+      - Final Project: projects/final-project.md
   - Resources: resources/index.md
+
 
 markdown_extensions:
   - pymdownx.highlight:
