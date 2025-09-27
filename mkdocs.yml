@@ -47,25 +47,25 @@ nav:
       - Classes & Objects: 01-fundamentals/classes-objects.md
       - Arrays & Collections: 01-fundamentals/arrays-lists.md
       - Thinking in Objects: 01-fundamentals/thinking-objects.md
-      - Exercises: 01-fundamentals/exercises.md
+      - Practice your Skills: 01-fundamentals/exercises.md
   - Core OOP Principles:
       - Overview: 02-core-oop/index.md   
       - Inheritance: 02-core-oop/inheritance.md
       - Polymorphism: 02-core-oop/polymorphism.md
       - Encapsulation: 02-core-oop/encapsulation.md
       - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
-      - Exercises: 02-core-oop/exercises.md
+      - Practice your Skills: 02-core-oop/exercises.md
   - File and Exception Handling:
       - Overview: 03-io-exceptions/index.md   
       - Exception Handling: 03-io-exceptions/exception-handling.md
       - Files & Streams: 03-io-exceptions/files-streams.md
-      - Exercises: 03-io-exceptions/exercises.md
+      - Practice your Skills: 03-io-exceptions/exercises.md
   - Modern Java:
       - Overview: 04-modern-java/index.md
       - Generics: 04-modern-java/generics.md
       - Lambdas & Streams: 04-modern-java/lambdas-streams.md
       - JavaFX & GUI: 04-modern-java/javafx-gui.md
-      - Exercises: 04-modern-java/exercises.md
+      - Practice your Skills: 04-modern-java/exercises.md
   - Projects:
       - Overview: projects/index.md
       - Sprint 1 - Early Concepts: projects/sprint-1.md
