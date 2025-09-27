@@ -106,8 +106,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
   - minify:
       minify_html: true
 
@@ -118,4 +116,4 @@ extra:
   analytics:
     provider: google
 
-copyright: Copyright &copy; 2025 evisp - Course Materials
+copyright: Copyright &copy; 2025 Evis Plaku - Course Materials
