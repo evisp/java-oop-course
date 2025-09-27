@@ -7,6 +7,8 @@ Learn modern Java OOP by building. Clear concepts, practical examples, and proje
 - Developers comfortable with basic programming who want to master Java OOP.
 - Anyone seeking a structured approach to Java without unnecessary complexity.
 
+![Java Overview](https://i.imgur.com/bd2B30W.png)
+
 ## What's inside
 
 **[Foundations](01-foundations/index.md)**: Build your OOP foundation with classes, objects, collections, and object-oriented thinking.

@@ -39,7 +39,7 @@ theme:
 nav:
   - Home: index.md
   - Tools:
-      - Tools: 00-tools/index.md 
+      - Get started: 00-tools/index.md 
   - Foundations:
       - Overview: 01-fundamentals/index.md   
       - Introduction to OOP: 01-fundamentals/intro-oop.md

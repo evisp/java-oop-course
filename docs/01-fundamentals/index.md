@@ -2,6 +2,8 @@
 
 Build the core concepts that power object-oriented programming. Clear explanations, practical examples, and exercises that establish the foundation for everything that follows.
 
+![Foundations](https://i.imgur.com/9sF1LSk.jpeg)
+
 ## [Introduction to OOP](./intro-oop.md)
 
 **From procedures to objects**
