@@ -1,5 +1,3 @@
-## Introduction to OOP
-
 Object-Oriented Programming (OOP) is a way to **design software around *things* instead of just steps**. If basic programming taught variables and functions, OOP asks a bigger question
 
 > What are the key things in this problem, what do they know, and what can they do? 
@@ -51,7 +49,7 @@ Used together, these ideas reduce coupling, make intent obvious, and keep featur
 
 ### Things to remember
 
-- - Think in objects, not steps: identify the main *things* in the problem and what each is responsible for.
+- Think in objects, not steps: identify the main *things* in the problem and what each is responsible for.
 - Keep data with its rules: put the logic that protects or updates data next to the data itself.
 - Show a simple surface: expose clear methods for what something does; hide how it does it.
 - Keep changes local: design so new features or policies touch only the objects that own those rules.
