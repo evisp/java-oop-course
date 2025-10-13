@@ -19,6 +19,7 @@ To practice this way of thinking, focus on these questions when given a system:
 Imagine you are designing software to help a library keep track of its books and users.
 
 Consider these questions:
+
 - What are the main things in the library system? Think about both physical things and people.
 - For each main thing, what details are important to store?
 - What actions will each thing need to perform? For example, what can happen to a book?
@@ -35,6 +36,7 @@ Consider these questions:
 Now think about software for managing courses, students, and staff at a university.
 
 Ask yourself:
+
 - What are the key things in a university system?
 - What important details would each thing need to keep track of?
 - What kinds of actions or tasks must those things be able to do?
