@@ -1,1 +1,65 @@
-*.pptx
+# ============================
+# Java and Build Artifacts
+# ============================
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDE-specific
+# ----------------------------
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# ============================
+# OS-generated files
+# ============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================
+# Temporary and backup files
+# ============================
+*.tmp
+*.bak
+*.swp
+*~
+
+# ============================
+# Teaching materials
+# ============================
+# Ignore PowerPoint slides
+slides/**/*.pptx
+
+# ============================
+# GitHub Pages / Jekyll site
+# ============================
+# (Jekyll builds site to _site folder)
+_site/
+# Ignore cache and build files
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.cache/
+node_modules/
+
+# ============================
+# Optional student work areas
+# ============================
+# Ignore compiled binaries or uploads
+*/bin/
+*/build/
+*/dist/
+*/target/
