@@ -220,6 +220,7 @@ Each class must include:
 ### Integration
 
 Once all groups have completed their classes, we will create a main program that:
+
 - Creates objects from each class
 - Demonstrates interactions between objects (e.g., a Professor teaching a Course in a Classroom)
 - Shows how independent components combine to form a functional system
