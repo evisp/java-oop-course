@@ -4,6 +4,7 @@
 
 This repository contains all materials for the **Java OOP Course**, including lecture code, slides, and documentation.
 The course website is available at:
+
 👉 **[evisp.github.io/java-oop-course](https://evisp.github.io/java-oop-course)**
 
 
@@ -12,7 +13,9 @@ The course website is available at:
 All tutorials, explanations, and structured documentation are published using **MkDocs Material** and available online:
 
 > **Website:** [https://evisp.github.io/java-oop-course](https://evisp.github.io/java-oop-course)
+
 > **Author:** [@evisp](https://github.com/evisp)
+
 > **License:** © 2025 Evis Plaku – Educational use only
 
 
