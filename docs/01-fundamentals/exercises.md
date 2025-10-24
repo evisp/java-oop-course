@@ -224,3 +224,206 @@ Once all groups have completed their classes, we will create a main program that
 - Creates objects from each class
 - Demonstrates interactions between objects (e.g., a Professor teaching a Course in a Classroom)
 - Shows how independent components combine to form a functional system
+
+## 3. Connecting Classes
+
+### Connecting Classes Through Composition - Phase 2
+
+After building classes as standalone components, it is now time to connect them by modifying your class code. You will add variables and ArrayLists of other class types directly into your classes. This demonstrates **composition**—the "has-a" relationship where one class contains objects of another class.
+
+We will explore two types of composition relationships:
+
+1. **Single Object Composition** - A class contains ONE instance of another class
+2. **Collection Composition** - A class contains an ArrayList of objects from another class
+
+
+### Relationship Type 1: Single Object Composition (Has-A)
+
+> One class has a private variable that is an object of another class type. This creates a permanent connection between classes.
+
+#### Course HAS-A Professor
+
+**Modify the Course class by adding:**
+
+**New Private Variable:**
+
+- `private Professor instructor;`
+
+**New Methods:**
+
+- `public void assignProfessor(Professor p)` - Accepts a Professor object and assigns it to instructor
+- `public Professor getInstructor()` - Returns the instructor object
+- `public String getInstructorName()` - Returns the instructor's name (call instructor.getName()), or "Not Assigned" if instructor is null
+
+**Modify Existing Method:**
+
+- Update `displayCourseInfo()` to also print the instructor's name using `getInstructorName()`
+- Update `toString()` to include instructor information
+
+**In main program:**
+
+- Create a Professor object
+- Create a Course object  
+- Call course.assignProfessor() to connect them
+- Call course.displayCourseInfo() to see the complete course with instructor
+
+#### Course HAS-A Classroom
+
+**Modify the Course class by adding:**
+
+**New Private Variable:**
+
+- `private Classroom location;`
+
+**New Methods:**
+
+- `public void assignClassroom(Classroom c)` - Accepts a Classroom object and assigns it to location
+- `public Classroom getClassroom()` - Returns the classroom object
+- `public String getClassroomLocation()` - Returns the full location string (call location.getFullLocation()), or "Not Assigned" if location is null
+
+**Modify Existing Method:**
+
+- Update `displayCourseInfo()` to also print the classroom location
+- Update `toString()` to include location information
+
+#### Professor BELONGS-TO Department
+
+**Modify the Professor class by adding:**
+
+**New Private Variable:**
+
+- `private Department department;`
+
+**New Methods:**
+
+- `public void assignDepartment(Department d)` - Assigns the professor to a department
+- `public Department getDepartment()` - Returns the department object
+- `public String getDepartmentName()` - Returns the department name, or "No Department" if null
+
+**Modify Existing Method:**
+
+- Update `displayProfile()` to include department name
+- Update `toString()` to include department information
+
+
+### Relationship Type 2: Collection Composition (Has-Many Using ArrayList)
+
+ One class contains an ArrayList of objects from another class. This represents one-to-many relationships.
+
+**Important:** Add this import at the top of your class file: `import java.util.ArrayList;
+
+#### Course HAS-MANY Students (Enrollment)
+
+**Modify the Course class by adding:**
+
+**New Private Variable:**
+
+- `private ArrayList<Student> enrolledStudents;`
+
+**Update Constructor:**
+
+- In your parameterized constructor, initialize the ArrayList: `enrolledStudents = new ArrayList<>();`
+
+**New Methods:**
+
+- `public void enrollStudent(Student s)` - Adds a student to the enrolledStudents ArrayList
+- `public void dropStudent(String studentID)` - Removes the student with matching ID from the ArrayList (loop through to find)
+- `public int getEnrollmentCount()` - Returns `enrolledStudents.size()`
+- `public void listEnrolledStudents()` - Loops through the ArrayList and prints each student's ID, name, and GPA
+- `public boolean isStudentEnrolled(String studentID)` - Returns true if student with given ID is in the ArrayList
+
+**Modify Existing Method:**
+
+- Update `displayCourseInfo()` to show enrollment count
+
+**In main program:**
+
+- Create one Course object
+- Create 4-5 Student objects
+- Enroll each student using enrollStudent()
+- Display enrollment count
+- List all enrolled students
+- Drop one student and display updated count
+
+#### Department HAS-MANY Professors (Faculty List)
+
+**Modify the Department class by adding:**
+
+**New Private Variable:**
+
+- `private ArrayList<Professor> facultyList;`
+
+**Update Constructor:**
+
+- Initialize in parameterized constructor: `facultyList = new ArrayList<>();`
+
+**New/Modified Methods:**
+
+- `public void addProfessor(Professor p)` - Adds a professor to facultyList ArrayList
+- `public void removeProfessor(String employeeID)` - Removes professor with matching ID from ArrayList
+- `public int getFacultyCount()` - Returns `facultyList.size()` (replace the old numberOfFaculty getter)
+- `public void listAllFaculty()` - Loops through ArrayList and prints each professor's name, specialization, and years of experience
+- `public Professor findProfessor(String employeeID)` - Searches ArrayList and returns the Professor object with matching ID, or null if not found
+
+**Update numberOfFaculty:**
+
+- Remove the setter for numberOfFaculty
+- Make numberOfFaculty a method that returns `facultyList.size()` instead of a stored variable, OR remove it entirely and just use getFacultyCount()
+
+**In main program:**
+
+- Create one Department object
+- Create 3-4 Professor objects  
+- Add each to the department using addProfessor()
+- List all faculty
+- Display faculty count
+
+####  Professor TEACHES-MANY Courses
+
+**Modify the Professor class by adding:**
+
+**New Private Variable:**
+
+- `private ArrayList<Course> coursesTeaching;`
+
+**Update Constructor:**
+
+- Initialize in parameterized constructor: `coursesTeaching = new ArrayList<>();`
+
+**New Methods:**
+
+- `public void assignCourse(Course c)` - Adds a course to coursesTeaching ArrayList
+- `public void removeCourse(String courseCode)` - Removes course with matching code from ArrayList
+- `public int getTeachingLoad()` - Returns the number of courses (size of ArrayList)
+- `public void listCourses()` - Loops through ArrayList and prints each course code and name
+- `public boolean isTeaching(String courseCode)` - Returns true if professor teaches course with given code
+
+**In main program:**
+
+- Create one Professor object
+- Create 2-3 Course objects
+- Assign each course to the professor using assignCourse()
+- Display teaching load
+- List all courses the professor teaches
+
+### Complete Integration Example
+
+**In main program, demonstrate all relationships:**
+
+```
+Create Computer Science Department
+Create 2 Professors (e.g., Smith, Jones)
+Add both professors to CS Department
+
+Create 2 Courses (e.g., CS101, CS201)
+Assign Professor Smith to both courses
+Assign both courses to Smith's teaching list
+
+Create 1 Classroom (e.g., A205)
+Assign classroom to CS101
+
+Create 5 Students
+Enroll all 5 students in CS101
+
+Display complete information showing all connections
+```
