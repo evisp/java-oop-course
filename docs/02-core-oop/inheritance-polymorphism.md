@@ -171,23 +171,16 @@ The power of inheritance appears in method overriding. Savings accounts can't wi
 ```java
 @Override
 public boolean withdraw(double amount) {
-    if (isFrozen()) {
-        System.out.println("Cannot withdraw. Account #" + getAccountId() + " is frozen.");
-        return false;
-    }
-        
-    if (amount <= 0) {
-        System.out.println("Withdrawal amount must be positive.");
-        return false;
-    }
-        
-    // Savings account specific check: cannot go below minimum balance
+    // Savings-specific validation: check minimum balance
     if (balance - amount < minimumBalance) {
-        System.out.println("Cannot withdraw €" + amount + ". Would violate minimum balance of €" + minimumBalance + ". Current balance: €" + balance);
+        System.out.println("Cannot withdraw €" + amount + 
+                              ". Would violate minimum balance of €" + minimumBalance + 
+                              ". Current balance: €" + balance);
         return false;
     }
         
-    // If all checks pass, use parent's withdraw logic
+    // Delegate to parent for all standard withdrawal logic
+    // (frozen check, positive amount check, balance update, transaction recording)
     return super.withdraw(amount);
 }
 ```
