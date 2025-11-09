@@ -10,21 +10,18 @@ Master the practice of bundling data and methods while controlling access throug
 
 **You'll learn:** Access modifiers, getter/setter methods, data validation, and maintaining object integrity
 
-## [Inheritance](./inheritance.md)
+## [Inheritance and Polymorphism](./inheritance-polymorphism.md)
 
 **Extend and specialize classes**
 
 Learn to create class hierarchies where child classes inherit properties and methods from parent classes. Master super and subclass relationships, method overriding, and the IS-A relationship that models real-world specialization.
 
-**You'll learn:** How to extend classes, override methods, use super keyword, and design effective class hierarchies
-
-## [Polymorphism](./polymorphism.md)
 
 **One interface, many forms**
 
 Understand how objects of different types can be treated uniformly through method overriding and dynamic binding. Write flexible code that works with multiple object types using the same interface.
 
-**You'll learn:** Method overriding, runtime polymorphism, casting objects, and designing adaptable systems
+**You'll learn:** How to extend classes, override methods, use super keyword, and design effective class hierarchies. In addition, you will also learn method overriding, runtime polymorphism, casting objects, and designing adaptable systems
 
 
 

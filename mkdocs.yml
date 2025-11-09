@@ -50,8 +50,7 @@ nav:
       - Practice your Skills: 01-fundamentals/exercises.md
   - Core OOP Principles:
       - Overview: 02-core-oop/index.md   
-      - Inheritance: 02-core-oop/inheritance.md
-      - Polymorphism: 02-core-oop/polymorphism.md
+      - Inheritance and Polymorphism: 02-core-oop/inheritance-polymorphism.md
       - Encapsulation: 02-core-oop/encapsulation.md
       - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
       - Practice your Skills: 02-core-oop/exercises.md
