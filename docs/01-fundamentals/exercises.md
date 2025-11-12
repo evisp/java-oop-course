@@ -427,3 +427,98 @@ Enroll all 5 students in CS101
 
 Display complete information showing all connections
 ```
+
+## OOP Relationships
+
+### Overview
+You will practice modeling **one-to-one**, **one-to-many**, and **many-to-many** relationships in Java using a `Product` class. Focus on **designing classes**, **thinking about object relationships**, and **implementing key methods**.
+
+
+### Product Class
+
+The `Product` class is our starting point. It contains the basic properties `name` and `price` and will later include relationships with `Manufacturer`, `Review`, and `Category`. You will complete constructors, getters/setters, and methods to manage these relationships.
+
+```java
+public class Product {
+    // Properties
+    private String name;
+    private double price;
+
+    // TODO: Add constructor(s)
+    
+    // TODO: Add getters and setters
+    
+    // TODO: Add toString() method
+    
+    // TODO: Add relationships:
+    // - One-to-One: Manufacturer
+    // - One-to-Many: List of Reviews
+    // - Many-to-Many: List of Categories
+}
+
+```
+### 1. One-to-One: Product ↔ Manufacturer
+
+The `Manufacturer` class represents the producer of a product. 
+
+> Each product has exactly one manufacturer
+
+The class will store basic information like `name` and `country`. You will link it to the `Product` class to model a one-to-one relationship.
+
+- Each product has exactly **one manufacturer**.  
+- Each manufacturer produces **exactly one product**.  
+- Create a `Manufacturer` class with:
+  - `name` (String)  
+  - `country` (String)  
+- Add methods in `Product`:
+  - `setManufacturer(Manufacturer m)`  
+  - `getManufacturer()`  
+- Consider: Can a manufacturer exist without a product?
+
+
+### 2. One-to-Many: Product ↔ Review
+
+The `Review` class represents feedback for a product. 
+
+> A product can have multiple reviews, but each review belongs to only one product. 
+
+You will use this class to model a one-to-many relationship between `Product` and `Review`.
+
+
+- A product can have **multiple reviews**.  
+- Each review belongs to **only one product**.  
+- Create a `Review` class with:
+  - `user` (String)  
+  - `comment` (String)  
+  - `rating` (int)  
+- Add to `Product`:
+  - `List<Review> reviews`  
+  - `addReview(Review r)`  
+  - `getReviews()`  
+- Consider: Should a review exist without a product?
+
+---
+
+### 3. Many-to-Many: Product ↔ Category
+
+The `Category` class represents a product category, like "Electronics" or "Home Appliances." 
+
+> A product can belong to multiple categories, and each category can include multiple products. 
+
+You will use this class to model a many-to-many relationship with `Product`.
+
+- Products can belong to **multiple categories**.  
+- Each category can include **multiple products**.  
+- Create a `Category` class with:
+  - `name` (String)  
+  - `List<Product> products`  
+- Add methods to manage the relationship in both classes:
+  - `addCategory(Category c)` in `Product`  
+  - `addProduct(Product p)` in `Category`  
+- Ensure the lists are updated on **both sides** when adding.
+
+### Notes
+- Focus on **class design and relationships**.  
+- Use **getters, setters, and lists** appropriately.  
+- Think about whether the relationship is **composition, aggregation, or association**.  
+- Draw a **simple UML diagram** to visualize your classes.
