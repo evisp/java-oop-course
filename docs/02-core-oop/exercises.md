@@ -11,6 +11,7 @@ In real-world systems, different user types (students, instructors, administrato
 **Variables:** username, password, email (all `String`)
 
 **Methods:**
+
 - Constructors (default and parameterized)
 - Getters/setters for all variables
 - `generatePassword()` - Returns `Basic password requirements: 6+ characters`
@@ -27,6 +28,7 @@ In real-world systems, different user types (students, instructors, administrato
 **Constructor:** Use `super()` to call parent constructor, then initialize `studentID` and `major`
 
 **Override these methods:**
+
 - `generatePassword()` - "Student: `6+` characters, `1` number required"
 - `validatePassword(String)` - Check: `length >= 6` AND has at least `1` digit
 - `getAccessLevel()` - `Student Access`
@@ -40,6 +42,7 @@ In real-world systems, different user types (students, instructors, administrato
 **Constructor:** Use `super()`, then initialize `employeeID` and `department`
 
 **Override these methods:**
+
 - `generatePassword()` - "Instructor: `8+` characters, uppercase, lowercase, `1` number"
 - `validatePassword(String)` - Check: `length >= 8 AND has uppercase AND lowercase AND digit`
 - `getAccessLevel()` - `Instructor Access`
@@ -53,6 +56,7 @@ In real-world systems, different user types (students, instructors, administrato
 **Constructor:** Use `super()`, then initialize `adminID` and `securityClearance`
 
 **Override these methods:**
+
 - `generatePassword()` - "Admin: `10+` characters, uppercase, lowercase, number, special char (`!@#$%^&`)
 - `validatePassword(String)` - Check: `length >= 10 AND uppercase AND lowercase AND digit AND special char`
 - `getAccessLevel()` - `Administrator Access - Full Control`
