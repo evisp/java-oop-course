@@ -1,0 +1,6 @@
+CustomerID,Name,Email,Age,City
+1815,Ada Lovelace,ada@example.com,36,London
+1912,Alan Turing,alan@example.com,41,Manchester
+1920,Grace Hopper,grace@example.com,42,New York
+1906,Emmy Noether,emmy@example.com,53,Göttingen
+1878,David Hilbert,david@example.com,67,Göttingen
