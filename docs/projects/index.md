@@ -10,7 +10,7 @@ Create a simple program using classes, objects, and basic collections. Focus on 
 
 **You'll build:** A basic application like a student management system, library catalog, or inventory tracker using fundamental OOP concepts
 
-## [Sprint 2 - OOP Principles](./sprint-2.md)
+## [Sprint 2 - OOP Principles and File IO Integration](./sprint-2.md)
 
 **Design with inheritance and polymorphism**
 
@@ -18,7 +18,6 @@ Expand your application using inheritance hierarchies, method overriding, and po
 
 **You'll build:** An extended version of your Sprint 1 project with class hierarchies, specialized subclasses, and polymorphic method calls
 
-## [Sprint 3 - Advanced Integration](./sprint-3.md)
 
 **Handle real-world challenges**
 
@@ -26,7 +25,7 @@ Add robust error handling with exceptions and persistent data storage using file
 
 **You'll build:** A full-featured application with exception handling, file persistence, and advanced OOP design patterns
 
-## [Final Project](./final-project.md)
+## [Final Project](./sprint-3.md)
 
 **Showcase your mastery**
 

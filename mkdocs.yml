@@ -68,9 +68,8 @@ nav:
   - Projects:
       - Overview: projects/index.md
       - Sprint 1 - Early Concepts: projects/sprint-1.md
-      - Sprint 2 - OOP Principles: projects/sprint-2.md
+      - Sprint 2 - OOP Principles and File IO: projects/sprint-2.md
       - Sprint 3 - Advanced Integration: projects/sprint-3.md
-      - Final Project: projects/final-project.md
   - Resources: resources/index.md
 
 
