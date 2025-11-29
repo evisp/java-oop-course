@@ -2,6 +2,8 @@
 
 Expand your Sprint 1 project using inheritance hierarchies, polymorphism, and abstract classes to create flexible, maintainable designs. Integrate robust error handling with exceptions and persistent data storage using file I/O to build a professional-grade application.
 
+![Sprint 2](https://i.imgur.com/lh9XNGu.png)
+
 > Master Advanced OOP: Design with inheritance and interfaces, implement polymorphic behavior, enforce encapsulation with access modifiers, and handle real-world challenges through exception handling and file persistence.
 
 ## Key Elements
