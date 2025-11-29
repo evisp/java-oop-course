@@ -41,7 +41,8 @@ desktop.ini
 # Teaching materials
 # ============================
 # Ignore PowerPoint slides
-slides/**/*.pptx
+slides/**/*.docx
+exams/**/*.docx
 
 # ============================
 # GitHub Pages / Jekyll site
