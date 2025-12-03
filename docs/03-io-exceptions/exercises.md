@@ -93,7 +93,7 @@ public static List<Customer> filterOlderThan(List<Customer> customers, int age)
 
 
 
-##### 3b. Filter by City (15 points)
+##### 3b. Filter by City 
 
 **Method Signature:**
 ```java
@@ -109,11 +109,11 @@ public static List<Customer> filterByCity(List<Customer> customers, String city)
 
 
 
-#### Part 4: Formatted Output Methods (30 points)
+#### Part 4: Formatted Output Methods
 
 Implement three methods that display customer data in formatted output:
 
-##### 4a. Print All Customers (10 points)
+##### 4a. Print All Customers
 
 **Method Signature:**
 ```java
@@ -126,7 +126,7 @@ public static void printCustomers(List<Customer> customers)
 - Otherwise, print formatted output:
 
 
-##### 4b. Print Customers Filtered by Age (10 points)
+##### 4b. Print Customers Filtered by Age 
 
 **Method Signature:**
 ```java
@@ -141,7 +141,7 @@ public static void printCustomersOlderThan(List<Customer> customers, int age)
 - Otherwise, print each matching customer using `customer.toString()`
 
 
-##### 4c. Print Customers Filtered by City (10 points)
+##### 4c. Print Customers Filtered by City 
 
 **Method Signature:**
 ```java
