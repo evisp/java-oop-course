@@ -11,7 +11,7 @@ In this exercise, you will practice reading and writing customer data from/to CS
 ### What Is Provided to You
 
 
-You are provided with **starter code and sample data** available at [this link](../../code/seminar_sessions/5_file_io_exceptions/). The starter package includes:
+You are provided with **starter code and sample data** available at [this link](https://github.com/evisp/java-oop-course/tree/main/code/seminar_sessions/5_file_io_exceptions). The starter package includes:
 
 1. **`Customer.java`** - A complete data class (DO NOT MODIFY) with fields for id, name, email, age, and city, along with getters and a formatted `toString()` method.
 
