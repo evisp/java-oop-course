@@ -1,6 +1,6 @@
 # File and Exception Handling 
 
-## Programming Exercise: Customer File I/O Operations
+## Programming Tasks: Text Files I/O Operations
 
 ### Overview
 
@@ -208,3 +208,52 @@ After completing this exercise, you will understand:
 
 6. **Formatted console output** for user-friendly display
 
+
+
+## Programming Tasks: Binary Files I/O Operations
+
+
+###  Holiday Roulette
+
+There are some **important questions hidden inside a mysterious binary file**. Your goal is to wake them up, use Java to read them as objects, and then play with them: show them all, pick one at random, and filter them by difficulty level. By the end, you should feel comfortable reading data from a file into an `ArrayList` and then asking simple, useful questions about that data.
+
+### What you have
+
+- `holiday_roulette.bin` – A binary file containing an list of questions
+- `Question.java` – A data class with question text, difficulty level (1–3), and category. *This java class is almost complete*. Only few minor details are missing. 
+- `HolidayRouletteStarter.java` – Your starter file with four **TODO** sections to complete
+
+You may find the starter code [here](../../code/seminar_sessions/5_file_io_exceptions/binary_io/)
+
+### Tasks
+
+**Task 1: Load questions from file**  
+
+Implement `loadQuestions(String filename)` using `ObjectInputStream` with try-with-resources. Read the mysterious data and store it in an *appropriate object*. 
+
+**Task 2: Print all questions**  
+
+Implement `printAllQuestions()` to loop through the `questions` list and print each one using `System.out.println()`.
+
+**Task 3: Return a random question**  
+
+Implement `getRandomQuestion()` to use the `Random` field to pick and return a random `Question` from the list, or `null` if empty.
+
+**Task 4: Filter by difficulty level** 
+
+Implement `getQuestionsByLevel(int level)` to create and return a new `ArrayList` containing only questions matching the given level (1 = Easy, 2 = Medium, 3 = Hard).
+
+**Task 5: Test in main()**  
+
+Write a `main` method that creates a `HolidayRouletteStarter` object, loads the file (handling `FileNotFoundException`, `IOException`, `ClassNotFoundException`), then calls your methods to verify they work: print total count, print all questions, print one random question, and print all Easy questions.
+
+### How to verify
+
+Run the program. You should see:
+
+- Questions loaded successfully
+- All questions printed with category and level
+- One random question displayed
+- All Easy questions filtered and shown
+
+Have fun! 
