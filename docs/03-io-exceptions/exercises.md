@@ -223,7 +223,7 @@ There are some **important questions hidden inside a mysterious binary file**. Y
 - `Question.java` – A data class with question text, difficulty level (1–3), and category. *This java class is almost complete*. Only few minor details are missing. 
 - `HolidayRouletteStarter.java` – Your starter file with four **TODO** sections to complete
 
-You may find the starter code [here](../../code/seminar_sessions/5_file_io_exceptions/binary_io/)
+You may find the starter code [here](https://github.com/evisp/java-oop-course/tree/main/code/seminar_sessions/5_file_io_exceptions/binary_io)
 
 ### Tasks
 
