@@ -43,6 +43,7 @@ desktop.ini
 # Ignore PowerPoint slides and docs
 slides/**/*.pptx
 exams/**/*.docx
+exams/**/*.xlsx
 
 # ============================
 # GitHub Pages / Jekyll site
