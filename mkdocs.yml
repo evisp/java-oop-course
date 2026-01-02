@@ -61,7 +61,7 @@ nav:
       - Practice your Skills: 03-io-exceptions/exercises.md
   - Modern Java:
       - Overview: 04-modern-java/index.md
-      - Generics: 04-modern-java/generics.md
+      - Generic Collections: 04-modern-java/generic-collections.md
       - Lambdas & Streams: 04-modern-java/lambdas-streams.md
       - JavaFX & GUI: 04-modern-java/javafx-gui.md
       - Practice your Skills: 04-modern-java/exercises.md
@@ -114,4 +114,4 @@ extra:
   analytics:
     provider: google
 
-copyright: Copyright &copy; 2025 Evis Plaku - Course Materials
+copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
