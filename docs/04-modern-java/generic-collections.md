@@ -318,6 +318,7 @@ Avoid it if you mainly care about order (use a `List`) or you only need membersh
 Collections help you store and work with groups of data in a way that scales: they handle resizing, provide useful built-in operations, and make code cleaner than manual array management.  
 
 Choose the structure that matches your question:
+
 - Need order and positional access? Use a `List`.
 - Need uniqueness? Use a `Set`.
 - Need fast “given this key, find the value”? Use a `Map`-especially `HashMap`.
