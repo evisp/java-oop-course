@@ -1,0 +1,26 @@
+CustomerID,Name,Email,Age,City
+1815,Ada Lovelace,ada.lovelace@example.com,36,London
+1912,Alan Turing,alan.turing@example.com,41,Manchester
+1903,John von Neumann,john.neumann@example.com,53,Princeton
+1906,Grace Hopper,grace.hopper@example.com,85,Arlington
+1917,Claude Shannon,claude.shannon@example.com,84,Cambridge
+1924,Donald Knuth,donald.knuth@example.com,87,Stanford
+1926,John McCarthy,john.mccarthy@example.com,84,Stanford
+1927,Marvin Minsky,marvin.minsky@example.com,88,Boston
+1930,Edsger Dijkstra,edsger.dijkstra@example.com,72,Austin
+1934,Barbara Liskov,barbara.liskov@example.com,85,Cambridge
+1938,Donald Knuth,don.knuth@example.com,87,Palo Alto
+1940,Ivan Sutherland,ivan.sutherland@example.com,87,Portland
+1941,Dennis Ritchie,dennis.ritchie@example.com,70,Berkeley Heights
+1942,Stephen Cook,stephen.cook@example.com,84,Toronto
+1943,Vint Cerf,vint.cerf@example.com,82,Reston
+1944,Tim Berners-Lee,tim.berners@example.com,70,London
+1945,Bjarne Stroustrup,bjarne.stroustrup@example.com,75,New York
+1946,Linus Torvalds,linus.torvalds@example.com,55,Portland
+1948,Shafi Goldwasser,shafi.goldwasser@example.com,67,Cambridge
+1949,Larry Page,larry.page@example.com,52,Palo Alto
+1950,Sergey Brin,sergey.brin@example.com,52,Los Altos
+1953,Guido van Rossum,guido.rossum@example.com,69,Belmont
+1955,Tim Cook,tim.cook@example.com,64,Palo Alto
+1955,Bill Gates,bill.gates@example.com,70,Medina
+1965,Brendan Eich,brendan.eich@example.com,64,Palo Alto

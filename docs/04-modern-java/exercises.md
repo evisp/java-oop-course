@@ -1,4 +1,3 @@
-
 # HashMap Practice - Customers Dataset
 
 ## Context (why this matters)
