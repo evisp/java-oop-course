@@ -6,7 +6,7 @@ In real projects (and interviews), it's common to load a dataset (like customers
 
 
 ## Given code (already provided)
-The following classes are already implemented and **must not be rewritten**:
+The [following classes are already implemented](https://github.com/evisp/java-oop-course/tree/main/code/seminar_sessions/7-8_collections) and **must not be rewritten**:
 
 - `Customer`  
   - Represents one customer with fields like `id`, `name`, `email`, `age`, and `city`. 
