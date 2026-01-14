@@ -4,8 +4,6 @@
 JavaFX is easiest to learn when the focus is not “memorize classes”, but “understand the model.”  
 Once the model is clear, the code feels repetitive in a good way: create nodes, arrange them with a layout pane, then connect events to logic.
 
-> Complete illustration code (Login Form): **[LINK TO COMPLETE CODE — you will add this]**
-
 
 ![Login Form](https://i.imgur.com/dLnqrfK.png)
 
