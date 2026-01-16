@@ -29,11 +29,11 @@ Add robust error handling with exceptions and persistent data storage using file
 
 **Showcase your mastery**
 
-Design and implement a comprehensive Java application that demonstrates all course concepts. Include modern Java features like generics, lambdas, and optionally a graphical interface. This capstone project shows your complete OOP programming skills.
+Design and implement a comprehensive Java application that demonstrates all course concepts. Include modern Java features like generics, and  a graphical interface. This capstone project shows your complete OOP programming skills.
 
 **You'll build:** A substantial application of your choice that incorporates the full range of Java OOP techniques learned throughout the course
 
 ***
 
-**Start here:** Begin Sprint 1 after completing the Foundations section. Work through each sprint in order, as they build upon previous work. Take time to plan your application design before coding—good planning makes implementation smoother and more successful.
+**Start here:** Begin Sprint 1 after completing the Foundations section. Work through each sprint in order, as they build upon previous work. Take time to plan your application design before coding; good planning makes implementation smoother and more successful.
 
