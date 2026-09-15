@@ -3,8 +3,9 @@
    Direction A: Ink and Rust
    --------------------------------------------------------------------------
    Sections 1 to 10 are site-wide.
-   Section 11 is the homepage, scoped under .home so it cannot leak onto
-   content pages.
+   Section 11 is the homepage, scoped under .home.
+   Section 12 is the roadmap, scoped under .rm.
+   Neither can leak onto content pages.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
@@ -291,13 +292,11 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 
 /* ==========================================================================
    11. HOMEPAGE
-   Everything below is scoped under .home. Content pages are unaffected.
+   Scoped under .home.
    ========================================================================== */
 
 .home { --home-max: 58rem; }
 
-/* Section headings lose the horizontal rule here. On a six-section page the
-   rules read as a stack of dividers rather than as structure. */
 .home h2 {
   border-top: none;
   padding-top: 0;
@@ -323,7 +322,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   align-items: center;
 }
 /* Grid items default to min-width: auto, which lets a 100%-wide SVG push
-   its column past its 1fr share. This is what makes the art overflow. */
+   its column past its 1fr share. */
 .home .hero__text,
 .home .hero__art { min-width: 0; }
 
@@ -343,11 +342,6 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 .home .hero .md-button { margin: 0 .5rem .4rem 0; }
 
 .home .hero__art { display: flex; flex-direction: column; align-items: center; }
-.home .hero__art svg {
-  margin: 0;
-  width: 100%;
-  max-width: 310px;
-}
 .home .hero__art svg[role="img"] {
   width: 100%;
   max-width: 310px;
@@ -365,12 +359,12 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 @media screen and (max-width: 59.98em) {
   .home .hero__inner { grid-template-columns: 1fr; gap: 2rem; }
   .home .hero h1 { font-size: 2.1rem; max-width: none; }
-  .home .hero__art svg { max-width: 260px; }
+  .home .hero__art svg[role="img"] { max-width: 260px; }
 }
 @media screen and (max-width: 44.98em) {
   .home .hero { padding: 2.2rem 1rem 2rem; margin-bottom: 2rem; }
   .home .hero h1 { font-size: 1.75rem; }
-  .home .hero__art svg { max-width: 210px; }
+  .home .hero__art svg[role="img"] { max-width: 210px; }
   .home .hero__caption { font-size: .62rem; }
 }
 
@@ -460,7 +454,6 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   counter-reset: step;
   position: relative;
 }
-/* The connecting rail, drawn behind the numbers. */
 .home .steps > ul::before {
   content: "";
   position: absolute;
@@ -481,6 +474,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 2.2rem;
   height: 2.2rem;
   display: grid;
@@ -596,29 +590,61 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 .rm { --rm-max: 56rem; }
 
 .rm h2 {
+  max-width: var(--rm-max);
+  margin: 3.6rem auto 1.3rem;
   border-top: none;
   padding-top: 0;
-  margin-top: 3.6rem;
-  margin-bottom: 1.3rem;
   font-size: 1.45rem;
 }
+.rm > p { max-width: var(--rm-max); margin-left: auto; margin-right: auto; }
 
-/* --- 12.1 Page head ----------------------------------------------------- */
+/* --- 12.1 Hero band ----------------------------------------------------- */
 
-.rm-head {
+.rm-hero {
+  margin: -1.2rem -1.2rem 2.4rem;
+  padding: 3.2rem 1.6rem 2.8rem;
+  background: var(--c-raised);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.rm-hero__inner {
   max-width: var(--rm-max);
-  margin: 0 auto 2.8rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr .95fr;
+  gap: 2.4rem;
+  align-items: center;
 }
-.rm-head h1 { font-size: 2.4rem; margin-bottom: .5rem; }
-.rm-head p {
+.rm-hero__text,
+.rm-hero__art { min-width: 0; }
+
+.rm-hero h1 {
+  font-size: 2.6rem;
+  line-height: 1.08;
+  margin: 0 0 .7rem;
+}
+.rm-hero__text > p {
   color: var(--c-muted);
-  font-size: .82rem;
-  max-width: 34em;
+  font-size: .86rem;
+  line-height: 1.65;
+  max-width: 28em;
+  margin: 0;
 }
-.rm-head p:first-of-type {
-  font-size: .95rem;
-  color: var(--c-ink);
-  margin-bottom: .8rem;
+.rm-hero__art { display: flex; justify-content: center; }
+.rm-hero__art svg[role="img"] {
+  width: 100%;
+  max-width: 330px;
+  margin: 0;
+}
+
+@media screen and (max-width: 59.98em) {
+  .rm-hero__inner { grid-template-columns: 1fr; gap: 1.8rem; }
+  .rm-hero h1 { font-size: 2.1rem; }
+  .rm-hero__art svg[role="img"] { max-width: 280px; }
+}
+@media screen and (max-width: 44.98em) {
+  .rm-hero { padding: 2.2rem 1rem 2rem; margin-bottom: 1.8rem; }
+  .rm-hero h1 { font-size: 1.75rem; }
+  .rm-hero__art svg[role="img"] { max-width: 240px; }
 }
 
 /* --- 12.2 The rail ------------------------------------------------------ */
@@ -634,8 +660,8 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   content: "";
   position: absolute;
   left: 1.05rem;
-  top: 1.4rem;
-  bottom: 1.4rem;
+  top: 2.2rem;
+  bottom: 3.2rem;
   width: 2px;
   background: var(--c-border);
 }
@@ -658,6 +684,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   position: absolute;
   left: -3.4rem;
   top: 2rem;
+  z-index: 1;
   width: 14px;
   height: 14px;
   margin-left: calc(1.05rem - 6px);
@@ -687,37 +714,35 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 .rm-step[data-state="locked"] .rm-art {
   border-style: dashed;
-  opacity: .5;
+  opacity: .55;
 }
 
 /* --- 12.5 Module text --------------------------------------------------- */
 
 .rm-body h3 {
   font-size: 1.35rem;
-  margin: .1rem 0 .5rem;
+  margin: .15rem 0 .5rem;
 }
 .rm-body > p { max-width: 38em; }
 
 .rm-meta {
   display: flex;
-  align-items: center;
-  gap: .7rem;
-  margin: 0 0 .1rem;
+  align-items: baseline;
+  gap: .5rem;
+  margin: 0 !important;
   font-family: var(--font-mono);
-  font-size: .62rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
+  font-size: .64rem;
+  letter-spacing: .02em;
 }
 .rm-num { color: var(--c-accent); font-weight: 500; }
 .rm-weeks { color: var(--c-muted); }
-.rm-weeks::before { content: "· "; }
 
 /* Topic chips: the syllabus view, scannable in one pass. */
 .rm-topics {
   display: flex;
   flex-wrap: wrap;
   gap: .35rem;
-  margin: .9rem 0 1.1rem !important;
+  margin: .9rem 0 1.2rem !important;
   max-width: none !important;
 }
 .rm-topics > span {
@@ -728,22 +753,18 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   background: var(--c-raised);
   border: var(--rule) solid var(--c-border);
   border-radius: 100px;
-  padding: .42em .85em;
+  padding: .45em .85em;
 }
 
-/* "By the end you can" */
-.rm-body > p > strong {
-  display: block;
-  font-family: var(--font-body);
-  font-size: .68rem;
+.rm-label {
+  font-size: .7rem;
   font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: uppercase;
   color: var(--c-muted);
-  margin-bottom: -.4rem;
+  margin: 0 0 .5rem !important;
 }
+
 .rm-body ul {
-  margin: .7rem 0 1.2rem;
+  margin: 0 0 .4rem;
   padding-left: 0;
   list-style: none;
 }
@@ -774,8 +795,9 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   flex-wrap: wrap;
   align-items: center;
   gap: .9rem;
-  margin-top: 1.1rem;
+  margin-top: 1.2rem;
 }
+.rm-foot p { margin: 0; max-width: none; }
 .rm-foot .md-button { margin: 0; font-size: .68rem; }
 .rm-when,
 .rm-flag {
@@ -789,27 +811,25 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   padding: .5em 1em;
 }
 .rm-flag { color: var(--c-accent); }
-.rm-flag::before { content: "◆ "; font-size: .8em; }
 
 /* Locked modules: present, clearly not yet available. */
 .rm-step[data-state="locked"] .rm-body h3,
 .rm-step[data-state="locked"] .rm-body > p { color: var(--c-muted); }
 .rm-step[data-state="locked"] .rm-body ul li::before {
   border-color: var(--c-muted);
-  opacity: .55;
+  opacity: .6;
 }
 
 /* --- 12.7 Sprints ------------------------------------------------------- */
 
 .rm-sprints > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   max-width: var(--rm-max);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.4rem;
-  counter-reset: sp;
 }
 .rm-sprints > ul > li {
   margin: 0;
@@ -833,26 +853,58 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   color: var(--c-muted);
 }
 
-/* --- 12.8 Skills strip -------------------------------------------------- */
+/* --- 12.8 Skills, grouped into four cards ------------------------------- */
 
 .rm-skills > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   max-width: var(--rm-max);
-  display: flex;
-  flex-wrap: wrap;
-  gap: .45rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 .rm-skills > ul > li {
   margin: 0;
-  font-size: .7rem;
-  line-height: 1;
-  color: var(--c-ink);
-  background: var(--c-raised);
+  padding: 1.2rem 1.3rem 1.3rem;
   border: var(--rule) solid var(--c-border);
   border-radius: var(--radius);
-  padding: .65em .95em;
+  background: var(--c-surface);
+}
+.rm-skills > ul > li > strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.rm-skills > ul > li > hr {
+  margin: .6rem 0 .8rem;
+  border: none;
+  border-top: var(--rule) solid var(--c-border);
+}
+.rm-skills > ul > li ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rm-skills > ul > li ul li {
+  position: relative;
+  margin: 0 0 .35rem;
+  padding-left: 1.4rem;
+  font-size: .74rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+}
+.rm-skills > ul > li ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .4em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--c-accent);
+  border-bottom: 2px solid var(--c-accent);
+  transform: rotate(-45deg);
 }
 
 /* --- 12.9 Closing ------------------------------------------------------- */
@@ -874,21 +926,22 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   font-weight: 700;
   color: var(--c-ink);
 }
+.rm-cta .md-button { margin: 0; }
 
 /* --- 12.10 Narrow screens ----------------------------------------------- */
 
 @media screen and (max-width: 59.98em) {
-  .rm-step { grid-template-columns: 88px 1fr; gap: 1.2rem; }
+  .rm-step { grid-template-columns: 92px 1fr; gap: 1.2rem; }
   .rm-sprints > ul { grid-template-columns: 1fr; gap: 1rem; }
+  .rm-skills > ul { grid-template-columns: 1fr; }
 }
 
 @media screen and (max-width: 44.98em) {
   .rm-track { padding-left: 2.2rem; }
-  .rm-track::before { left: .6rem; }
+  .rm-track::before { left: .6rem; top: 1.7rem; bottom: 2.8rem; }
   .rm-step::before { left: -2.2rem; margin-left: calc(.6rem - 6px); top: 1.5rem; }
   /* Art moves above the text rather than shrinking to nothing. */
   .rm-step { grid-template-columns: 1fr; gap: 1rem; padding: 1.1rem 0 2rem; }
-  .rm-art { max-width: 96px; padding: .4rem; }
-  .rm-head h1 { font-size: 1.8rem; }
+  .rm-art { max-width: 92px; padding: .4rem; }
   .rm-body h3 { font-size: 1.15rem; }
 }
