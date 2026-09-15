@@ -322,6 +322,11 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   gap: 2.6rem;
   align-items: center;
 }
+/* Grid items default to min-width: auto, which lets a 100%-wide SVG push
+   its column past its 1fr share. This is what makes the art overflow. */
+.home .hero__text,
+.home .hero__art { min-width: 0; }
+
 .home .hero h1 {
   font-size: 2.7rem;
   line-height: 1.08;
@@ -342,6 +347,11 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   margin: 0;
   width: 100%;
   max-width: 310px;
+}
+.home .hero__art svg[role="img"] {
+  width: 100%;
+  max-width: 310px;
+  margin: 0;
 }
 .home .hero__caption {
   margin: 1rem 0 0;
