@@ -1,36 +1,60 @@
 # ============================
-# Java and Build Artifacts
+# MkDocs
+# ============================
+# This is the one that matters. MkDocs builds into site/, not _site/.
+site/
+.cache/
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# ============================
+# Java and build artifacts
 # ============================
 *.class
-*.jar
 *.war
 *.ear
 *.log
 
-# IDE-specific
-# ----------------------------
-# IntelliJ IDEA
+# Compiled output. These patterns have no leading slash, so they match at
+# ANY depth. The old */bin/ only matched one level below the repo root, which
+# meant examples/sprint-1/bin/ was being committed.
+bin/
+build/
+out/
+dist/
+target/
+
+# JARs are ignored by default, but a few need to be committable.
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+!docs/assets/**/*.jar
+
+# ============================
+# IDE
+# ============================
 .idea/
 *.iml
-out/
-
-# Eclipse
 .classpath
 .project
 .settings/
-
-# VS Code
 .vscode/
+# If you ever want to ship students a shared VS Code Java config, add:
+#   !.vscode/settings.json
+#   !.vscode/extensions.json
 
 # ============================
-# OS-generated files
+# OS
 # ============================
 .DS_Store
 Thumbs.db
 desktop.ini
 
 # ============================
-# Temporary and backup files
+# Temporary and backup
 # ============================
 *.tmp
 *.bak
@@ -38,30 +62,11 @@ desktop.ini
 *~
 
 # ============================
-# Teaching materials
+# Teaching materials not for publication
 # ============================
-# Ignore PowerPoint slides and docs
 slides/**/*.pptx
 exams/**/*.docx
 exams/**/*.xlsx
 
-# ============================
-# GitHub Pages / Jekyll site
-# ============================
-# (Jekyll builds site to _site folder)
-_site/
-# Ignore cache and build files
-.jekyll-cache/
-.jekyll-metadata
-.sass-cache/
-.cache/
-node_modules/
-
-# ============================
-# Optional student work areas
-# ============================
-# Ignore compiled binaries or uploads
-*/bin/
-*/build/
-*/dist/
-*/target/
+# Note: solution files inside docs/ are handled by exclude_docs in mkdocs.yml,
+# not here. They stay in git, they just never reach the built site.

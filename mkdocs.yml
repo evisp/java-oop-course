@@ -1,116 +1,172 @@
 site_name: Java OOP Course
 site_url: https://evisp.github.io/java-oop-course/
 site_author: evisp
-site_description: Master Java Object-Oriented Programming with comprehensive tutorials and hands-on examples
+site_description: Learn Java object-oriented programming by building. Course materials for University Metropolitan Tirana.
 repo_name: evisp/java-oop-course
 repo_url: https://github.com/evisp/java-oop-course
+copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
+
+# ===========================================================================
+# THE VAULT
+# ---------------------------------------------------------------------------
+# draft_docs   : built by `mkdocs serve`, never by `mkdocs build`.
+#                You can preview these locally. Students cannot reach them.
+# exclude_docs : not built by anything. For solutions and answer keys.
+#
+# TO RELEASE A MODULE, three edits, no automation:
+#   1. delete its line from draft_docs below
+#   2. uncomment its block in nav
+#   3. flip its card from locked to live in docs/roadmap.md
+#
+# If you do 1 without 2, the pages build but are unreachable except by URL.
+# If you do 2 without 1, the build warns about nav entries it cannot find.
+# ===========================================================================
+draft_docs: |
+  02-core-oop/
+  03-io-exceptions/
+  04-modern-java/
+  projects/
+
+exclude_docs: |
+  **/solutions/
+  **/*.answers.md
 
 theme:
   name: material
+  language: en
+  # Fonts are loaded once, from docs/stylesheets/custom.css, so that all
+  # typography lives in one file. Material's own loader only has two slots
+  # and this course uses three families.
+  font: false
   palette:
-    # Palette toggle for light mode
     - scheme: default
-      primary: blue
-      accent: blue
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7 
+        icon: material/weather-night
         name: Switch to dark mode
-    # Palette toggle for dark mode
     - scheme: slate
-      primary: blue
-      accent: blue
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.sections
-    - navigation.expand
-    - navigation.path
+    - navigation.path        # breadcrumbs, needs mkdocs-material >= 9.7.0
     - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.highlight
+    - search.suggest
     - search.share
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
+    - content.tooltips
   icon:
     repo: fontawesome/brands/github
+  # navigation.expand was removed. With 14 weeks of material it produces a
+  # permanently open sidebar that gets unusable as modules are released.
+
+extra_css:
+  - stylesheets/custom.css
+
+plugins:
+  - search
+  # minify was removed. It collapses whitespace inside inline SVG, and the
+  # diagrams on this site are inline SVG.
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: warn
+    anchors: warn
 
 nav:
   - Home: index.md
+  - Roadmap: roadmap.md
   - Tools:
-      - Get started: 00-tools/index.md 
-      - Install Eclipse: 00-tools/eclipse-setup.md 
+      - Get started: 00-tools/index.md
+      - Install Eclipse: 00-tools/eclipse-setup.md
   - Foundations:
-      - Overview: 01-fundamentals/index.md   
-      - Introduction to OOP: 01-fundamentals/intro-oop.md
-      - Classes & Objects: 01-fundamentals/classes-objects.md
-      - Arrays & Collections: 01-fundamentals/arrays-lists.md
-      - Thinking in Objects: 01-fundamentals/thinking-objects.md
-      - Practice your Skills: 01-fundamentals/exercises.md
-  - Core OOP Principles:
-      - Overview: 02-core-oop/index.md   
-      - Inheritance and Polymorphism: 02-core-oop/inheritance-polymorphism.md
-      - Encapsulation: 02-core-oop/encapsulation.md
-      - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
-      - Practice your Skills: 02-core-oop/exercises.md
-  - File and Exception Handling:
-      - Overview: 03-io-exceptions/index.md   
-      - Exception Handling: 03-io-exceptions/exception-handling.md
-      - Files & Streams: 03-io-exceptions/files-streams.md
-      - Practice your Skills: 03-io-exceptions/exercises.md
-  - Modern Java:
-      - Overview: 04-modern-java/index.md
-      - Generic Collections: 04-modern-java/generic-collections.md
-      - JavaFX Setup: 04-modern-java/javafx-setup.md
-      - JavaFX & GUI: 04-modern-java/javafx-fundamentals.md
-      - Practice your Skills: 04-modern-java/exercises.md
-  - Projects:
-      - Overview: projects/index.md
-      - Sprint 1 - Early Concepts: projects/sprint-1.md
-      - Sprint 2 - OOP Principles and File IO: projects/sprint-2.md
-      - Sprint 3 - Advanced Integration: projects/sprint-3.md
+      - Overview: 01-foundations/index.md
+      - Introduction to OOP: 01-foundations/intro-oop.md
+      - Classes & Objects: 01-foundations/classes-objects.md
+      - Arrays & Collections: 01-foundations/arrays-lists.md
+      - Thinking in Objects: 01-foundations/thinking-objects.md
+      - Practice your Skills: 01-foundations/exercises.md
 
+  # --- VAULTED. Uncomment together with the draft_docs line above. ---
+  # - Core OOP Principles:
+  #     - Overview: 02-core-oop/index.md
+  #     - Inheritance and Polymorphism: 02-core-oop/inheritance-polymorphism.md
+  #     - Encapsulation: 02-core-oop/encapsulation.md
+  #     - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
+  #     - Practice your Skills: 02-core-oop/exercises.md
+
+  # - File and Exception Handling:
+  #     - Overview: 03-io-exceptions/index.md
+  #     - Exception Handling: 03-io-exceptions/exception-handling.md
+  #     - Files & Streams: 03-io-exceptions/files-streams.md
+  #     - Practice your Skills: 03-io-exceptions/exercises.md
+
+  # - Modern Java:
+  #     - Overview: 04-modern-java/index.md
+  #     - Generic Collections: 04-modern-java/generic-collections.md
+  #     - JavaFX Setup: 04-modern-java/javafx-setup.md
+  #     - JavaFX & GUI: 04-modern-java/javafx-fundamentals.md
+  #     - Practice your Skills: 04-modern-java/exercises.md
+
+  # - Projects:
+  #     - Overview: projects/index.md
+  #     - Sprint 1 - Early Concepts: projects/sprint-1.md
+  #     - Sprint 2 - OOP Principles and File IO: projects/sprint-2.md
+  #     - Sprint 3 - Advanced Integration: projects/sprint-3.md
 
 markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+      toc_depth: 3
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.keys
-  - attr_list
-  - md_in_html
-  - footnotes
-  - pymdownx.critic
-  - pymdownx.caret
   - pymdownx.keys
   - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.tilde
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
-plugins:
-  - search
-  - minify:
-      minify_html: true
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/evisp
-  analytics:
-    provider: google
-
-copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
+  # The analytics block was removed. It set provider: google with no
+  # property key, so it was never working. Tracking students through a
+  # third party on a required course site also needs a consent layer under
+  # Albania's data protection law. Add it back deliberately or not at all.

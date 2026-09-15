@@ -1,46 +1,88 @@
-# Java Object-Oriented Programming Course
+---
+hide:
+  - navigation
+  - toc
+---
 
-Learn modern Java OOP by building. Clear concepts, practical examples, and projects that develop real programming skills.
+<div class="hero" markdown>
 
-## Who it's for
-- Students (at University Metropolitan Tirana) learning object-oriented programming concepts.
-- Developers comfortable with basic programming who want to master Java OOP.
-- Anyone seeking a structured approach to Java without unnecessary complexity.
+# Java, one object at a time
 
-![Java Overview](https://i.imgur.com/bd2B30W.png)
+Object-oriented programming at University Metropolitan Tirana. Fourteen weeks, three project sprints, and code you write yourself every single week.
 
-## What's inside
+[Set up your tools](00-tools/index.md){ .md-button .md-button--primary }
+[See the roadmap](roadmap.md){ .md-button }
 
-**[Foundations](01-foundations/index.md)**: Build your OOP foundation with classes, objects, collections, and object-oriented thinking.
+</div>
 
-**[Core OOP Principles](02-core-oop/index.md)**: Master inheritance, polymorphism, encapsulation, and abstract programming.
+## How this course works
 
-**[File and Exception Handling](03-io-exceptions/index.md)**: Write robust applications that handle errors and work with external data.
+Material is released week by week, not all at once. The [roadmap](roadmap.md) shows the full arc so you know where you are going, with the parts we have not reached yet marked as locked.
 
-**[Modern Java](04-modern-java/index.md)**: Use generics, lambdas, streams, and JavaFX for contemporary Java development.
+You need one specific Java version. Not "Java 21 or later", one version, the same one everyone else is running. That is Temurin 25 LTS, and the [tools page](00-tools/index.md) walks you through it. Students who install a different version spend week three debugging a compiler difference instead of learning objects.
 
-**[Projects](projects/index.md)**: Apply your knowledge through progressive sprints and a capstone project.
+Each page ends with a task you perform yourself and a few questions with no lookup-able answer. Those questions are what we argue about in class.
 
-**[Resources](resources/index.md)**: Reference materials, tools, and extended learning resources.
+## What you will build
 
-## Suggested path
-- Foundations first: Introduction to OOP → Classes & Objects → Arrays & Collections → Thinking in Objects.
-- Core principles: Inheritance → Polymorphism → Encapsulation → Abstract Classes & Interfaces.
-- Practical skills: Exception Handling → Files & Streams.
-- Modern features: Generics → Lambdas & Streams → JavaFX & GUI.
-- Build projects throughout to reinforce learning.
+<div class="grid cards" markdown>
 
-## Study tips
-- Code every example yourself - reading code is not the same as writing it.
-- Complete the exercises in each section before moving forward.
-- Start each project sprint when you finish the related concepts.
-- Explain concepts to others - teaching reveals what you truly understand.
+-   **Tools**
 
-## Word of encouragement
+    ---
 
-Object-oriented programming changes how you think about code. Start simple, practice consistently, and build real projects.
+    Get a working JDK and IDE, and understand what each piece actually does.
 
-When concepts feel abstract, write more code. When projects feel overwhelming, return to the fundamentals and take smaller steps.
+    [:octicons-arrow-right-24: Start here](00-tools/index.md)
 
-Every expert was once a beginner. Keep coding, keep building, keep learning.
+-   **Foundations**
 
+    ---
+
+    Classes, objects, references, collections, and learning to see a problem as objects rather than steps.
+
+    [:octicons-arrow-right-24: Open module](01-foundations/index.md)
+
+</div>
+
+<div class="grid cards locked" markdown>
+
+-   **Core OOP Principles** &nbsp;`locked`
+
+    ---
+
+    Inheritance, polymorphism, encapsulation, abstract classes and interfaces.
+
+    Releases in week 5.
+
+-   **File and Exception Handling** &nbsp;`locked`
+
+    ---
+
+    Programs that survive bad input and talk to the world outside themselves.
+
+    Releases in week 9.
+
+-   **Modern Java** &nbsp;`locked`
+
+    ---
+
+    Generic collections, and building a real interface with JavaFX.
+
+    Releases in week 11.
+
+-   **Projects** &nbsp;`locked`
+
+    ---
+
+    Three sprints that build on each other, from first classes to a finished application.
+
+    Sprint 1 releases in week 5.
+
+</div>
+
+## How you are assessed
+
+Three project sprints, each one building on the last, plus a written exam. The sprints are not optional practice. They are the course.
+
+Code every example yourself. Reading code and writing code are different skills, and only one of them is being examined.

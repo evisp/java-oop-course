@@ -1,9 +1,13 @@
-name: Deploy Documentation
+# ===========================================================================
+# Do NOT run `mkdocs gh-deploy` from your laptop once this workflow is live.
+# Both push to the gh-pages branch and they will overwrite each other.
+# Local preview is `mkdocs serve`. Publishing is this file, on push to main.
+# ===========================================================================
+name: Deploy site
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -12,37 +16,22 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.repository.fork == false
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
+          python-version: "3.12"
+          cache: pip
 
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-
-      - name: Cache dependencies
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-
-      - name: Cache Python packages
-        uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: ~/.cache
-          restore-keys: |
-            mkdocs-material-
-
-      - name: Install dependencies
+      - name: Install pinned dependencies
         run: pip install -r requirements.txt
 
-      - name: Deploy documentation
-        run: mkdocs gh-deploy --force
+      # --clean and --strict together. Strict turns the link warnings from
+      # validation: into build failures, so a broken link fails CI instead of
+      # shipping. `mkdocs build` (not serve) means draft_docs are excluded.
+      - name: Build
+        run: mkdocs build --clean --strict
+
+      - name: Publish
+        run: mkdocs gh-deploy --force --no-history

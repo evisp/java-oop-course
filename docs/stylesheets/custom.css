@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Java OOP Course - visual system
+   Direction A: Ink and Rust
+   --------------------------------------------------------------------------
+   To try a different direction, change only the six values in the two
+   :root blocks below. Nothing else in this file hardcodes a colour.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius:  6px;
+  --rule:    1px;
+}
+
+/* Light */
+[data-md-color-scheme="default"] {
+  --c-ink:      #1B1B1F;
+  --c-muted:    #5C5952;
+  --c-surface:  #FFFFFF;
+  --c-raised:   #FAF8F5;
+  --c-border:   #E4E0DA;
+  --c-accent:   #B4542A;
+  --c-accent-2: #8F4220;
+  --c-header:   #1B1B1F;
+  --c-on-dark:  #FAF8F5;
+}
+
+/* Dark */
+[data-md-color-scheme="slate"] {
+  --c-ink:      #E8E6E1;
+  --c-muted:    #9A968E;
+  --c-surface:  #16171A;
+  --c-raised:   #1E2024;
+  --c-border:   #2E3136;
+  --c-accent:   #E08A5F;
+  --c-accent-2: #F0A87F;
+  --c-header:   #101114;
+  --c-on-dark:  #E8E6E1;
+}
+
+/* --------------------------------------------------------------------------
+   2. Map tokens onto Material
+   The header stays neutral dark in BOTH schemes, so the accent colour is
+   never used to fill a large area. It appears only on links, active state,
+   focus rings, buttons and the left rule of callouts.
+   -------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:          var(--c-header);
+  --md-primary-fg-color--light:   var(--c-header);
+  --md-primary-fg-color--dark:    var(--c-header);
+  --md-primary-bg-color:          var(--c-on-dark);
+  --md-primary-bg-color--light:   var(--c-muted);
+
+  --md-accent-fg-color:           var(--c-accent-2);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--c-accent) 10%, transparent);
+
+  --md-default-bg-color:          var(--c-surface);
+  --md-default-fg-color:          var(--c-ink);
+  --md-default-fg-color--light:   var(--c-muted);
+  --md-default-fg-color--lighter: color-mix(in srgb, var(--c-muted) 55%, transparent);
+  --md-default-fg-color--lightest:var(--c-border);
+
+  --md-typeset-color:             var(--c-ink);
+  --md-typeset-a-color:           var(--c-accent);
+
+  --md-code-bg-color:             var(--c-raised);
+  --md-code-fg-color:             var(--c-ink);
+
+  --md-footer-bg-color:           var(--c-header);
+  --md-footer-bg-color--dark:     var(--c-header);
+
+  --md-text-font-family:          var(--font-body);
+  --md-code-font-family:          var(--font-mono);
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography
+   Headings carry the hierarchy through type, not colour, so long pages stay
+   readable without decoration.
+   -------------------------------------------------------------------------- */
+
+body, input, .md-typeset { font-family: var(--font-body); }
+code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 { font-size: 2.05rem; line-height: 1.15; margin-bottom: .6em; }
+.md-typeset h2 {
+  font-size: 1.5rem;
+  margin-top: 2.2em;
+  padding-top: .7em;
+  border-top: var(--rule) solid var(--c-border);
+}
+.md-typeset h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.7em; }
+.md-typeset h4 { font-size: 1rem;   font-weight: 600; }
+
+.md-typeset { font-size: .78rem; line-height: 1.72; }
+.md-typeset p { max-width: 42em; }
+
+.md-typeset a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.md-typeset a:hover { color: var(--c-accent-2); }
+
+/* --------------------------------------------------------------------------
+   4. Hero band (homepage only)
+   -------------------------------------------------------------------------- */
+
+.hero {
+  margin: -1.2rem -.8rem 2.4rem;
+  padding: 3.2rem 1.6rem 2.8rem;
+  background: var(--c-raised);
+  border-bottom: var(--rule) solid var(--c-border);
+  text-align: left;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  margin: 0 0 .5rem;
+  max-width: 14em;
+}
+.hero p {
+  color: var(--c-muted);
+  font-size: .95rem;
+  max-width: 34em;
+  margin: 0 0 1.6rem;
+}
+.hero .md-button { margin-right: .5rem; margin-bottom: .4rem; }
+
+@media screen and (max-width: 44.98em) {
+  .hero { padding: 2rem 1rem 1.8rem; margin-bottom: 1.8rem; }
+  .hero h1 { font-size: 1.8rem; }
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons
+   -------------------------------------------------------------------------- */
+
+.md-typeset .md-button {
+  border-radius: var(--radius);
+  border-width: var(--rule);
+  border-color: var(--c-border);
+  color: var(--c-ink);
+  font-weight: 500;
+  padding: .5em 1.1em;
+}
+.md-typeset .md-button:hover {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+.md-typeset .md-button--primary {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+.md-typeset .md-button--primary:hover {
+  background: var(--c-accent-2);
+  border-color: var(--c-accent-2);
+}
+
+/* --------------------------------------------------------------------------
+   6. Grid cards, plus the locked variant for unreleased modules
+   -------------------------------------------------------------------------- */
+
+.md-typeset .grid.cards > ul > li {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  padding: 1.1rem 1.2rem;
+  box-shadow: none;
+  transition: border-color .15s, transform .15s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+.md-typeset .grid.cards > ul > li > hr {
+  margin: .7em 0;
+  border-color: var(--c-border);
+}
+.md-typeset .grid.cards > ul > li p { max-width: none; }
+
+/* Locked: released later. Visibly present, visibly unavailable. */
+.md-typeset .grid.cards.locked > ul > li {
+  background: var(--c-raised);
+  border-style: dashed;
+  opacity: .62;
+}
+.md-typeset .grid.cards.locked > ul > li:hover {
+  border-color: var(--c-border);
+  transform: none;
+}
+.md-typeset .grid.cards.locked strong { color: var(--c-muted); }
+
+/* --------------------------------------------------------------------------
+   7. Meta badges (top of every content page)
+   -------------------------------------------------------------------------- */
+
+.md-typeset .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: -.4rem 0 1.6rem;
+}
+.md-typeset .badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--c-muted);
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: 100px;
+  padding: .38em .8em;
+  white-space: nowrap;
+}
+.md-typeset .badge--accent {
+  color: var(--c-accent);
+  border-color: color-mix(in srgb, var(--c-accent) 40%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   8. Custom callout: "mistake"
+   The thing this course repeats most is the error a learner is about to make.
+   Use as:   !!! mistake "Forgetting to close the file"
+   -------------------------------------------------------------------------- */
+
+:root {
+  --md-admonition-icon--mistake: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>');
+}
+.md-typeset .admonition.mistake,
+.md-typeset details.mistake {
+  border-color: var(--c-accent);
+  border-left-width: 3px;
+}
+.md-typeset .mistake > .admonition-title,
+.md-typeset .mistake > summary {
+  background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+}
+.md-typeset .mistake > .admonition-title::before,
+.md-typeset .mistake > summary::before {
+  background-color: var(--c-accent);
+  -webkit-mask-image: var(--md-admonition-icon--mistake);
+          mask-image: var(--md-admonition-icon--mistake);
+}
+
+/* All admonitions: flat, ruled, no drop shadows. */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--radius);
+  border-width: var(--rule);
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: .74rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Code, tables, quotes
+   -------------------------------------------------------------------------- */
+
+.md-typeset pre > code { border-radius: var(--radius); font-size: .72rem; }
+.md-typeset code { border-radius: 3px; }
+
+.md-typeset table:not([class]) {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: .72rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--c-raised);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.md-typeset blockquote {
+  border-left: 3px solid var(--c-border);
+  color: var(--c-muted);
+}
+
+/* Inline SVG diagrams: always full width, never overflow a phone. */
+.md-typeset svg[role="img"] {
+  width: 100%;
+  height: auto;
+  margin: 1.4rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. Chrome
+   -------------------------------------------------------------------------- */
+
+.md-header { box-shadow: none; border-bottom: var(--rule) solid var(--c-header); }
+.md-tabs { border-bottom: var(--rule) solid rgba(255,255,255,.12); }
+.md-nav { font-size: .7rem; }
+.md-nav__title { font-weight: 600; }
+.md-nav__link--active { color: var(--c-accent); font-weight: 500; }
+.md-sidebar--secondary .md-nav__link--active { font-weight: 600; }
+.md-search__form { border-radius: var(--radius); }
+.md-footer-meta { font-size: .68rem; }
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
