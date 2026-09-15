@@ -586,3 +586,309 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   .home .cta { padding: 2.2rem 1rem 2.4rem; margin-top: 3rem; }
   .home .cta h3 { font-size: 1.2rem; }
 }
+
+/* ==========================================================================
+   12. ROADMAP
+   Scoped under .rm. The path rail is CSS, not SVG, so every word stays
+   real text: searchable, selectable, and editable without coordinate math.
+   ========================================================================== */
+
+.rm { --rm-max: 56rem; }
+
+.rm h2 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3.6rem;
+  margin-bottom: 1.3rem;
+  font-size: 1.45rem;
+}
+
+/* --- 12.1 Page head ----------------------------------------------------- */
+
+.rm-head {
+  max-width: var(--rm-max);
+  margin: 0 auto 2.8rem;
+}
+.rm-head h1 { font-size: 2.4rem; margin-bottom: .5rem; }
+.rm-head p {
+  color: var(--c-muted);
+  font-size: .82rem;
+  max-width: 34em;
+}
+.rm-head p:first-of-type {
+  font-size: .95rem;
+  color: var(--c-ink);
+  margin-bottom: .8rem;
+}
+
+/* --- 12.2 The rail ------------------------------------------------------ */
+
+.rm-track {
+  position: relative;
+  max-width: var(--rm-max);
+  margin: 0 auto;
+  padding-left: 3.4rem;
+}
+/* The vertical path. Stops short at both ends so it does not run off. */
+.rm-track::before {
+  content: "";
+  position: absolute;
+  left: 1.05rem;
+  top: 1.4rem;
+  bottom: 1.4rem;
+  width: 2px;
+  background: var(--c-border);
+}
+
+/* --- 12.3 A module step ------------------------------------------------- */
+
+.rm-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 1.8rem;
+  align-items: start;
+  padding: 1.6rem 0 2.4rem;
+}
+.rm-step > * { min-width: 0; }
+
+/* The node on the rail. */
+.rm-step::before {
+  content: "";
+  position: absolute;
+  left: -3.4rem;
+  top: 2rem;
+  width: 14px;
+  height: 14px;
+  margin-left: calc(1.05rem - 6px);
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+}
+.rm-step[data-state="open"]::before {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-accent) 18%, transparent);
+}
+
+/* --- 12.4 Module artwork ------------------------------------------------ */
+
+.rm-art {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-raised);
+  padding: .5rem;
+}
+.rm-art svg[role="img"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.rm-step[data-state="locked"] .rm-art {
+  border-style: dashed;
+  opacity: .5;
+}
+
+/* --- 12.5 Module text --------------------------------------------------- */
+
+.rm-body h3 {
+  font-size: 1.35rem;
+  margin: .1rem 0 .5rem;
+}
+.rm-body > p { max-width: 38em; }
+
+.rm-meta {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: 0 0 .1rem;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.rm-num { color: var(--c-accent); font-weight: 500; }
+.rm-weeks { color: var(--c-muted); }
+.rm-weeks::before { content: "· "; }
+
+/* Topic chips: the syllabus view, scannable in one pass. */
+.rm-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin: .9rem 0 1.1rem !important;
+  max-width: none !important;
+}
+.rm-topics > span {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  line-height: 1;
+  color: var(--c-muted);
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: 100px;
+  padding: .42em .85em;
+}
+
+/* "By the end you can" */
+.rm-body > p > strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: -.4rem;
+}
+.rm-body ul {
+  margin: .7rem 0 1.2rem;
+  padding-left: 0;
+  list-style: none;
+}
+.rm-body ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: .3rem;
+  font-size: .76rem;
+  line-height: 1.6;
+}
+/* A small tick instead of a bullet: these are things you gain, not a list. */
+.rm-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .42em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--c-accent);
+  border-bottom: 2px solid var(--c-accent);
+  transform: rotate(-45deg);
+}
+
+/* --- 12.6 Footer of each step ------------------------------------------- */
+
+.rm-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .9rem;
+  margin-top: 1.1rem;
+}
+.rm-foot .md-button { margin: 0; font-size: .68rem; }
+.rm-when,
+.rm-flag {
+  font-family: var(--font-mono);
+  font-size: .64rem;
+  color: var(--c-muted);
+}
+.rm-when {
+  border: var(--rule) dashed var(--c-border);
+  border-radius: 100px;
+  padding: .5em 1em;
+}
+.rm-flag { color: var(--c-accent); }
+.rm-flag::before { content: "◆ "; font-size: .8em; }
+
+/* Locked modules: present, clearly not yet available. */
+.rm-step[data-state="locked"] .rm-body h3,
+.rm-step[data-state="locked"] .rm-body > p { color: var(--c-muted); }
+.rm-step[data-state="locked"] .rm-body ul li::before {
+  border-color: var(--c-muted);
+  opacity: .55;
+}
+
+/* --- 12.7 Sprints ------------------------------------------------------- */
+
+.rm-sprints > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--rm-max);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  counter-reset: sp;
+}
+.rm-sprints > ul > li {
+  margin: 0;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: var(--rule) solid var(--c-border);
+  border-top: 3px solid var(--c-accent);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+}
+.rm-sprints strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: .4rem;
+}
+.rm-sprints p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+/* --- 12.8 Skills strip -------------------------------------------------- */
+
+.rm-skills > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: var(--rm-max);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.rm-skills > ul > li {
+  margin: 0;
+  font-size: .7rem;
+  line-height: 1;
+  color: var(--c-ink);
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  padding: .65em .95em;
+}
+
+/* --- 12.9 Closing ------------------------------------------------------- */
+
+.rm-cta {
+  max-width: var(--rm-max);
+  margin: 3.4rem auto 0;
+  padding: 2rem 1.6rem 2.2rem;
+  text-align: center;
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+}
+.rm-cta p {
+  margin: 0 auto 1.1rem;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-ink);
+}
+
+/* --- 12.10 Narrow screens ----------------------------------------------- */
+
+@media screen and (max-width: 59.98em) {
+  .rm-step { grid-template-columns: 88px 1fr; gap: 1.2rem; }
+  .rm-sprints > ul { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+@media screen and (max-width: 44.98em) {
+  .rm-track { padding-left: 2.2rem; }
+  .rm-track::before { left: .6rem; }
+  .rm-step::before { left: -2.2rem; margin-left: calc(.6rem - 6px); top: 1.5rem; }
+  /* Art moves above the text rather than shrinking to nothing. */
+  .rm-step { grid-template-columns: 1fr; gap: 1rem; padding: 1.1rem 0 2rem; }
+  .rm-art { max-width: 96px; padding: .4rem; }
+  .rm-head h1 { font-size: 1.8rem; }
+  .rm-body h3 { font-size: 1.15rem; }
+}
