@@ -2,11 +2,12 @@
    Java OOP Course - visual system
    Direction A: Ink and Rust
    --------------------------------------------------------------------------
-   To try a different direction, change only the six values in the two
-   :root blocks below. Nothing else in this file hardcodes a colour.
+   Sections 1 to 10 are site-wide.
+   Section 11 is the homepage, scoped under .home so it cannot leak onto
+   content pages.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
 
 /* --------------------------------------------------------------------------
    1. Tokens
@@ -21,7 +22,6 @@
   --rule:    1px;
 }
 
-/* Light */
 [data-md-color-scheme="default"] {
   --c-ink:      #1B1B1F;
   --c-muted:    #5C5952;
@@ -34,7 +34,6 @@
   --c-on-dark:  #FAF8F5;
 }
 
-/* Dark */
 [data-md-color-scheme="slate"] {
   --c-ink:      #E8E6E1;
   --c-muted:    #9A968E;
@@ -49,9 +48,6 @@
 
 /* --------------------------------------------------------------------------
    2. Map tokens onto Material
-   The header stays neutral dark in BOTH schemes, so the accent colour is
-   never used to fill a large area. It appears only on links, active state,
-   focus rings, buttons and the left rule of callouts.
    -------------------------------------------------------------------------- */
 
 [data-md-color-scheme="default"],
@@ -86,8 +82,6 @@
 
 /* --------------------------------------------------------------------------
    3. Typography
-   Headings carry the hierarchy through type, not colour, so long pages stay
-   readable without decoration.
    -------------------------------------------------------------------------- */
 
 body, input, .md-typeset { font-family: var(--font-body); }
@@ -120,38 +114,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 .md-typeset a:hover { color: var(--c-accent-2); }
 
 /* --------------------------------------------------------------------------
-   4. Hero band (homepage only)
-   -------------------------------------------------------------------------- */
-
-.hero {
-  margin: -1.2rem -.8rem 2.4rem;
-  padding: 3.2rem 1.6rem 2.8rem;
-  background: var(--c-raised);
-  border-bottom: var(--rule) solid var(--c-border);
-  text-align: left;
-}
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: 2.6rem;
-  line-height: 1.1;
-  margin: 0 0 .5rem;
-  max-width: 14em;
-}
-.hero p {
-  color: var(--c-muted);
-  font-size: .95rem;
-  max-width: 34em;
-  margin: 0 0 1.6rem;
-}
-.hero .md-button { margin-right: .5rem; margin-bottom: .4rem; }
-
-@media screen and (max-width: 44.98em) {
-  .hero { padding: 2rem 1rem 1.8rem; margin-bottom: 1.8rem; }
-  .hero h1 { font-size: 1.8rem; }
-}
-
-/* --------------------------------------------------------------------------
-   5. Buttons
+   4. Buttons
    -------------------------------------------------------------------------- */
 
 .md-typeset .md-button {
@@ -178,7 +141,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 
 /* --------------------------------------------------------------------------
-   6. Grid cards, plus the locked variant for unreleased modules
+   5. Grid cards, plus the locked variant
    -------------------------------------------------------------------------- */
 
 .md-typeset .grid.cards > ul > li {
@@ -200,7 +163,6 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 .md-typeset .grid.cards > ul > li p { max-width: none; }
 
-/* Locked: released later. Visibly present, visibly unavailable. */
 .md-typeset .grid.cards.locked > ul > li {
   background: var(--c-raised);
   border-style: dashed;
@@ -213,7 +175,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 .md-typeset .grid.cards.locked strong { color: var(--c-muted); }
 
 /* --------------------------------------------------------------------------
-   7. Meta badges (top of every content page)
+   6. Meta badges
    -------------------------------------------------------------------------- */
 
 .md-typeset .meta {
@@ -241,9 +203,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 
 /* --------------------------------------------------------------------------
-   8. Custom callout: "mistake"
-   The thing this course repeats most is the error a learner is about to make.
-   Use as:   !!! mistake "Forgetting to close the file"
+   7. Custom callout: "mistake"
    -------------------------------------------------------------------------- */
 
 :root {
@@ -265,7 +225,6 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
           mask-image: var(--md-admonition-icon--mistake);
 }
 
-/* All admonitions: flat, ruled, no drop shadows. */
 .md-typeset .admonition,
 .md-typeset details {
   border-radius: var(--radius);
@@ -276,7 +235,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 
 /* --------------------------------------------------------------------------
-   9. Code, tables, quotes
+   8. Code, tables, quotes
    -------------------------------------------------------------------------- */
 
 .md-typeset pre > code { border-radius: var(--radius); font-size: .72rem; }
@@ -298,7 +257,6 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   color: var(--c-muted);
 }
 
-/* Inline SVG diagrams: always full width, never overflow a phone. */
 .md-typeset svg[role="img"] {
   width: 100%;
   height: auto;
@@ -306,7 +264,7 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 }
 
 /* --------------------------------------------------------------------------
-   10. Chrome
+   9. Chrome
    -------------------------------------------------------------------------- */
 
 .md-header { box-shadow: none; border-bottom: var(--rule) solid var(--c-header); }
@@ -321,4 +279,300 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
 :focus-visible {
   outline: 2px solid var(--c-accent);
   outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ==========================================================================
+   11. HOMEPAGE
+   Everything below is scoped under .home. Content pages are unaffected.
+   ========================================================================== */
+
+.home { --home-max: 58rem; }
+
+/* Section headings lose the horizontal rule here. On a six-section page the
+   rules read as a stack of dividers rather than as structure. */
+.home h2 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3.4rem;
+  margin-bottom: 1.4rem;
+  font-size: 1.45rem;
+}
+
+/* --- 11.1 Hero ---------------------------------------------------------- */
+
+.home .hero {
+  margin: -1.2rem -1.2rem 2.6rem;
+  padding: 3.4rem 1.6rem 3rem;
+  background: var(--c-raised);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.home .hero__inner {
+  max-width: var(--home-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+.home .hero h1 {
+  font-size: 2.7rem;
+  line-height: 1.08;
+  margin: 0 0 .7rem;
+  max-width: 11em;
+}
+.home .hero__text > p {
+  color: var(--c-muted);
+  font-size: .86rem;
+  line-height: 1.65;
+  max-width: 26em;
+  margin: 0 0 1.7rem;
+}
+.home .hero .md-button { margin: 0 .5rem .4rem 0; }
+
+.home .hero__art { display: flex; flex-direction: column; align-items: center; }
+.home .hero__art svg {
+  margin: 0;
+  width: 100%;
+  max-width: 310px;
+}
+.home .hero__caption {
+  margin: 1rem 0 0;
+  max-width: 24em;
+  font-size: .66rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+  text-align: center;
+}
+
+@media screen and (max-width: 59.98em) {
+  .home .hero__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .home .hero h1 { font-size: 2.1rem; max-width: none; }
+  .home .hero__art svg { max-width: 260px; }
+}
+@media screen and (max-width: 44.98em) {
+  .home .hero { padding: 2.2rem 1rem 2rem; margin-bottom: 2rem; }
+  .home .hero h1 { font-size: 1.75rem; }
+  .home .hero__art svg { max-width: 210px; }
+  .home .hero__caption { font-size: .62rem; }
+}
+
+/* --- 11.2 Outcomes strip ------------------------------------------------ */
+
+.home .outcomes > ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: var(--rule) solid var(--c-border);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.home .outcomes > ul > li {
+  margin: 0;
+  padding: 1.5rem 1.4rem;
+  border-left: var(--rule) solid var(--c-border);
+}
+.home .outcomes > ul > li:first-child { border-left: none; }
+.home .outcomes strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  margin-bottom: .35rem;
+}
+.home .outcomes p {
+  margin: 0;
+  max-width: none;
+  font-size: .72rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .outcomes > ul { grid-template-columns: 1fr; }
+  .home .outcomes > ul > li {
+    border-left: none;
+    border-top: var(--rule) solid var(--c-border);
+    padding: 1.1rem 0;
+  }
+  .home .outcomes > ul > li:first-child { border-top: none; }
+}
+
+/* --- 11.3 Skill cards --------------------------------------------------- */
+
+.home .grid.cards.skills > ul {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: .8rem;
+}
+.home .grid.cards.skills > ul > li { padding: 1.3rem 1.3rem 1.4rem; }
+.home .grid.cards.skills .twemoji,
+.home .grid.cards.skills svg {
+  color: var(--c-accent);
+  fill: var(--c-accent);
+  margin: 0 0 .2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.home .grid.cards.skills > ul > li > p:first-child { margin-bottom: .1rem; }
+.home .grid.cards.skills strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.home .grid.cards.skills > ul > li > hr { display: none; }
+.home .grid.cards.skills > ul > li > p:last-child {
+  font-size: .73rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+  margin-top: .45rem;
+}
+
+/* --- 11.4 Project steps ------------------------------------------------- */
+
+.home .steps > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  counter-reset: step;
+  position: relative;
+}
+/* The connecting rail, drawn behind the numbers. */
+.home .steps > ul::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  left: 8%;
+  right: 8%;
+  height: var(--rule);
+  background: var(--c-border);
+}
+.home .steps > ul > li {
+  margin: 0;
+  position: relative;
+  padding-top: 3.1rem;
+  counter-increment: step;
+}
+.home .steps > ul > li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--c-accent);
+  background: var(--c-surface);
+  border: var(--rule) solid var(--c-accent);
+  border-radius: 50%;
+}
+.home .steps strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .3rem;
+}
+.home .steps p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.62;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .steps > ul { grid-template-columns: 1fr; gap: 1.5rem; }
+  .home .steps > ul::before {
+    top: 1.1rem;
+    bottom: 1.1rem;
+    left: 1.1rem;
+    right: auto;
+    width: var(--rule);
+    height: auto;
+  }
+  .home .steps > ul > li { padding: .1rem 0 0 3.2rem; }
+}
+
+/* --- 11.5 How you learn ------------------------------------------------- */
+
+.home .learn > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.home .learn > ul > li {
+  margin: 0;
+  padding: 0 1.5rem;
+  border-left: var(--rule) solid var(--c-border);
+}
+.home .learn > ul > li:first-child { border-left: none; padding-left: 0; }
+.home .learn > ul > li:last-child { padding-right: 0; }
+.home .learn strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.home .learn p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.65;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .learn > ul { grid-template-columns: 1fr; }
+  .home .learn > ul > li {
+    border-left: none;
+    padding: 1.2rem 0 0;
+  }
+  .home .learn > ul > li:first-child { padding-top: 0; }
+}
+
+/* --- 11.6 Closing band -------------------------------------------------- */
+
+.home .cta {
+  margin: 4rem -1.2rem -1.2rem;
+  padding: 3rem 1.6rem 3.2rem;
+  background: var(--c-raised);
+  border-top: var(--rule) solid var(--c-border);
+  text-align: center;
+}
+.home .cta h3 {
+  margin: 0 0 .5rem;
+  font-size: 1.5rem;
+}
+.home .cta p {
+  margin: 0 auto 1.6rem;
+  max-width: 30em;
+  font-size: .8rem;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .cta { padding: 2.2rem 1rem 2.4rem; margin-top: 3rem; }
+  .home .cta h3 { font-size: 1.2rem; }
 }
