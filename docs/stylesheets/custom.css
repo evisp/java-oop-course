@@ -945,3 +945,114 @@ code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
   .rm-art { max-width: 92px; padding: .4rem; }
   .rm-body h3 { font-size: 1.15rem; }
 }
+
+/* ==========================================================================
+   13. CONTENT PAGES
+   Components used by every tutorial page: the "verify" callout and the
+   page footer. Site-wide, not scoped.
+   ========================================================================== */
+
+/* --- 13.1 Custom callout: "verify" --------------------------------------
+   Named "verify" rather than "check", because "check" is already an alias
+   of Material's built-in "success" type and would collide with it.
+   Use as:   !!! verify "Prove it worked"
+   ------------------------------------------------------------------------ */
+
+:root {
+  --md-admonition-icon--verify: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>');
+}
+.md-typeset .admonition.verify,
+.md-typeset details.verify {
+  border-color: var(--c-border);
+  border-left-color: var(--c-accent);
+  background: var(--c-raised);
+}
+.md-typeset .verify > .admonition-title,
+.md-typeset .verify > summary {
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: .9rem;
+}
+.md-typeset .verify > .admonition-title::before,
+.md-typeset .verify > summary::before {
+  background-color: var(--c-accent);
+  -webkit-mask-image: var(--md-admonition-icon--verify);
+          mask-image: var(--md-admonition-icon--verify);
+}
+
+/* --- 13.2 Page footer ---------------------------------------------------
+   Every content page ends with a link to the next one.
+   <div class="page-nav" markdown>
+   [Back](a.md){ .page-nav__prev }
+   [Next page](b.md){ .page-nav__next }
+   </div>
+   ------------------------------------------------------------------------ */
+
+.md-typeset .page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin: 3.2rem 0 0;
+  padding-top: 1.4rem;
+  border-top: var(--rule) solid var(--c-border);
+}
+.md-typeset .page-nav a {
+  display: block;
+  min-width: 15rem;
+  padding: .85rem 1.1rem;
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.md-typeset .page-nav a:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+/* Pushes the next link right, whether or not a previous link is present. */
+.md-typeset .page-nav a.page-nav__next { margin-left: auto; text-align: right; }
+.md-typeset .page-nav a::before {
+  content: "Next";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--c-muted);
+  margin-bottom: .25rem;
+}
+.md-typeset .page-nav a.page-nav__prev::before { content: "Back"; }
+
+@media screen and (max-width: 44.98em) {
+  .md-typeset .page-nav a { min-width: 100%; text-align: left; }
+  .md-typeset .page-nav a.page-nav__next { text-align: left; }
+}
+
+/* --- 13.3 Keyboard keys -------------------------------------------------- */
+
+.md-typeset .keys kbd {
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  box-shadow: none;
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: .9em;
+}
+
+/* --- 13.4 Diagrams on content pages -------------------------------------
+   Tutorial diagrams are capped so they do not dominate a page on a wide
+   screen, and centred.
+   ------------------------------------------------------------------------ */
+
+.md-typeset > svg[role="img"] {
+  display: block;
+  max-width: 34rem;
+  margin: 1.6rem auto 2rem;
+}

@@ -93,8 +93,15 @@ nav:
   - Home: index.md
   - Roadmap: roadmap.md
   - Tools:
-      - Get started: 00-tools/index.md
+      - Set up: 00-tools/index.md
+      - Install Java: 00-tools/java.md
       - Install Eclipse: 00-tools/eclipse-setup.md
+      - Git and GitHub: 00-tools/git-github.md
+      # Released when the course reaches them. Add the matching line to
+      # draft_docs above at the same time as you uncomment these.
+      # - Maven: 00-tools/maven.md
+      # - JavaFX and Scene Builder: 00-tools/javafx.md
+      
   # - Foundations:
   #     - Overview: 01-foundations/index.md
   #     - Introduction to OOP: 01-foundations/intro-oop.md

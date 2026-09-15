@@ -1,61 +1,161 @@
-# Eclipse IDE Setup on Windows
+# Install Eclipse
 
-This tutorial shows how to install and set up Eclipse for Java development on Windows. It also explains how to check or set the JDK inside Eclipse and run a quick test project. Estimated time: 20–30 minutes.
+<p class="meta"><span class="badge">25 minutes</span><span class="badge">Week 1</span><span class="badge badge--accent">Needs: Install Java</span></p>
 
-## Why this matters
-- **Problem**: Java work is slower without a stable IDE and a correct JDK setup. Installing tools wrong leads to errors and lost time.
-- **Practical benefits**: Eclipse gives project templates, code completion, refactoring, and a good debugger, so learning and building Java apps is faster.
-- **Professional context**: Eclipse is widely used in classrooms and industry, and supports current Java releases. Knowing it is useful for internships and jobs.
+You will install Eclipse, point it at the JDK you already have, and build a project that proves both are working together. After this page you have somewhere to write code for the rest of the semester.
 
-## Prerequisites and goals
-- Required: Windows 10 or 11 and a few GB of disk space.
-- Nice to have: A recent JDK (Java 21+). If not installed, Eclipse can still run if bundled with a JRE, **but a proper JDK is recommended.**
-- You will learn: Download and install Eclipse, set the JDK in Eclipse, and create and run a simple Java project.
+Eclipse does not compile your Java. It calls the tools you installed on the last page and shows you the results nicely. Keeping that in mind is what lets you fix things when they break, instead of reinstalling and hoping.
 
-## High-level plan
-Download Eclipse, install it, confirm Java, set the JDK if needed, then build and run a `Hello, World` project to verify everything.
+!!! mistake "Install Java first"
 
-## Step-by-step
+    If `javac -version` does not report 25 in a fresh PowerShell window, stop and finish [Install Java](java.md). Eclipse ships with its own small runtime and its own compiler, so without a JDK it will appear to work and then fail later in a way that looks unrelated. A clean failure now is much cheaper.
 
-### Step 1 — Download Eclipse
-- Go to the [official Eclipse downloads page](https://www.eclipse.org/downloads/) and get the Eclipse Installer for Windows (x86_64). Save the `.exe` file.
+## 1. Download the installer
 
-### Step 2 — Run the installer
-- Open the downloaded `.exe`. Choose `Eclipse IDE for Java Developers.`
-- Keep the default install folder unless a different location is required. Accept the license and click `Install`
-- When finished, click `Launch` to start Eclipse.
+Go to [eclipse.org/downloads](https://www.eclipse.org/downloads/) and download the Eclipse Installer for Windows x86_64. Save it to your Downloads folder.
 
-### Step 3 — Choose a workspace
-- On first launch, pick a workspace folder where projects will be saved (for example, `C:\Users\YourName\EclipseWorkspace`). Check `Use this as default` to skip this prompt next time.
+## 2. Check the file before you run it
 
-### Step 4 — Check or set the JDK in Eclipse
-- Check the detected Java: `Window → Preferences → Java → Installed JREs`. If a JDK is listed and checked, you are set.
-- If empty or only a JRE is listed:
-    - Install a JDK (for example, Java 21 or newer) using [Oracle](https://www.oracle.com/java/technologies/downloads/) or another trusted vendor.
-    - In Eclipse: `Window → Preferences → Java → Installed JREs → Add → Standard VM → Next`. Point JRE home to the JDK folder (e.g., `C:\Program Files\Java\jdk-21`). Select it as default.
-- Why this matters: A JDK includes the compiler and tools needed for Java development; a JRE alone is not enough.
+Eclipse is served through mirrors around the world, so the page publishes a checksum you can compare against.
 
-### Step 5 — Create and run a test project
-- Create project: `File → New → Java Project → Name: HelloWorld → Finish`.
-- Create class: `Right-click src → New → Class → Name: Main → Finish.`
-- Paste and run:
+On the download page, find the **SHA-512** link next to the file you downloaded and open it. Then in PowerShell:
+
+```powershell
+Get-FileHash "$HOME\Downloads\eclipse-inst-jre-win64.exe" -Algorithm SHA512
+```
+
+Compare the output with the published value. They should match. The filename may differ slightly from the example, so use the one you actually downloaded.
+
+This takes fifteen seconds and it is the habit worth forming. You are about to give a program from the internet permission to change your machine.
+
+## 3. Run the installer
+
+1. Open the `.exe`. If Windows shows a blue **Windows protected your PC** box, see the troubleshooting section below.
+2. Choose **Eclipse IDE for Java Developers**.
+3. Leave the install folder as it is.
+4. Accept the licence and click **Install**, then **Launch**.
+
+## 4. Choose a workspace
+
+Eclipse asks where to keep your projects. Use a short, plain path:
+
+```text
+C:\dev\workspace
+```
+
+Tick **Use this as the default** so you are not asked again.
+
+!!! mistake "Not in OneDrive, Desktop or Documents"
+
+    Those folders sync to the cloud. The sync client rewrites files while Eclipse is reading them, and the result is not a clear error. It is builds that fail then succeed, files that revert while you are editing, and later a git repository that corrupts itself. The failures look random and they will cost you hours. `C:\dev\` is out of the way of all of it.
+
+## 5. Point Eclipse at your JDK
+
+Open **Window** then **Preferences** then **Java** then **Installed JREs**.
+
+If an entry named something like `jdk-25` is listed and ticked, you are done. Eclipse found it on its own.
+
+If the list is empty, or shows only a JRE:
+
+1. Click **Add**, choose **Standard VM**, then **Next**
+2. For **JRE home**, browse to `C:\Program Files\Eclipse Adoptium\jdk-25...`
+3. Click **Finish**, then tick the new entry so it is the default
+4. **Apply and Close**
+
+## 6. Build something
+
+**Create the project.** **File** then **New** then **Java Project**. Name it `Setup`. Leave everything else alone and click **Finish**.
+
+**Create the class.** Right-click the `src` folder, then **New** then **Class**. Name it `Check`. Tick **public static void main(String[] args)**. Click **Finish**.
+
+**Write this**, replacing whatever Eclipse generated inside `main`:
+
 ```java
-public class Main {
+public class Check {
     public static void main(String[] args) {
-        System.out.println("Hello, Eclipse!");
+        System.out.println("Eclipse is running on " + Runtime.version());
     }
 }
 ```
-- Click the `Run` button (green triangle) or press `Ctrl+F11`. The Console should show: `Hello, Eclipse!`
 
-## Common issues and quick fixes
-- Eclipse won’t start: Make sure you downloaded the 64‑bit installer for 64‑bit Windows. Re-download if the file was corrupted.
-- `No Java virtual machine` message: Install a JDK and set it in Installed JREs as shown above.
-- Wrong Java version used by a project: `Right‑click project → Properties → Java Build Path → Libraries`; or Java Compiler to select the correct level.
+**Run it** with ++ctrl+f11++ or the green triangle. The Console at the bottom should print a line starting with `Eclipse is running on 25`.
 
-## Next steps
-- Learn shortcuts: `Rename (Alt+Shift+R)`, `Open Type (Ctrl+Shift+T)`, `Search (Ctrl+H)`.
-- Turn on line numbers: `Window → Preferences → General → Editors → Text Editors → Show line numbers`.
-- Connect Git: `Window → Perspective → Open Perspective → Git`; then clone the course repository.
+That number is the point of the exercise. `Hello, World` would prove only that Eclipse can run something. This proves it is running the Java you installed.
 
-With Eclipse installed and a test project running, the environment is ready for the course work. Keep the setup simple, and move on to coding.
+## When it goes wrong
+
+??? failure "Windows protected your PC"
+
+    SmartScreen does not recognise the file yet. Click **More info**, then **Run anyway**.
+
+    Only do this because you checked the hash in step 2. If you skipped that, go back and do it. This dialogue is the last thing standing between you and a file you have not verified.
+
+??? failure "`UnsupportedClassVersionError: ... has been compiled by a more recent version of the Java Runtime`"
+
+    Something compiled your code with one Java version and something else tried to run it with an older one. Almost always the project is set to a newer level than the JRE selected for it.
+
+    Right-click the project, then **Properties**:
+
+    - Under **Java Build Path** then **Libraries**, check which JRE is attached
+    - Under **Java Compiler**, check the compliance level
+
+    Both should say 25. If the library entry shows an older JRE, remove it and add the JDK 25 entry you set up in step 5.
+
+??? failure "Eclipse will not start, or says `No Java virtual machine was found`"
+
+    The JDK is missing or not visible to Eclipse. In a fresh PowerShell window:
+
+    ```powershell
+    java -version
+    ```
+
+    If that fails, the problem is not Eclipse. Go back to [Install Java](java.md).
+
+??? failure "The project uses a different Java version than the workspace"
+
+    These are two separate settings and they can disagree. The workspace default is under **Window** then **Preferences** then **Java** then **Compiler**. The project override is under **Properties** then **Java Compiler**, where a tickbox called **Enable project specific settings** silently outranks the workspace.
+
+    That tickbox is the answer roughly every time a single project misbehaves while everything else is fine.
+
+??? failure "Random compile errors, or files reverting as you edit"
+
+    Your workspace is in a synced folder. Close Eclipse, move the whole workspace folder to `C:\dev\workspace`, and reopen Eclipse pointing at the new location through **File** then **Switch Workspace**.
+
+??? failure "Eclipse is extremely slow"
+
+    Usually antivirus scanning every file the compiler writes. Add your workspace folder and the Eclipse install folder to your antivirus exclusions. On university machines you may need to ask for this.
+
+??? note "Worth turning on while you are here"
+
+    - Line numbers: **Window** then **Preferences** then **General** then **Editors** then **Text Editors** then **Show line numbers**. Every error message you get for the next fourteen weeks refers to a line number.
+    - Rename a thing everywhere: ++alt+shift+r++
+    - Jump to any class: ++ctrl+shift+t++
+    - Find in all files: ++ctrl+h++
+
+## Check yourself
+
+!!! verify "Prove Eclipse and your JDK agree"
+
+    You have already run `Check` inside Eclipse. Now run the same compiled class from outside it.
+
+    In PowerShell:
+
+    ```powershell
+    cd C:\dev\workspace\Setup\bin
+    java Check
+    ```
+
+    You should see the same line you saw in the Eclipse Console.
+
+    That folder, `bin`, is where Eclipse has been quietly putting the `.class` files all along. You have just confirmed that Eclipse is not doing anything magic. It is running `javac` and `java` for you, into a folder you can look inside.
+
+## Think about it
+
+1.  You compared a hash before running the installer. What exactly were you protecting against, given the file came from the official Eclipse site? Now suppose a classmate had sent you the same file over a chat app instead.
+2.  Eclipse has its own compiler, separate from `javac`. Your code compiles in Eclipse. What has that proved, and what has it not proved? Now imagine handing that project to someone who will build it from the command line before marking it.
+3.  A workspace inside OneDrive breaks builds in ways that look random. Describe what the sync client and the compiler are each doing to the same file. Now suppose it is not your build in that folder but your only copy of a project due tomorrow.
+4.  The Java version lives in at least three places: the machine, the workspace, and the project. That seems like an obvious design flaw. Who is it actually for? Think about a team maintaining one application from 2015 and one started last month.
+
+<div class="page-nav" markdown>
+[Set up git and GitHub](git-github.md){ .page-nav__next }
+</div>
