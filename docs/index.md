@@ -35,17 +35,17 @@ Each page ends with a task you perform yourself and a few questions with no look
 
     [:octicons-arrow-right-24: Start here](00-tools/index.md)
 
--   **Foundations**
+</div>
+
+<div class="grid cards locked" markdown>
+
+-   **Foundations** &nbsp;`locked`
 
     ---
 
     Classes, objects, references, collections, and learning to see a problem as objects rather than steps.
 
-    [:octicons-arrow-right-24: Open module](01-foundations/index.md)
-
-</div>
-
-<div class="grid cards locked" markdown>
+    Releases in week 2.
 
 -   **Core OOP Principles** &nbsp;`locked`
 
@@ -55,32 +55,7 @@ Each page ends with a task you perform yourself and a few questions with no look
 
     Releases in week 5.
 
--   **File and Exception Handling** &nbsp;`locked`
-
-    ---
-
-    Programs that survive bad input and talk to the world outside themselves.
-
-    Releases in week 9.
-
--   **Modern Java** &nbsp;`locked`
-
-    ---
-
-    Generic collections, and building a real interface with JavaFX.
-
-    Releases in week 11.
-
--   **Projects** &nbsp;`locked`
-
-    ---
-
-    Three sprints that build on each other, from first classes to a finished application.
-
-    Sprint 1 releases in week 5.
-
-</div>
-
+    
 ## How you are assessed
 
 Three project sprints, each one building on the last, plus a written exam. The sprints are not optional practice. They are the course.
