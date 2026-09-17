@@ -22,7 +22,7 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # If you do 2 without 1, the build warns about nav entries it cannot find.
 # ===========================================================================
 draft_docs: |
-  01-foundations/
+  01-objects-and-state/
   02-core-oop/
   03-io-exceptions/
   04-modern-java/
@@ -102,13 +102,14 @@ nav:
       # - Maven: 00-tools/maven.md
       # - JavaFX and Scene Builder: 00-tools/javafx.md
       
-  # - Foundations:
-  #     - Overview: 01-foundations/index.md
-  #     - Introduction to OOP: 01-foundations/intro-oop.md
-  #     - Classes & Objects: 01-foundations/classes-objects.md
-  #     - Arrays & Collections: 01-foundations/arrays-lists.md
-  #     - Thinking in Objects: 01-foundations/thinking-objects.md
-  #     - Practice your Skills: 01-foundations/exercises.md
+  # - Objects and State:
+  #     - Overview: 01-objects-and-state/index.md
+  #     - Thinking in things: 01-objects-and-state/thinking-in-things.md
+  #     - Why objects: 01-objects-and-state/why-objects.md
+  #     - Your first class: 01-objects-and-state/first-class.md
+  #     - State and behaviour: 01-objects-and-state/state-and-behaviour.md
+  #     - Holding many objects: 01-objects-and-state/many-objects.md
+  #     - Practice your skills: 01-objects-and-state/exercises.md
 
   # --- VAULTED. Uncomment together with the draft_docs line above. ---
   # - Core OOP Principles:
