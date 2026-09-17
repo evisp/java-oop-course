@@ -102,10 +102,10 @@ nav:
       # - Maven: 00-tools/maven.md
       # - JavaFX and Scene Builder: 00-tools/javafx.md
       
-  # - Objects and State:
-  #     - Overview: 01-objects-and-state/index.md
-  #     - Thinking in things: 01-objects-and-state/thinking-in-things.md
-  #     - Why objects: 01-objects-and-state/why-objects.md
+  - Objects and State:
+      - Overview: 01-objects-and-state/index.md
+      - Thinking in things: 01-objects-and-state/thinking-in-things.md
+      - Why objects: 01-objects-and-state/why-objects.md
   #     - Your first class: 01-objects-and-state/first-class.md
   #     - State and behaviour: 01-objects-and-state/state-and-behaviour.md
   #     - Holding many objects: 01-objects-and-state/many-objects.md
