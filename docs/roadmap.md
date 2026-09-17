@@ -52,7 +52,7 @@ You stop writing lists of instructions and start building things that hold their
 -   Keep a collection of your own objects and work through it
 
 <div class="rm-foot" markdown>
-[Open module](01-foundations/index.md){ .md-button }
+[Open module](01-objects-and-state/index.md){ .md-button }
 <span class="rm-flag">Sprint 1 opens in week 4</span>
 </div>
 

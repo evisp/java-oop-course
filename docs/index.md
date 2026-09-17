@@ -105,13 +105,13 @@ Fourteen weeks of Java at University Metropolitan Tirana. You finish with three 
 
 <div class="learn" markdown>
 
--   **Tutorials**
+-   **Lectures**
 
-    Every topic is a page you read and retype. Reading code and writing code are different skills, and only one of them is being examined.
+    Two hours a week, in two sessions, each with a page to read and code written live. Read them with the editor open and type along, because reading code and writing code are different skills.
 
--   **Practice**
+-   **Seminars**
 
-    Each module ends with exercises you do before moving on. They are short and they are where the concept actually lands.
+    Two hours a week where you build things yourself. The exercises use a different problem from the lecture on purpose, because applying an idea somewhere new is what makes it stick.
 
 -   **Projects**
 
@@ -121,7 +121,7 @@ Fourteen weeks of Java at University Metropolitan Tirana. You finish with three 
 
 <div class="cta" markdown>
 
-### Fourteen weeks, six modules, three sprints
+### Fourteen weeks, four modules, three sprints
 
 The roadmap shows the whole path and where we are right now.
 

@@ -22,7 +22,7 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # If you do 2 without 1, the build warns about nav entries it cannot find.
 # ===========================================================================
 draft_docs: |
-  01-objects-and-state/
+  01-objects-and-state/exercises.md
   02-core-oop/
   03-io-exceptions/
   04-modern-java/
@@ -106,10 +106,12 @@ nav:
       - Overview: 01-objects-and-state/index.md
       - Thinking in things: 01-objects-and-state/thinking-in-things.md
       - Why objects: 01-objects-and-state/why-objects.md
-  #     - Your first class: 01-objects-and-state/first-class.md
-  #     - State and behaviour: 01-objects-and-state/state-and-behaviour.md
-  #     - Holding many objects: 01-objects-and-state/many-objects.md
-  #     - Practice your skills: 01-objects-and-state/exercises.md
+      - Your first class: 01-objects-and-state/first-class.md
+      - What a variable really holds: 01-objects-and-state/references.md
+      - Objects that refuse: 01-objects-and-state/objects-that-refuse.md
+      - What belongs to whom: 01-objects-and-state/what-belongs-to-whom.md
+      - Many objects: 01-objects-and-state/many-objects.md
+      - Objects that own other objects: 01-objects-and-state/owning-objects.md
 
   # --- VAULTED. Uncomment together with the draft_docs line above. ---
   # - Core OOP Principles:
