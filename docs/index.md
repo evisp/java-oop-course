@@ -12,7 +12,7 @@ hide:
 
 # Learn to think in objects
 
-Fourteen weeks of Java at University Metropolitan Tirana. You finish with three projects in a repository you can show someone.
+Fourteen weeks at University Metropolitan Tirana. You arrive able to write code that runs. You leave able to design scalable software that survives being changed.
 
 [Open the roadmap](roadmap.md){ .md-button .md-button--primary }
 [Start week 1](00-tools/index.md){ .md-button }
@@ -27,17 +27,17 @@ Fourteen weeks of Java at University Metropolitan Tirana. You finish with three 
 
 <div class="outcomes" markdown>
 
--   **Three projects**
+-   **One app, three sprints**
 
-    Each sprint builds on the last, so you finish with one real application rather than three throwaway exercises.
+    You build it, rebuild it properly once you know what a weak design costs, then finish it. Not twelve exercises you throw away.
 
--   **One portfolio repo**
+-   **A portfolio, not a CV line**
 
-    Your code lives on GitHub from week one, not in a folder on your laptop.
+    Your work is public on GitHub from week one. When somebody asks what you have built, you send them the repository.
 
--   **Six core skills**
+-   **Core skills**
 
-    The things you are actually asked about afterwards.
+    The ones you are asked to demonstrate after the course, not just describe.
 
 </div>
 
@@ -49,55 +49,57 @@ Fourteen weeks of Java at University Metropolitan Tirana. You finish with three 
 
     ---
 
-    Break a problem into classes that own their own data and behaviour.
+    Read a description of a system and decide what the classes are, so that a change next month touches one file instead of eleven.
 
 -   :material-bug-outline:{ .lg .middle } **Read an error and fix it**
 
     ---
 
-    Turn a compiler message or a stack trace into the line that is wrong.
+    Turn a compiler message or a stack trace into the line that is wrong, without guessing and without asking anyone.
 
 -   :material-shield-check-outline:{ .lg .middle } **Handle failure**
 
     ---
 
-    Write code that survives bad input, missing files and empty results.
+    Write code that refuses bad input, says why, and keeps going. Most student programs crash. Yours will not.
 
 -   :material-test-tube:{ .lg .middle } **Test your own work**
 
     ---
 
-    Prove it works with JUnit before you say it works.
+    Prove your code works before you claim it does. This is the skill most graduates arrive without.
 
--   :material-lightning-bolt-outline:{ .lg .middle } **Write modern Java**
-
-    ---
-
-    Records, streams and pattern matching, not the Java of twenty years ago.
-
--   :material-database-outline:{ .lg .middle } **Work with real data**
+-   :material-lightning-bolt-outline:{ .lg .middle } **Write Java people are writing now**
 
     ---
 
-    Read it, write it, and process it without losing it.
+    Do in three lines what a textbook from 2010 does in fifteen, and know when the short version is the wrong choice.
+
+-   :material-database-outline:{ .lg .middle } **Build something that lasts**
+
+    ---
+
+    Save your data, load it back, and put a window on top. Your program closes and your work is still there.
 
 </div>
 
 ## What you build
 
+One application, across the whole semester. You do not start over, you keep going.
+
 <div class="steps" markdown>
 
 -   **Sprint 1**
 
-    Your first application, built from classes you designed yourself.
+    Your first real program. Classes you designed yourself, holding data that cannot go wrong. It runs in a terminal and it does something useful.
 
 -   **Sprint 2**
 
-    The same application, now with saved data, honest error handling and tests.
+    You rewrite it, now that you have felt what a weak design costs. It saves your work, survives bad input, and has tests that prove it still works.
 
 -   **Sprint 3**
 
-    Everything integrated into something you would be willing to show.
+    A window on top, and a file you can send to someone who will just run it. The model underneath barely changes, and that is the whole argument.
 
 </div>
 
@@ -121,9 +123,9 @@ Fourteen weeks of Java at University Metropolitan Tirana. You finish with three 
 
 <div class="cta" markdown>
 
-### Fourteen weeks, four modules, three sprints
+### Fourteen weeks. Four modules. One thing you built.
 
-The roadmap shows the whole path and where we are right now.
+The roadmap shows every module, what you can do once you have finished it, and where the course has reached right now.
 
 [See the roadmap](roadmap.md){ .md-button .md-button--primary }
 
