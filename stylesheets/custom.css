@@ -1,0 +1,1058 @@
+/* ==========================================================================
+   Java OOP Course - visual system
+   Direction A: Ink and Rust
+   --------------------------------------------------------------------------
+   Sections 1 to 10 are site-wide.
+   Section 11 is the homepage, scoped under .home.
+   Section 12 is the roadmap, scoped under .rm.
+   Neither can leak onto content pages.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius:  6px;
+  --rule:    1px;
+}
+
+[data-md-color-scheme="default"] {
+  --c-ink:      #1B1B1F;
+  --c-muted:    #5C5952;
+  --c-surface:  #FFFFFF;
+  --c-raised:   #FAF8F5;
+  --c-border:   #E4E0DA;
+  --c-accent:   #B4542A;
+  --c-accent-2: #8F4220;
+  --c-header:   #1B1B1F;
+  --c-on-dark:  #FAF8F5;
+}
+
+[data-md-color-scheme="slate"] {
+  --c-ink:      #E8E6E1;
+  --c-muted:    #9A968E;
+  --c-surface:  #16171A;
+  --c-raised:   #1E2024;
+  --c-border:   #2E3136;
+  --c-accent:   #E08A5F;
+  --c-accent-2: #F0A87F;
+  --c-header:   #101114;
+  --c-on-dark:  #E8E6E1;
+}
+
+/* --------------------------------------------------------------------------
+   2. Map tokens onto Material
+   -------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:          var(--c-header);
+  --md-primary-fg-color--light:   var(--c-header);
+  --md-primary-fg-color--dark:    var(--c-header);
+  --md-primary-bg-color:          var(--c-on-dark);
+  --md-primary-bg-color--light:   var(--c-muted);
+
+  --md-accent-fg-color:           var(--c-accent-2);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--c-accent) 10%, transparent);
+
+  --md-default-bg-color:          var(--c-surface);
+  --md-default-fg-color:          var(--c-ink);
+  --md-default-fg-color--light:   var(--c-muted);
+  --md-default-fg-color--lighter: color-mix(in srgb, var(--c-muted) 55%, transparent);
+  --md-default-fg-color--lightest:var(--c-border);
+
+  --md-typeset-color:             var(--c-ink);
+  --md-typeset-a-color:           var(--c-accent);
+
+  --md-code-bg-color:             var(--c-raised);
+  --md-code-fg-color:             var(--c-ink);
+
+  --md-footer-bg-color:           var(--c-header);
+  --md-footer-bg-color--dark:     var(--c-header);
+
+  --md-text-font-family:          var(--font-body);
+  --md-code-font-family:          var(--font-mono);
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography
+   -------------------------------------------------------------------------- */
+
+body, input, .md-typeset { font-family: var(--font-body); }
+code, kbd, pre, .md-typeset code { font-family: var(--font-mono); }
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 { font-size: 2.05rem; line-height: 1.15; margin-bottom: .6em; }
+.md-typeset h2 {
+  font-size: 1.5rem;
+  margin-top: 2.2em;
+  padding-top: .7em;
+  border-top: var(--rule) solid var(--c-border);
+}
+.md-typeset h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.7em; }
+.md-typeset h4 { font-size: 1rem;   font-weight: 600; }
+
+.md-typeset { font-size: .78rem; line-height: 1.72; }
+.md-typeset p { max-width: 42em; }
+
+.md-typeset a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.md-typeset a:hover { color: var(--c-accent-2); }
+
+/* --------------------------------------------------------------------------
+   4. Buttons
+   -------------------------------------------------------------------------- */
+
+.md-typeset .md-button {
+  border-radius: var(--radius);
+  border-width: var(--rule);
+  border-color: var(--c-border);
+  color: var(--c-ink);
+  font-weight: 500;
+  padding: .5em 1.1em;
+}
+.md-typeset .md-button:hover {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+.md-typeset .md-button--primary {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+.md-typeset .md-button--primary:hover {
+  background: var(--c-accent-2);
+  border-color: var(--c-accent-2);
+}
+
+/* --------------------------------------------------------------------------
+   5. Grid cards, plus the locked variant
+   -------------------------------------------------------------------------- */
+
+.md-typeset .grid.cards > ul > li {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  padding: 1.1rem 1.2rem;
+  box-shadow: none;
+  transition: border-color .15s, transform .15s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+.md-typeset .grid.cards > ul > li > hr {
+  margin: .7em 0;
+  border-color: var(--c-border);
+}
+.md-typeset .grid.cards > ul > li p { max-width: none; }
+
+.md-typeset .grid.cards.locked > ul > li {
+  background: var(--c-raised);
+  border-style: dashed;
+  opacity: .62;
+}
+.md-typeset .grid.cards.locked > ul > li:hover {
+  border-color: var(--c-border);
+  transform: none;
+}
+.md-typeset .grid.cards.locked strong { color: var(--c-muted); }
+
+/* --------------------------------------------------------------------------
+   6. Meta badges
+   -------------------------------------------------------------------------- */
+
+.md-typeset .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: -.4rem 0 1.6rem;
+}
+.md-typeset .badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--c-muted);
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: 100px;
+  padding: .38em .8em;
+  white-space: nowrap;
+}
+.md-typeset .badge--accent {
+  color: var(--c-accent);
+  border-color: color-mix(in srgb, var(--c-accent) 40%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   7. Custom callout: "mistake"
+   -------------------------------------------------------------------------- */
+
+:root {
+  --md-admonition-icon--mistake: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>');
+}
+.md-typeset .admonition.mistake,
+.md-typeset details.mistake {
+  border-color: var(--c-accent);
+  border-left-width: 3px;
+}
+.md-typeset .mistake > .admonition-title,
+.md-typeset .mistake > summary {
+  background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+}
+.md-typeset .mistake > .admonition-title::before,
+.md-typeset .mistake > summary::before {
+  background-color: var(--c-accent);
+  -webkit-mask-image: var(--md-admonition-icon--mistake);
+          mask-image: var(--md-admonition-icon--mistake);
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--radius);
+  border-width: var(--rule);
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: .74rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Code, tables, quotes
+   -------------------------------------------------------------------------- */
+
+.md-typeset pre > code { border-radius: var(--radius); font-size: .72rem; }
+.md-typeset code { border-radius: 3px; }
+
+.md-typeset table:not([class]) {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: .72rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--c-raised);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.md-typeset blockquote {
+  border-left: 3px solid var(--c-border);
+  color: var(--c-muted);
+}
+
+.md-typeset svg[role="img"] {
+  width: 100%;
+  height: auto;
+  margin: 1.4rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. Chrome
+   -------------------------------------------------------------------------- */
+
+.md-header { box-shadow: none; border-bottom: var(--rule) solid var(--c-header); }
+.md-tabs { border-bottom: var(--rule) solid rgba(255,255,255,.12); }
+.md-nav { font-size: .7rem; }
+.md-nav__title { font-weight: 600; }
+.md-nav__link--active { color: var(--c-accent); font-weight: 500; }
+.md-sidebar--secondary .md-nav__link--active { font-weight: 600; }
+.md-search__form { border-radius: var(--radius); }
+.md-footer-meta { font-size: .68rem; }
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ==========================================================================
+   11. HOMEPAGE
+   Scoped under .home.
+   ========================================================================== */
+
+.home { --home-max: 58rem; }
+
+.home h2 {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 3.4rem;
+  margin-bottom: 1.4rem;
+  font-size: 1.45rem;
+}
+
+/* --- 11.1 Hero ---------------------------------------------------------- */
+
+.home .hero {
+  margin: -1.2rem -1.2rem 2.6rem;
+  padding: 3.4rem 1.6rem 3rem;
+  background: var(--c-raised);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.home .hero__inner {
+  max-width: var(--home-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+/* Grid items default to min-width: auto, which lets a 100%-wide SVG push
+   its column past its 1fr share. */
+.home .hero__text,
+.home .hero__art { min-width: 0; }
+
+.home .hero h1 {
+  font-size: 2.7rem;
+  line-height: 1.08;
+  margin: 0 0 .7rem;
+  max-width: 11em;
+}
+.home .hero__text > p {
+  color: var(--c-muted);
+  font-size: .86rem;
+  line-height: 1.65;
+  max-width: 26em;
+  margin: 0 0 1.7rem;
+}
+.home .hero .md-button { margin: 0 .5rem .4rem 0; }
+
+.home .hero__art { display: flex; flex-direction: column; align-items: center; }
+.home .hero__art svg[role="img"] {
+  width: 100%;
+  max-width: 310px;
+  margin: 0;
+}
+.home .hero__caption {
+  margin: 1rem 0 0;
+  max-width: 24em;
+  font-size: .66rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+  text-align: center;
+}
+
+@media screen and (max-width: 59.98em) {
+  .home .hero__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .home .hero h1 { font-size: 2.1rem; max-width: none; }
+  .home .hero__art svg[role="img"] { max-width: 260px; }
+}
+@media screen and (max-width: 44.98em) {
+  .home .hero { padding: 2.2rem 1rem 2rem; margin-bottom: 2rem; }
+  .home .hero h1 { font-size: 1.75rem; }
+  .home .hero__art svg[role="img"] { max-width: 210px; }
+  .home .hero__caption { font-size: .62rem; }
+}
+
+/* --- 11.2 Outcomes strip ------------------------------------------------ */
+
+.home .outcomes > ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: var(--rule) solid var(--c-border);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.home .outcomes > ul > li {
+  margin: 0;
+  padding: 1.5rem 1.4rem;
+  border-left: var(--rule) solid var(--c-border);
+}
+.home .outcomes > ul > li:first-child { border-left: none; }
+.home .outcomes strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  margin-bottom: .35rem;
+}
+.home .outcomes p {
+  margin: 0;
+  max-width: none;
+  font-size: .72rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .outcomes > ul { grid-template-columns: 1fr; }
+  .home .outcomes > ul > li {
+    border-left: none;
+    border-top: var(--rule) solid var(--c-border);
+    padding: 1.1rem 0;
+  }
+  .home .outcomes > ul > li:first-child { border-top: none; }
+}
+
+/* --- 11.3 Skill cards --------------------------------------------------- */
+
+.home .grid.cards.skills > ul {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: .8rem;
+}
+.home .grid.cards.skills > ul > li { padding: 1.3rem 1.3rem 1.4rem; }
+.home .grid.cards.skills .twemoji,
+.home .grid.cards.skills svg {
+  color: var(--c-accent);
+  fill: var(--c-accent);
+  margin: 0 0 .2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.home .grid.cards.skills > ul > li > p:first-child { margin-bottom: .1rem; }
+.home .grid.cards.skills strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.home .grid.cards.skills > ul > li > hr { display: none; }
+.home .grid.cards.skills > ul > li > p:last-child {
+  font-size: .73rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+  margin-top: .45rem;
+}
+
+/* --- 11.4 Project steps ------------------------------------------------- */
+
+.home .steps > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  counter-reset: step;
+  position: relative;
+}
+.home .steps > ul::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  left: 8%;
+  right: 8%;
+  height: var(--rule);
+  background: var(--c-border);
+}
+.home .steps > ul > li {
+  margin: 0;
+  position: relative;
+  padding-top: 3.1rem;
+  counter-increment: step;
+}
+.home .steps > ul > li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--c-accent);
+  background: var(--c-surface);
+  border: var(--rule) solid var(--c-accent);
+  border-radius: 50%;
+}
+.home .steps strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .3rem;
+}
+.home .steps p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.62;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .steps > ul { grid-template-columns: 1fr; gap: 1.5rem; }
+  .home .steps > ul::before {
+    top: 1.1rem;
+    bottom: 1.1rem;
+    left: 1.1rem;
+    right: auto;
+    width: var(--rule);
+    height: auto;
+  }
+  .home .steps > ul > li { padding: .1rem 0 0 3.2rem; }
+}
+
+/* --- 11.5 How you learn ------------------------------------------------- */
+
+.home .learn > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.home .learn > ul > li {
+  margin: 0;
+  padding: 0 1.5rem;
+  border-left: var(--rule) solid var(--c-border);
+}
+.home .learn > ul > li:first-child { border-left: none; padding-left: 0; }
+.home .learn > ul > li:last-child { padding-right: 0; }
+.home .learn strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.home .learn p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.65;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .learn > ul { grid-template-columns: 1fr; }
+  .home .learn > ul > li {
+    border-left: none;
+    padding: 1.2rem 0 0;
+  }
+  .home .learn > ul > li:first-child { padding-top: 0; }
+}
+
+/* --- 11.6 Closing band -------------------------------------------------- */
+
+.home .cta {
+  margin: 4rem -1.2rem -1.2rem;
+  padding: 3rem 1.6rem 3.2rem;
+  background: var(--c-raised);
+  border-top: var(--rule) solid var(--c-border);
+  text-align: center;
+}
+.home .cta h3 {
+  margin: 0 0 .5rem;
+  font-size: 1.5rem;
+}
+.home .cta p {
+  margin: 0 auto 1.6rem;
+  max-width: 30em;
+  font-size: .8rem;
+  color: var(--c-muted);
+}
+
+@media screen and (max-width: 44.98em) {
+  .home .cta { padding: 2.2rem 1rem 2.4rem; margin-top: 3rem; }
+  .home .cta h3 { font-size: 1.2rem; }
+}
+
+/* ==========================================================================
+   12. ROADMAP
+   Scoped under .rm. The path rail is CSS, not SVG, so every word stays
+   real text: searchable, selectable, and editable without coordinate math.
+   ========================================================================== */
+
+.rm { --rm-max: 56rem; }
+
+.rm h2 {
+  max-width: var(--rm-max);
+  margin: 3.6rem auto 1.3rem;
+  border-top: none;
+  padding-top: 0;
+  font-size: 1.45rem;
+}
+.rm > p { max-width: var(--rm-max); margin-left: auto; margin-right: auto; }
+
+/* --- 12.1 Hero band ----------------------------------------------------- */
+
+.rm-hero {
+  margin: -1.2rem -1.2rem 2.4rem;
+  padding: 3.2rem 1.6rem 2.8rem;
+  background: var(--c-raised);
+  border-bottom: var(--rule) solid var(--c-border);
+}
+.rm-hero__inner {
+  max-width: var(--rm-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr .95fr;
+  gap: 2.4rem;
+  align-items: center;
+}
+.rm-hero__text,
+.rm-hero__art { min-width: 0; }
+
+.rm-hero h1 {
+  font-size: 2.6rem;
+  line-height: 1.08;
+  margin: 0 0 .7rem;
+}
+.rm-hero__text > p {
+  color: var(--c-muted);
+  font-size: .86rem;
+  line-height: 1.65;
+  max-width: 28em;
+  margin: 0;
+}
+.rm-hero__art { display: flex; justify-content: center; }
+.rm-hero__art svg[role="img"] {
+  width: 100%;
+  max-width: 330px;
+  margin: 0;
+}
+
+@media screen and (max-width: 59.98em) {
+  .rm-hero__inner { grid-template-columns: 1fr; gap: 1.8rem; }
+  .rm-hero h1 { font-size: 2.1rem; }
+  .rm-hero__art svg[role="img"] { max-width: 280px; }
+}
+@media screen and (max-width: 44.98em) {
+  .rm-hero { padding: 2.2rem 1rem 2rem; margin-bottom: 1.8rem; }
+  .rm-hero h1 { font-size: 1.75rem; }
+  .rm-hero__art svg[role="img"] { max-width: 240px; }
+}
+
+/* --- 12.2 The rail ------------------------------------------------------ */
+
+.rm-track {
+  position: relative;
+  max-width: var(--rm-max);
+  margin: 0 auto;
+  padding-left: 3.4rem;
+}
+/* The vertical path. Stops short at both ends so it does not run off. */
+.rm-track::before {
+  content: "";
+  position: absolute;
+  left: 1.05rem;
+  top: 2.2rem;
+  bottom: 3.2rem;
+  width: 2px;
+  background: var(--c-border);
+}
+
+/* --- 12.3 A module step ------------------------------------------------- */
+
+.rm-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 1.8rem;
+  align-items: start;
+  padding: 1.6rem 0 2.4rem;
+}
+.rm-step > * { min-width: 0; }
+
+/* The node on the rail. */
+.rm-step::before {
+  content: "";
+  position: absolute;
+  left: -3.4rem;
+  top: 2rem;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  margin-left: calc(1.05rem - 6px);
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 2px solid var(--c-border);
+}
+.rm-step[data-state="open"]::before {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-accent) 18%, transparent);
+}
+
+/* --- 12.4 Module artwork ------------------------------------------------ */
+
+.rm-art {
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-raised);
+  padding: .5rem;
+}
+.rm-art svg[role="img"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.rm-step[data-state="locked"] .rm-art {
+  border-style: dashed;
+  opacity: .55;
+}
+
+/* --- 12.5 Module text --------------------------------------------------- */
+
+.rm-body h3 {
+  font-size: 1.35rem;
+  margin: .15rem 0 .5rem;
+}
+.rm-body > p { max-width: 38em; }
+
+.rm-meta {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  margin: 0 !important;
+  font-family: var(--font-mono);
+  font-size: .64rem;
+  letter-spacing: .02em;
+}
+.rm-num { color: var(--c-accent); font-weight: 500; }
+.rm-weeks { color: var(--c-muted); }
+
+/* Topic chips: the syllabus view, scannable in one pass. */
+.rm-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin: .9rem 0 1.2rem !important;
+  max-width: none !important;
+}
+.rm-topics > span {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  line-height: 1;
+  color: var(--c-muted);
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: 100px;
+  padding: .45em .85em;
+}
+
+.rm-label {
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  margin: 0 0 .5rem !important;
+}
+
+.rm-body ul {
+  margin: 0 0 .4rem;
+  padding-left: 0;
+  list-style: none;
+}
+.rm-body ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: .3rem;
+  font-size: .76rem;
+  line-height: 1.6;
+}
+/* A small tick instead of a bullet: these are things you gain, not a list. */
+.rm-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .42em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--c-accent);
+  border-bottom: 2px solid var(--c-accent);
+  transform: rotate(-45deg);
+}
+
+/* --- 12.6 Footer of each step ------------------------------------------- */
+
+.rm-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .9rem;
+  margin-top: 1.2rem;
+}
+.rm-foot p { margin: 0; max-width: none; }
+.rm-foot .md-button { margin: 0; font-size: .68rem; }
+.rm-when,
+.rm-flag {
+  font-family: var(--font-mono);
+  font-size: .64rem;
+  color: var(--c-muted);
+}
+.rm-when {
+  border: var(--rule) dashed var(--c-border);
+  border-radius: 100px;
+  padding: .5em 1em;
+}
+.rm-flag { color: var(--c-accent); }
+
+/* Locked modules: present, clearly not yet available. */
+.rm-step[data-state="locked"] .rm-body h3,
+.rm-step[data-state="locked"] .rm-body > p { color: var(--c-muted); }
+.rm-step[data-state="locked"] .rm-body ul li::before {
+  border-color: var(--c-muted);
+  opacity: .6;
+}
+
+/* --- 12.7 Sprints ------------------------------------------------------- */
+
+.rm-sprints > ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: var(--rm-max);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+.rm-sprints > ul > li {
+  margin: 0;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: var(--rule) solid var(--c-border);
+  border-top: 3px solid var(--c-accent);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+}
+.rm-sprints strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: .4rem;
+}
+.rm-sprints p {
+  margin: 0;
+  max-width: none;
+  font-size: .73rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+/* --- 12.8 Skills, grouped into four cards ------------------------------- */
+
+.rm-skills > ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: var(--rm-max);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.rm-skills > ul > li {
+  margin: 0;
+  padding: 1.2rem 1.3rem 1.3rem;
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+}
+.rm-skills > ul > li > strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.rm-skills > ul > li > hr {
+  margin: .6rem 0 .8rem;
+  border: none;
+  border-top: var(--rule) solid var(--c-border);
+}
+.rm-skills > ul > li ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rm-skills > ul > li ul li {
+  position: relative;
+  margin: 0 0 .35rem;
+  padding-left: 1.4rem;
+  font-size: .74rem;
+  line-height: 1.55;
+  color: var(--c-muted);
+}
+.rm-skills > ul > li ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .4em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--c-accent);
+  border-bottom: 2px solid var(--c-accent);
+  transform: rotate(-45deg);
+}
+
+/* --- 12.9 Closing ------------------------------------------------------- */
+
+.rm-cta {
+  max-width: var(--rm-max);
+  margin: 3.4rem auto 0;
+  padding: 2rem 1.6rem 2.2rem;
+  text-align: center;
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+}
+.rm-cta p {
+  margin: 0 auto 1.1rem;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--c-ink);
+}
+.rm-cta .md-button { margin: 0; }
+
+/* --- 12.10 Narrow screens ----------------------------------------------- */
+
+@media screen and (max-width: 59.98em) {
+  .rm-step { grid-template-columns: 92px 1fr; gap: 1.2rem; }
+  .rm-sprints > ul { grid-template-columns: 1fr; gap: 1rem; }
+  .rm-skills > ul { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 44.98em) {
+  .rm-track { padding-left: 2.2rem; }
+  .rm-track::before { left: .6rem; top: 1.7rem; bottom: 2.8rem; }
+  .rm-step::before { left: -2.2rem; margin-left: calc(.6rem - 6px); top: 1.5rem; }
+  /* Art moves above the text rather than shrinking to nothing. */
+  .rm-step { grid-template-columns: 1fr; gap: 1rem; padding: 1.1rem 0 2rem; }
+  .rm-art { max-width: 92px; padding: .4rem; }
+  .rm-body h3 { font-size: 1.15rem; }
+}
+
+/* ==========================================================================
+   13. CONTENT PAGES
+   Components used by every tutorial page: the "verify" callout and the
+   page footer. Site-wide, not scoped.
+   ========================================================================== */
+
+/* --- 13.1 Custom callout: "verify" --------------------------------------
+   Named "verify" rather than "check", because "check" is already an alias
+   of Material's built-in "success" type and would collide with it.
+   Use as:   !!! verify "Prove it worked"
+   ------------------------------------------------------------------------ */
+
+:root {
+  --md-admonition-icon--verify: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>');
+}
+.md-typeset .admonition.verify,
+.md-typeset details.verify {
+  border-color: var(--c-border);
+  border-left-color: var(--c-accent);
+  background: var(--c-raised);
+}
+.md-typeset .verify > .admonition-title,
+.md-typeset .verify > summary {
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: .9rem;
+}
+.md-typeset .verify > .admonition-title::before,
+.md-typeset .verify > summary::before {
+  background-color: var(--c-accent);
+  -webkit-mask-image: var(--md-admonition-icon--verify);
+          mask-image: var(--md-admonition-icon--verify);
+}
+
+/* --- 13.2 Page footer ---------------------------------------------------
+   Every content page ends with a link to the next one.
+   <div class="page-nav" markdown>
+   [Back](a.md){ .page-nav__prev }
+   [Next page](b.md){ .page-nav__next }
+   </div>
+   ------------------------------------------------------------------------ */
+
+.md-typeset .page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin: 3.2rem 0 0;
+  padding-top: 1.4rem;
+  border-top: var(--rule) solid var(--c-border);
+}
+.md-typeset .page-nav a {
+  display: block;
+  min-width: 15rem;
+  padding: .85rem 1.1rem;
+  border: var(--rule) solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.md-typeset .page-nav a:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+/* Pushes the next link right, whether or not a previous link is present. */
+.md-typeset .page-nav a.page-nav__next { margin-left: auto; text-align: right; }
+.md-typeset .page-nav a::before {
+  content: "Next";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--c-muted);
+  margin-bottom: .25rem;
+}
+.md-typeset .page-nav a.page-nav__prev::before { content: "Back"; }
+
+@media screen and (max-width: 44.98em) {
+  .md-typeset .page-nav a { min-width: 100%; text-align: left; }
+  .md-typeset .page-nav a.page-nav__next { text-align: left; }
+}
+
+/* --- 13.3 Keyboard keys -------------------------------------------------- */
+
+.md-typeset .keys kbd {
+  background: var(--c-raised);
+  border: var(--rule) solid var(--c-border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  box-shadow: none;
+  color: var(--c-ink);
+  font-family: var(--font-mono);
+  font-size: .9em;
+}
+
+/* --- 13.4 Diagrams on content pages -------------------------------------
+   Tutorial diagrams are capped so they do not dominate a page on a wide
+   screen, and centred.
+   ------------------------------------------------------------------------ */
+
+.md-typeset > svg[role="img"] {
+  display: block;
+  max-width: 34rem;
+  margin: 1.6rem auto 2rem;
+}
