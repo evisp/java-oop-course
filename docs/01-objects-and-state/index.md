@@ -1,6 +1,6 @@
 # Objects and State
 
-<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">4 lectures, 4 seminars, 4 videos</span><span class="badge badge--accent">Sprint 1 opens in week 4</span></p>
+<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">4 lectures, 4 seminars</span><span class="badge badge--accent">Sprint 1 in week 4</span></p>
 
 This module is where you stop writing lists of instructions and start building things that hold their own data. By the end you can take a description of a problem, decide what the objects are, write them so they cannot be put into an invalid state, and hold many of them.
 
