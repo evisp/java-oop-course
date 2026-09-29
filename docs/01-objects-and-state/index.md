@@ -26,7 +26,7 @@ Four hours, split in two.
 
     Cutting a problem into things that know something and can be asked to do something. No code at all.
 
-    [:octicons-arrow-right-24: Lecture 1](thinking-in-things.md)
+    [:octicons-arrow-right-24: Open Lecture](thinking-in-things.md)
 
 -   :material-lightbulb-outline:{ .lg .middle } **Why objects**
 
@@ -34,7 +34,7 @@ Four hours, split in two.
 
     What breaks when a rule lives away from its data, and exactly what Java adds to the C you already know.
 
-    [:octicons-arrow-right-24: Lecture 2](why-objects.md)
+    [:octicons-arrow-right-24: Open Lecture](why-objects.md)
 
 -   :material-laptop:{ .lg .middle } **Setting up and designing**
 
@@ -64,7 +64,7 @@ Four hours, split in two.
 
     Fields, a constructor, methods and `toString`. The first code of the bank you will build all semester.
 
-    [:octicons-arrow-right-24: Lecture 1](first-class.md)
+    [:octicons-arrow-right-24: Open Lecture](first-class.md)
 
 -   :material-arrow-top-right:{ .lg .middle } **What a variable really holds**
 
@@ -72,7 +72,7 @@ Four hours, split in two.
 
     References, aliasing, `null`, and why `==` on objects almost never answers the question you meant.
 
-    [:octicons-arrow-right-24: Lecture 2](references.md)
+    [:octicons-arrow-right-24: Open Lecture](references.md)
 
 -   :material-laptop:{ .lg .middle } **Your first classes**
 
@@ -102,7 +102,7 @@ Four hours, split in two.
 
     Invariants, the constructor as a gate, and the difference between a caller asking for too much and a caller passing you nonsense.
 
-    [:octicons-arrow-right-24: Lecture 1](objects-that-refuse.md)
+    [:octicons-arrow-right-24: Open Lecture](objects-that-refuse.md)
 
 -   :material-lock-outline:{ .lg .middle } **What belongs to whom**
 
@@ -110,7 +110,7 @@ Four hours, split in two.
 
     `final` fields, immutability, and values that belong to the class rather than to any one object.
 
-    [:octicons-arrow-right-24: Lecture 2](what-belongs-to-whom.md)
+    [:octicons-arrow-right-24: Open Lecture](what-belongs-to-whom.md)
 
 -   :material-laptop:{ .lg .middle } **Making them refuse**
 
@@ -140,7 +140,7 @@ Four hours, split in two.
 
     Arrays, `List` and `ArrayList`, searching and looping, and what a list of objects actually contains.
 
-    [:octicons-arrow-right-24: Lecture 1](many-objects.md)
+    [:octicons-arrow-right-24: Open Lecture](many-objects.md)
 
 -   :material-account-multiple-outline:{ .lg .middle } **Objects that own other objects**
 
@@ -148,7 +148,7 @@ Four hours, split in two.
 
     A customer with accounts. Keeping a collection private, and coordinating work without doing it yourself.
 
-    [:octicons-arrow-right-24: Lecture 2](owning-objects.md)
+    [:octicons-arrow-right-24: Open Lecture](owning-objects.md)
 
 -   :material-laptop:{ .lg .middle } **Connecting the system**
 
@@ -195,5 +195,5 @@ Type the code rather than copying it. The compiler errors you make are half the 
 Each lecture ends with a task that proves you understood, and a few questions with no answer you can look up. Those questions are what we argue about in the seminar, so arrive with an opinion rather than a correct answer.
 
 <div class="page-nav" markdown>
-[Week 1, lecture 1. Thinking in things](thinking-in-things.md){ .page-nav__next }
+[Week 1, Thinking in things](thinking-in-things.md){ .page-nav__next }
 </div>
