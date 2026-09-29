@@ -22,6 +22,9 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # If you do 2 without 1, the build warns about nav entries it cannot find.
 # ===========================================================================
 draft_docs: |
+  01-objects-and-state/seminar-2.md
+  01-objects-and-state/seminar-3.md
+  01-objects-and-state/seminar-4.md
   02-core-oop/
   03-io-exceptions/
   04-modern-java/

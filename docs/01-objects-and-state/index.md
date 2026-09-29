@@ -1,6 +1,6 @@
 # Objects and State
 
-<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">8 lectures, 4 seminars</span><span class="badge badge--accent">Sprint 1 opens in week 4</span></p>
+<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">4 lectures, 4 seminars, 4 videos</span><span class="badge badge--accent">Sprint 1 opens in week 4</span></p>
 
 This module is where you stop writing lists of instructions and start building things that hold their own data. By the end you can take a description of a problem, decide what the objects are, write them so they cannot be put into an invalid state, and hold many of them.
 
@@ -13,6 +13,8 @@ Four hours, split in two.
 **The lecture, two hours.** Two sessions of fifty minutes, the pages below, plus live coding. Read them with the editor open rather than on your phone.
 
 **The seminar, two hours.** Where you write code yourself, on a different problem: [the university system](university-system.md). Following a worked example teaches you the syntax. Building something you have not been shown teaches you the skill, and the skill is what the exam and the sprints ask for.
+
+**The video, about ten minutes.** A walk through the week's ideas, for revision or for a week you missed. It does not replace the pages, and nothing in it is new.
 
 ## Week 1. Seeing objects
 
@@ -41,6 +43,14 @@ Four hours, split in two.
     Get your machine working, then design the university system on paper before you write a line of Java.
 
     [:octicons-arrow-right-24: Seminar](seminar-1.md)
+
+-   :material-play-circle-outline:{ .lg .middle } **Week 1 in ten minutes**
+
+    ---
+
+    Cutting a problem into things, and what goes wrong when a rule lives away from its data.
+
+    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
 
 </div>
 
@@ -72,6 +82,14 @@ Four hours, split in two.
 
     Seminar opens in week 2.
 
+-   :material-play-circle-outline:{ .lg .middle } **Week 2 in ten minutes**
+
+    ---
+
+    Writing a class down, and what a variable actually holds when it points at an object.
+
+    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+
 </div>
 
 ## Week 3. Keeping them valid
@@ -102,6 +120,14 @@ Four hours, split in two.
 
     Seminar opens in week 3.
 
+-   :material-play-circle-outline:{ .lg .middle } **Week 3 in ten minutes**
+
+    ---
+
+    Invariants, the two kinds of no, and deciding where each value lives and when it may change.
+
+    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+
 </div>
 
 ## Week 4. Many of them
@@ -131,6 +157,14 @@ Four hours, split in two.
     Relationships, collections, and objects asking each other for work. Sprint 1 opens.
 
     Seminar opens in week 4.
+
+-   :material-play-circle-outline:{ .lg .middle } **Week 4 in ten minutes**
+
+    ---
+
+    Lists of arrows, and an object that owns a collection without handing it out.
+
+    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
 
 </div>
 
