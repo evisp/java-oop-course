@@ -1,0 +1,1491 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn Java object-oriented programming by building. Course materials for University Metropolitan Tirana.">
+      
+      
+        <meta name="author" content="evisp">
+      
+      
+        <link rel="canonical" href="https://evisp.github.io/java-oop-course/01-objects-and-state/thinking-in-things/">
+      
+      
+        <link rel="prev" href="../university-system/">
+      
+      
+        <link rel="next" href="../why-objects/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Thinking in things - Java OOP Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#thinking-in-things" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Java OOP Course" class="md-header__button md-logo" aria-label="Java OOP Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java OOP Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thinking in things
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/evisp/java-oop-course" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    evisp/java-oop-course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../00-tools/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Objects and State
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Java OOP Course" class="md-nav__button md-logo" aria-label="Java OOP Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java OOP Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/evisp/java-oop-course" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    evisp/java-oop-course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/eclipse-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Eclipse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git and GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objects and State
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Objects and State
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../university-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The university system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thinking in things
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thinking in things
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-cash-machine-told-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cash machine, told twice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-thing-knows-and-a-thing-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A thing knows, and a thing does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-responsible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who is responsible?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-do-not-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask, do not take
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it costs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#think-about-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Think about it
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seminar 1. Setting up and designing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a variable really holds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects-that-refuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objects that refuse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-belongs-to-whom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What belongs to whom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../many-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Many objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../owning-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objects that own other objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-cash-machine-told-twice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cash machine, told twice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-thing-knows-and-a-thing-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A thing knows, and a thing does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-responsible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Who is responsible?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ask-do-not-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask, do not take
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it costs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check yourself
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#think-about-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Think about it
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Objects and State
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="thinking-in-things">Thinking in things<a class="headerlink" href="#thinking-in-things" title="Link to this section">&para;</a></h1>
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 1, session 1</span><span class="badge">No prerequisites</span></p>
+
+<p>By the end of this page you can look at a problem and describe it as a set of things that know something and can be asked to do something, rather than as a list of steps. You can also say who should be responsible for each rule in a system.</p>
+<p>There is no Java on this page. Not one line. This session is about a way of seeing a problem, and you cannot see it clearly while you are also worrying about semicolons. The code starts in session 2.</p>
+<h2 id="a-cash-machine-told-twice">A cash machine, told twice<a class="headerlink" href="#a-cash-machine-told-twice" title="Link to this section">&para;</a></h2>
+<p>Here is a withdrawal at a cash machine, described the way you have always described programs.</p>
+<blockquote>
+<p>Read the card. Look up the account. Check that the balance is enough. Check the daily limit. Subtract the amount. Count out the notes. Write a line in the log.</p>
+</blockquote>
+<p>Seven steps in order. You could write that today.</p>
+<p>Now here is the same withdrawal, described differently.</p>
+<blockquote>
+<p>There is a <strong>card</strong>, which knows whose account it belongs to. There is an <strong>account</strong>, which knows its balance and decides whether a withdrawal is allowed. There is a <strong>cash drawer</strong>, which knows how many notes it holds and hands them out. There is a <strong>log</strong>, which records what happened.</p>
+<p>The machine asks the card whose account this is. It asks the account to allow a withdrawal of fifty euro. The account decides, and says yes or no. If yes, the machine asks the drawer for the notes and tells the log.</p>
+</blockquote>
+<p>Same machine. Same money. Nothing has been added and nothing has been removed.</p>
+<p>What changed is where you put the boundaries. The first description cuts the problem into <strong>steps</strong>. The second cuts it into <strong>things</strong>.</p>
+<p>That is the whole paradigm. Everything else this semester is consequences.</p>
+<p><svg viewBox="0 0 480 330" role="img" xmlns="http://www.w3.org/2000/svg"><title>One problem cut into steps, and the same problem cut into things</title><desc>The upper half shows five steps in a row, each joined by a line to a single shared store of data underneath, and the lines cross one another. The lower half shows three boxes named Card, Account and Cash drawer, each listing what it knows and what it does, joined to each other by two connections.</desc><text x="20" y="22" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="var(--c-muted)">Cut into steps</text><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="20" y="32" width="84" height="34" rx="5"/><rect x="109" y="32" width="84" height="34" rx="5"/><rect x="198" y="32" width="84" height="34" rx="5"/><rect x="287" y="32" width="84" height="34" rx="5"/><rect x="376" y="32" width="84" height="34" rx="5"/></g><g font-family="Inter, sans-serif" font-size="11" fill="var(--c-ink)" text-anchor="middle"><text x="62" y="53">read card</text><text x="151" y="53">check limit</text><text x="240" y="53">subtract</text><text x="329" y="53">dispense</text><text x="418" y="53">write log</text></g><g stroke="var(--c-border)" stroke-width="1.5" fill="none"><line x1="62" y1="66" x2="390" y2="104"/><line x1="151" y1="66" x2="90" y2="104"/><line x1="240" y1="66" x2="300" y2="104"/><line x1="329" y1="66" x2="60" y2="104"/><line x1="418" y1="66" x2="200" y2="104"/></g><rect x="20" y="106" width="440" height="34" rx="6" fill="var(--c-raised)" stroke="var(--c-border)" stroke-width="2"/><text x="38" y="128" font-family="Inter, sans-serif" font-size="13" fill="var(--c-ink)">the balance, the daily limit, the notes, the log</text><text x="20" y="158" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Every step needs the data, so the data belongs to nobody in particular.</text><line x1="20" y1="176" x2="460" y2="176" stroke="var(--c-border)" stroke-width="1" stroke-dasharray="4 4"/><text x="20" y="202" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="var(--c-muted)">Cut into things</text><g stroke="var(--c-border)" stroke-width="1.5"><line x1="160" y1="258" x2="170" y2="258"/><line x1="310" y1="258" x2="320" y2="258"/></g><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="20" y="212" width="140" height="90" rx="8"/><rect x="320" y="212" width="140" height="90" rx="8"/></g><rect x="170" y="212" width="140" height="90" rx="8" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><g font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)"><text x="36" y="234">Card</text><text x="186" y="234">Account</text><text x="336" y="234">Cash drawer</text></g><g stroke="var(--c-border)" stroke-width="1.5"><line x1="36" y1="242" x2="144" y2="242"/><line x1="186" y1="242" x2="294" y2="242"/><line x1="336" y1="242" x2="444" y2="242"/></g><g font-family="Inter, sans-serif" font-size="11" fill="var(--c-muted)"><text x="36" y="262">knows: whose</text><text x="186" y="262">knows: balance</text><text x="336" y="262">knows: notes left</text></g><g font-family="Inter, sans-serif" font-size="11" fill="var(--c-accent)"><text x="36" y="284">does: identify</text><text x="186" y="284">does: allow, refuse</text><text x="336" y="284">does: hand out</text></g><text x="20" y="324" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Each thing keeps what it knows and decides what it does.</text></svg></p>
+<p>Look at the top half again. Five steps, one pile of data, and every step reaching into it. Nothing in that picture is responsible for the balance. The balance is just lying there.</p>
+<h2 id="a-thing-knows-and-a-thing-does">A thing knows, and a thing does<a class="headerlink" href="#a-thing-knows-and-a-thing-does" title="Link to this section">&para;</a></h2>
+<p>An object is not complicated. It is two things bolted together, and it is worth saying the definition plainly because everything else rests on it.</p>
+<p><svg viewBox="0 0 480 220" role="img" xmlns="http://www.w3.org/2000/svg"><title>An object holds what it knows and what it does</title><desc>A single box named Account divided into two columns. The left column lists what it knows: the balance, who owns it, whether it is frozen. The right column lists what it does: accept a deposit, allow a withdrawal, refuse one.</desc><rect x="70" y="24" width="340" height="156" rx="10" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="92" y="52" font-family="Source Serif 4, Georgia, serif" font-size="19" font-weight="700" fill="var(--c-ink)">Account</text><line x1="92" y1="62" x2="388" y2="62" stroke="var(--c-border)" stroke-width="1.5"/><line x1="240" y1="62" x2="240" y2="180" stroke="var(--c-border)" stroke-width="1.5"/><text x="92" y="86" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--c-muted)">It knows</text><text x="262" y="86" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--c-accent)">It does</text><g font-family="Inter, sans-serif" font-size="13" fill="var(--c-ink)"><text x="92" y="112">the balance</text><text x="92" y="136">who owns it</text><text x="92" y="160">if it is frozen</text><text x="262" y="112">accept a deposit</text><text x="262" y="136">allow a withdrawal</text><text x="262" y="160">refuse one</text></g><text x="70" y="206" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">What it knows is its state. What it does is its behaviour. One thing holds both.</text></svg></p>
+<p>The left column is called <strong>state</strong>. The right column is called <strong>behaviour</strong>. Those are the only two words you need this week.</p>
+<p>Notice the third item on the right. An account can refuse. That is not decoration, it is the point. A thing that can only hand over its data is a container. A thing that can say no is an object.</p>
+<h2 id="who-is-responsible">Who is responsible?<a class="headerlink" href="#who-is-responsible" title="Link to this section">&para;</a></h2>
+<p>Here is the question that turns this from a nice picture into a design skill.</p>
+<p>Take any rule in the system. "A withdrawal cannot exceed the balance." Then ask two things.</p>
+<p><strong>Who should know this?</strong> The rule is about a balance. One thing in the system owns a balance. So the account should know it.</p>
+<p><strong>Who should decide?</strong> Whoever knows. If the account knows the balance and knows the rule, the account decides. Nobody else needs to.</p>
+<p>Work through the cash machine and it resolves quickly. The daily limit is about the card, so the card knows it. How many notes are left is about the drawer, so the drawer decides whether it can pay out. The machine itself knows almost nothing. It just asks the right thing each time.</p>
+<p>That is why "where does this code go" stops being a matter of taste. The code goes where the data is, because that is the only place the decision can be made honestly.</p>
+<div class="admonition mistake">
+<p class="admonition-title">Verbs are not things</p>
+<p>The most common first design has a class called <code>WithdrawalManager</code> or <code>TransactionHandler</code> or <code>BalanceProcessor</code>. It feels right, because withdrawing is clearly important.</p>
+<p>Ask what it knows. Usually the answer is nothing. It holds no data of its own, so it spends its whole life reaching into other objects and changing their numbers for them. That is a step wearing a noun's name, and you have rebuilt the top half of the diagram with extra files.</p>
+<p>If a class ends in <code>Manager</code>, <code>Handler</code>, <code>Processor</code> or <code>Helper</code>, stop and ask what it knows. There are real exceptions and you will meet one in Module 2, but they are exceptions and they still own something.</p>
+</div>
+<h2 id="ask-do-not-take">Ask, do not take<a class="headerlink" href="#ask-do-not-take" title="Link to this section">&para;</a></h2>
+<p>The second half of the paradigm, and the half most courses skip.</p>
+<p>You do not reach into someone's wallet and remove fifty euro. You ask them to pay you, and they decide whether they can. If they cannot, they say so. The money never leaves without the owner's agreement, and the owner is the only one who has to know how much is in there.</p>
+<p>Programs work the same way, or they should.</p>
+<p><svg viewBox="0 0 480 300" role="img" xmlns="http://www.w3.org/2000/svg"><title>Reaching into another object compared with sending it a request</title><desc>In the upper half a box named Cashier sends an arrow that passes straight through the wall of a box named Account and changes the balance inside it, with no rule consulted. In the lower half the Cashier sends a request named withdraw to the boundary of the Account, and the Account decides and sends an answer back.</desc><text x="20" y="22" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="var(--c-muted)">Taking</text><rect x="20" y="42" width="120" height="54" rx="8" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><text x="80" y="74" font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)" text-anchor="middle">Cashier</text><path d="M300 32 a8 8 0 0 1 8-8 h144 a8 8 0 0 1 8 8 v78 a8 8 0 0 1 -8 8 h-144 a8 8 0 0 1 -8 -8 v-14 M300 54 v-22" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><text x="318" y="50" font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)">Account</text><text x="318" y="76" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--c-ink)">balance</text><text x="318" y="98" font-family="Inter, sans-serif" font-size="11" fill="var(--c-muted)">no rule was asked</text><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="142" y1="69" x2="310" y2="69"/><polyline points="303,64 311,69 303,74"/></g><text x="152" y="62" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-accent)">balance = balance - 50</text><text x="20" y="140" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">The wall is open. The account never found out, and never agreed.</text><line x1="20" y1="158" x2="460" y2="158" stroke="var(--c-border)" stroke-width="1" stroke-dasharray="4 4"/><text x="20" y="184" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="var(--c-muted)">Asking</text><rect x="20" y="204" width="120" height="54" rx="8" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><text x="80" y="236" font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)" text-anchor="middle">Cashier</text><rect x="300" y="186" width="160" height="92" rx="8" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="318" y="210" font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)">Account</text><text x="318" y="234" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--c-ink)">balance</text><text x="318" y="258" font-family="Inter, sans-serif" font-size="11" fill="var(--c-accent)">checks its own rule</text><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="142" y1="220" x2="294" y2="220"/><polyline points="287,215 295,220 287,225"/></g><text x="158" y="213" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-accent)">withdraw 50</text><g stroke="var(--c-muted)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="294" y1="244" x2="142" y2="244"/><polyline points="149,239 141,244 149,249"/></g><text x="172" y="258" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-muted)">yes, or no</text></svg></p>
+<p>In the top picture the cashier knows how an account stores its money, so if that ever changes, the cashier breaks. In the bottom picture the cashier knows only what to ask for. The account can change everything about how it works, and nobody outside notices.</p>
+<p>The difference between those two pictures is the difference between a program you can change and one you cannot.</p>
+<h2 id="what-it-costs">What it costs<a class="headerlink" href="#what-it-costs" title="Link to this section">&para;</a></h2>
+<p>This is not free, and you should hear that from me rather than discover it while resenting me.</p>
+<p>You will write more files. You will spend time deciding what to call things, and some of those decisions will feel arbitrary. Following what happens during a single operation means reading three small files instead of one big function, which is genuinely harder the first few times.</p>
+<p>For a fifty-line script that you will run once and delete, none of this is worth it. Write the steps. Go home.</p>
+<p>It becomes worth it the moment somebody changes the requirements, which in this course is every week and at work is every day.</p>
+<h2 id="what-this-is-not">What this is not<a class="headerlink" href="#what-this-is-not" title="Link to this section">&para;</a></h2>
+<details class="note">
+<summary>\"So we are modelling the real world\"</summary>
+<p>Nearly, and the gap matters.</p>
+<p>You are modelling the <strong>problem</strong>, not reality. A real bank has buildings, regulators, a marketing department and a coffee machine. None of those belong in your program. And in Module 3 you will build a <code>Transaction</code> and in Module 4 a <code>Controller</code>, neither of which is a thing you could point at in a bank.</p>
+<p>Ask what needs to exist for this program to be correct and easy to change. That question keeps working. "What exists in the world" stops working around week six.</p>
+</details>
+<details class="note">
+<summary>\"So object orientation is about inheritance\"</summary>
+<p>That is the part most courses lead with, which is why people finish them able to recite four words and unable to design anything.</p>
+<p>Inheritance is one tool for sharing behaviour between classes, and Module 2 covers it properly, including when using it is a mistake. It is not what objects are for. If you finish this module able to design good classes and unable to spell <code>extends</code>, you are in a better position than the reverse.</p>
+</details>
+<details class="note">
+<summary>\"This is the right way to write software\"</summary>
+<p>No. It is one way, and this course teaches it because it is the one you will meet most often and because it teaches you to think about design.</p>
+<p>In week twelve you will write Java in a different style, where data does not change and you transform it instead of asking it to change itself. Some problems fit that far better. Knowing both, and knowing when each is awkward, is worth more than believing in either.</p>
+</details>
+<blockquote>
+<p><strong>If you remember one thing.</strong> An object is a thing that knows something and can be asked to do something. Designing is deciding who knows what, and therefore who decides what.</p>
+</blockquote>
+<h2 id="check-yourself">Check yourself<a class="headerlink" href="#check-yourself" title="Link to this section">&para;</a></h2>
+<div class="admonition verify">
+<p class="admonition-title">Cut a problem you were not shown</p>
+<p>A university library lends books to students. A book can be borrowed if a copy is available. A student cannot borrow more than five books at once. Overdue books carry a fine.</p>
+<p>On paper. No Java, so nobody can hide behind syntax.</p>
+<ol>
+<li>Name three or four things. Not ten.</li>
+<li>For each, write what it <strong>knows</strong>.</li>
+<li>For each, write what it <strong>does</strong>, including at least one thing it can refuse.</li>
+<li>Write one sentence describing how a book gets borrowed, using only "X asks Y to ...". No thing is allowed to reach into another and change its data.</li>
+</ol>
+<p>Then the hard part. The rule "a student cannot borrow more than five books" needs an owner. Whoever you chose, write down what that thing must already know in order to decide. If it does not know it, your design has a gap. Finding that on paper costs nothing. Finding it in week nine costs a weekend.</p>
+<p>Bring it to the seminar. There is more than one defensible answer and the argument is the lesson.</p>
+</div>
+<h2 id="think-about-it">Think about it<a class="headerlink" href="#think-about-it" title="Link to this section">&para;</a></h2>
+<ol>
+<li>
+<p>Both descriptions of the cash machine are accurate, and the first one is shorter. So what has the second one actually bought, given that the money moves either way? Now suppose the bank adds an overdraft, and then a second kind of account with different rules.</p>
+</li>
+<li>
+<p>The account can refuse a withdrawal. That means the cashier has to cope with being told no. Has the cashier's job got easier or harder? Answer honestly, then say who you would rather be if the rule changes next month.</p>
+</li>
+<li>
+<p>You were told to ask what a class knows, and to be suspicious of one that knows nothing. Try to think of something in a program that genuinely has no data of its own but still deserves to exist as a thing. Bring the best example you can find, even if you are not sure it is right.</p>
+</li>
+<li>
+<p>The cash machine description gave the log its own box. A log only records what other things did. Does it know anything? Does it decide anything? Argue either way, and notice which of your two answers you would defend in front of the room.</p>
+</li>
+</ol>
+<div class="page-nav">
+<p><a class="page-nav__next" href="../why-objects/">Session 2. Why objects</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../university-system/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The university system">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                The university system
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../why-objects/" class="md-footer__link md-footer__link--next" aria-label="Next: Why objects">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Why objects
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Evis Plaku - Course Materials
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/evisp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
