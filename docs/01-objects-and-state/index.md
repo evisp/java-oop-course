@@ -1,6 +1,6 @@
 # Objects and State
 
-<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">4 lectures, 4 seminars</span><span class="badge badge--accent">Sprint 1 in week 4</span></p>
+<p class="meta"><span class="badge">Weeks 1 to 4</span><span class="badge">Module 1 of 4</span><span class="badge">4 lectures, 4 seminars, 4 slide decks</span><span class="badge badge--accent">Sprint 1 in week 4</span></p>
 
 This module is where you stop writing lists of instructions and start building things that hold their own data. By the end you can take a description of a problem, decide what the objects are, write them so they cannot be put into an invalid state, and hold many of them.
 
@@ -14,7 +14,7 @@ Four hours, split in two.
 
 **The seminar, two hours.** Where you write code yourself, on a different problem: [the university system](university-system.md). Following a worked example teaches you the syntax. Building something you have not been shown teaches you the skill, and the skill is what the exam and the sprints ask for.
 
-**The video, about ten minutes.** A walk through the week's ideas, for revision or for a week you missed. It does not replace the pages, and nothing in it is new.
+**The slides, as a PDF.** Everything shown in the lecture, including the diagrams. They are the summary, not the explanation. The pages carry the reasoning, the slides carry the pictures.
 
 ## Week 1. Seeing objects
 
@@ -44,13 +44,13 @@ Four hours, split in two.
 
     [:octicons-arrow-right-24: Seminar](seminar-1.md)
 
--   :material-play-circle-outline:{ .lg .middle } **Week 1 in ten minutes**
+-   :material-file-document-outline:{ .lg .middle } **Week 1 slides**
 
     ---
 
-    Cutting a problem into things, and what goes wrong when a rule lives away from its data.
+    The cash machine told two ways, the knows and does atom, and ask rather than take.
 
-    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+    [:octicons-arrow-right-24: Download PDF](../assets/slides/week-01-thinking-in-things.pdf)
 
 </div>
 
@@ -82,13 +82,13 @@ Four hours, split in two.
 
     Seminar opens in week 2.
 
--   :material-play-circle-outline:{ .lg .middle } **Week 2 in ten minutes**
+-   :material-file-document-outline:{ .lg .middle } **Week 2 slides**
 
     ---
 
-    Writing a class down, and what a variable actually holds when it points at an object.
+    One class and three objects, and the picture of what a variable actually holds.
 
-    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+    [:octicons-arrow-right-24: Download PDF](../assets/slides/week-02-your-first-class.pdf)
 
 </div>
 
@@ -120,13 +120,13 @@ Four hours, split in two.
 
     Seminar opens in week 3.
 
--   :material-play-circle-outline:{ .lg .middle } **Week 3 in ten minutes**
+-   :material-file-document-outline:{ .lg .middle } **Week 3 slides**
 
     ---
 
-    Invariants, the two kinds of no, and deciding where each value lives and when it may change.
+    The invariant across an object's life, the two kinds of no, and where each value lives.
 
-    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+    [:octicons-arrow-right-24: Download PDF](../assets/slides/week-03-objects-that-refuse.pdf)
 
 </div>
 
@@ -158,13 +158,13 @@ Four hours, split in two.
 
     Seminar opens in week 4.
 
--   :material-play-circle-outline:{ .lg .middle } **Week 4 in ten minutes**
+-   :material-file-document-outline:{ .lg .middle } **Week 4 slides**
 
     ---
 
-    Lists of arrows, and an object that owns a collection without handing it out.
+    A list of arrows, a customer owning its accounts, and reaching in against asking.
 
-    [:octicons-arrow-right-24: Watch](https://www.youtube.com/watch?v=Xz8jxwj6Mb0)
+    [:octicons-arrow-right-24: Download PDF](../assets/slides/week-04-many-objects.pdf)
 
 </div>
 
