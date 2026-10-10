@@ -178,6 +178,8 @@ Strict rules are exactly what objects are for.
 
 You are not starting a new project every week. In the lectures you extend the bank. In the seminars you extend the university system, in one folder, in the repository you set up in week 1. In week 4 that folder becomes the starting point for Sprint 1.
 
+All the code written live in the lectures is in the [lecture code repository](https://github.com/evisp/java-oop-lectures), one folder per week. Read the page first, write it yourself, then compare. Looking at the finished version before you have tried is the fastest way to feel like you understand something you cannot yet do.
+
 ## By the end of this module you can
 
 -   Read a description of a system and say what each thing knows, what it does, and what it can refuse

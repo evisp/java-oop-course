@@ -1,6 +1,6 @@
 # Why objects
 
-<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 1, session 2</span><span class="badge badge--accent">Follows: Thinking in things</span></p>
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 1, session 2</span><span class="badge badge--accent">Follows: Thinking in things</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-01-why-objects">Lecture code</a></p>
 
 By the end of this page you can explain why a rule that lives away from its data is optional, say precisely what Java adds to the C you already know, and pick out which things in a problem should be classes and which should not.
 

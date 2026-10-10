@@ -1,6 +1,6 @@
 # Your first class
 
-<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 2, session 1</span><span class="badge badge--accent">Needs: Why objects</span></p>
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 2, session 1</span><span class="badge badge--accent">Needs: Why objects</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-02-classes-and-references">Lecture code</a></p>
 
 By the end of this page you can write a Java class with fields, a constructor and methods, create objects from it, and print them in a readable way. This is the first code of the bank we will build for the rest of the semester.
 

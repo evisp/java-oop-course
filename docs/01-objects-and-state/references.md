@@ -1,6 +1,6 @@
 # What a variable really holds
 
-<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 2, session 2</span><span class="badge badge--accent">Needs: Your first class</span></p>
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 2, session 2</span><span class="badge badge--accent">Needs: Your first class</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-02-classes-and-references">Lecture code</a></p>
 
 By the end of this page you can say what an object variable actually contains, predict what happens when two variables refer to the same object, and explain why comparing two objects with `==` almost never does what you want.
 
