@@ -12,12 +12,10 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # draft_docs   : built by `mkdocs serve`, never by `mkdocs build`.
 #                You can preview these locally. Students cannot reach them.
 # exclude_docs : not built by anything. For solutions and answer keys.
-#
 # TO RELEASE A MODULE, three edits, no automation:
 #   1. delete its line from draft_docs below
 #   2. uncomment its block in nav
 #   3. flip its card from locked to live in docs/roadmap.md
-#
 # If you do 1 without 2, the pages build but are unreachable except by URL.
 # If you do 2 without 1, the build warns about nav entries it cannot find.
 # ===========================================================================
