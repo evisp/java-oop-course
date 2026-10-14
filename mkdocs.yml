@@ -112,7 +112,7 @@ nav:
       - S1 Setting up and designing: 01-objects-and-state/seminar-1.md
       - L2.1 Your first class: 01-objects-and-state/first-class.md
       - L2.2 What a variable really holds: 01-objects-and-state/references.md
-      # - S2 Your first classes: 01-objects-and-state/seminar-2.md
+      - S2 Your first classes: 01-objects-and-state/seminar-2.md
       - L3.1 Objects that refuse: 01-objects-and-state/objects-that-refuse.md
       - L3.2 What belongs to whom: 01-objects-and-state/what-belongs-to-whom.md
       # - S3 Making them refuse: 01-objects-and-state/seminar-3.md
