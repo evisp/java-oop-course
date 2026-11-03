@@ -18,13 +18,17 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 #   3. flip its card from locked to live in docs/roadmap.md
 # If you do 1 without 2, the pages build but are unreachable except by URL.
 # If you do 2 without 1, the build warns about nav entries it cannot find.
+#
+# Seminars are released one week at a time, so they are listed individually
+# rather than by folder. A module folder in draft_docs covers everything in
+# it, including seminars that are not listed separately.
 # ===========================================================================
 draft_docs: |
   01-objects-and-state/seminar-3.md
   01-objects-and-state/seminar-4.md
-  02-core-oop/
-  03-io-exceptions/
-  04-modern-java/
+  02-designing-with-objects/
+  03-robust-and-modern-java/
+  04-building-an-application/
   projects/
 
 exclude_docs: |
@@ -100,7 +104,7 @@ nav:
       # draft_docs above at the same time as you uncomment these.
       # - Maven: 00-tools/maven.md
       # - JavaFX and Scene Builder: 00-tools/javafx.md
-      
+
   - Objects and State:
       - Overview: 01-objects-and-state/index.md
       - Reference, the university system: 01-objects-and-state/university-system.md
@@ -117,32 +121,58 @@ nav:
       - L4.2 Objects that own other objects: 01-objects-and-state/owning-objects.md
       # - S4 Connecting the system: 01-objects-and-state/seminar-4.md
 
-  # --- VAULTED. Uncomment together with the draft_docs line above. ---
-  # - Core OOP Principles:
-  #     - Overview: 02-core-oop/index.md
-  #     - Inheritance and Polymorphism: 02-core-oop/inheritance-polymorphism.md
-  #     - Encapsulation: 02-core-oop/encapsulation.md
-  #     - Abstract Classes & Interfaces: 02-core-oop/abstract-interfaces.md
-  #     - Practice your Skills: 02-core-oop/exercises.md
+  # =========================================================================
+  # VAULTED. Uncomment a block together with its draft_docs line above.
+  # =========================================================================
 
-  # - File and Exception Handling:
-  #     - Overview: 03-io-exceptions/index.md
-  #     - Exception Handling: 03-io-exceptions/exception-handling.md
-  #     - Files & Streams: 03-io-exceptions/files-streams.md
-  #     - Practice your Skills: 03-io-exceptions/exercises.md
+  # --- Module 2, weeks 5 to 8 ----------------------------------------------
+  # - Designing with Objects:
+  #     - Overview: 02-designing-with-objects/index.md
+  #     - L5.1 Objects working together: 02-designing-with-objects/working-together.md
+  #     - L5.2 Telling objects apart: 02-designing-with-objects/telling-apart.md
+  #     - S5 Making them work together: 02-designing-with-objects/seminar-5.md
+  #     - L6.1 One job per class: 02-designing-with-objects/one-job.md
+  #     - L6.2 A fixed set of values: 02-designing-with-objects/enums.md
+  #     - S6 Splitting what you built: 02-designing-with-objects/seminar-6.md
+  #     - L7.1 Building on another class: 02-designing-with-objects/inheritance.md
+  #     - L7.2 When inheritance hurts: 02-designing-with-objects/inheritance-hurts.md
+  #     - S7 A family of things: 02-designing-with-objects/seminar-7.md
+  #     - L8.1 Promises a class must keep: 02-designing-with-objects/abstract-classes.md
+  #     - L8.2 Many classes, one call: 02-designing-with-objects/interfaces.md
+  #     - S8 Many kinds, one loop: 02-designing-with-objects/seminar-8.md
 
-  # - Modern Java:
-  #     - Overview: 04-modern-java/index.md
-  #     - Generic Collections: 04-modern-java/generic-collections.md
-  #     - JavaFX Setup: 04-modern-java/javafx-setup.md
-  #     - JavaFX & GUI: 04-modern-java/javafx-fundamentals.md
-  #     - Practice your Skills: 04-modern-java/exercises.md
+  # --- Module 3, weeks 9 to 12 ---------------------------------------------
+  # - Robust and Modern Java:
+  #     - Overview: 03-robust-and-modern-java/index.md
+  #     - L9.1 When things go wrong: 03-robust-and-modern-java/when-things-go-wrong.md
+  #     - L9.2 Something better than null: 03-robust-and-modern-java/better-than-null.md
+  #     - S9 Failing properly: 03-robust-and-modern-java/seminar-9.md
+  #     - L10.1 Proving it works: 03-robust-and-modern-java/proving-it-works.md
+  #     - L10.2 What is worth testing: 03-robust-and-modern-java/what-to-test.md
+  #     - S10 Tests for your own code: 03-robust-and-modern-java/seminar-10.md
+  #     - L11.1 Writing it down: 03-robust-and-modern-java/writing-files.md
+  #     - L11.2 Reading it back: 03-robust-and-modern-java/reading-files.md
+  #     - S11 Surviving a restart: 03-robust-and-modern-java/seminar-11.md
+  #     - L12.1 Data that does not change: 03-robust-and-modern-java/records.md
+  #     - L12.2 Describing the result: 03-robust-and-modern-java/streams.md
+  #     - S12 The short version: 03-robust-and-modern-java/seminar-12.md
 
+  # --- Module 4, weeks 13 to 14 --------------------------------------------
+  # - Building an Application:
+  #     - Overview: 04-building-an-application/index.md
+  #     - L13.1 Your first window: 04-building-an-application/first-window.md
+  #     - L13.2 Making it respond: 04-building-an-application/events.md
+  #     - S13 A window on your system: 04-building-an-application/seminar-13.md
+  #     - L14.1 Keeping the model out of the window: 04-building-an-application/model-and-ui.md
+  #     - L14.2 Handing it to someone else: 04-building-an-application/shipping.md
+  #     - S14 Finishing it: 04-building-an-application/seminar-14.md
+
+  # --- Sprints. Released one at a time, not as a module. -------------------
   # - Projects:
   #     - Overview: projects/index.md
-  #     - Sprint 1 - Early Concepts: projects/sprint-1.md
-  #     - Sprint 2 - OOP Principles and File IO: projects/sprint-2.md
-  #     - Sprint 3 - Advanced Integration: projects/sprint-3.md
+  #     - Sprint 1, your first system: projects/sprint-1.md
+  #     - Sprint 2, designed properly: projects/sprint-2.md
+  #     - Sprint 3, finished: projects/sprint-3.md
 
 markdown_extensions:
   - abbr
