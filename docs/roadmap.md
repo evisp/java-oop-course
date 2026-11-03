@@ -71,17 +71,18 @@ You stop writing lists of instructions and start building things that hold their
 
 One class is easy. The skill is deciding how classes relate to each other, and knowing when the popular answer is the wrong one.
 
-<p class="rm-topics"><span>Identity and equality</span><span>Inheritance, and when not to</span><span>Polymorphism</span><span>Interfaces and enums</span></p>
+<p class="rm-topics"><span>Objects working together</span><span>One job per class</span><span>Inheritance, and when not to</span><span>Interfaces and polymorphism</span></p>
 
 <p class="rm-label">By the end you can</p>
 
--   Put your own objects in a set and have it behave the way you expect
+-   Decide which class owns a piece of work, and which only asks for it
+-   Make two objects holding the same data count as equal
 -   Choose between inheritance and composition, and say why
 -   Write code against an interface instead of a specific class
 
 <div class="rm-foot" markdown>
 <span class="rm-when">Opens in week 5</span>
-<!-- [Open module](02-core-oop/index.md){ .md-button } -->
+<!-- [Open module](02-designing-with-objects/index.md){ .md-button } -->
 <span class="rm-flag">Sprint 2 opens in week 8</span>
 </div>
 
@@ -111,7 +112,7 @@ Code that survives bad input, saves what it made, and proves it works. This is w
 
 <div class="rm-foot" markdown>
 <span class="rm-when">Opens in week 9</span>
-<!-- [Open module](03-io-exceptions/index.md){ .md-button } -->
+<!-- [Open module](03-robust-and-modern-java/index.md){ .md-button } -->
 <span class="rm-flag">Sprint 3 opens in week 12</span>
 </div>
 
@@ -130,7 +131,7 @@ Code that survives bad input, saves what it made, and proves it works. This is w
 
 You put a window on the program you have been growing all semester. If the design underneath is good, this part is quick. That is the whole lesson.
 
-<p class="rm-topics"><span>Putting a face on it</span><span>Making it work</span></p>
+<p class="rm-topics"><span>Maven and your first window</span><span>Connecting it, then shipping it</span></p>
 
 <p class="rm-label">By the end you can</p>
 
@@ -140,7 +141,7 @@ You put a window on the program you have been growing all semester. If the desig
 
 <div class="rm-foot" markdown>
 <span class="rm-when">Opens in week 13</span>
-<!-- [Open module](04-modern-java/index.md){ .md-button } -->
+<!-- [Open module](04-building-an-application/index.md){ .md-button } -->
 <span class="rm-flag">Sprint 3 due in week 14</span>
 </div>
 
