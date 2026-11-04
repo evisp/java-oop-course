@@ -40,7 +40,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Enrolment touches two of your objects at once. Find the rule that has no owner and give it one.
 
-    Seminar opens in week 5.
+    [:octicons-arrow-right-24: Seminar](seminar-5.md)
 
 -   :material-file-document-outline:{ .lg .middle } **Week 5 slides**
 
@@ -78,7 +78,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Take the printing out of your own classes, then find the strings that should have been an enum.
 
-    Seminar opens in week 6.
+    [:octicons-arrow-right-24: Seminar](seminar-6.md)
 
 -   :material-file-document-outline:{ .lg .middle } **Week 6 slides**
 
@@ -116,7 +116,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Students and lecturers are both people. Find the thing in your design that looks like inheritance and is not.
 
-    Seminar opens in week 7.
+    [:octicons-arrow-right-24: Seminar](seminar-7.md)
 
 -   :material-file-document-outline:{ .lg .middle } **Week 7 slides**
 
@@ -154,7 +154,7 @@ The same shape as Module 1. Four hours, split in two.
 
     One loop over a mixed list of your own objects. Sprint 2 is briefed in this session.
 
-    Seminar opens in week 8.
+    [:octicons-arrow-right-24: Seminar](seminar-8.md)
 
 -   :material-file-document-outline:{ .lg .middle } **Week 8 slides**
 
