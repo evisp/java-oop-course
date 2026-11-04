@@ -138,7 +138,7 @@ The same shape as Module 1. Four hours, split in two.
 
     `abstract`. The class you should not be able to build, and the method the parent must not be allowed to guess.
 
-    Lecture opens in week 8.
+    [:octicons-arrow-right-24: Lecture 1](abstract-classes.md)
 
 -   :material-call-split:{ .lg .middle } **Many classes, one call**
 
@@ -146,7 +146,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Interfaces. Why `List` is on the left and `ArrayList` on the right, and how to sort in one line.
 
-    Lecture opens in week 8.
+    [:octicons-arrow-right-24: Lecture 2](interfaces.md)
 
 -   :material-laptop:{ .lg .middle } **Many kinds, one loop**
 

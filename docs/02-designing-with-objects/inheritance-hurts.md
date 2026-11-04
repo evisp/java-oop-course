@@ -202,5 +202,5 @@ accounts.add(new Account(AccountType.CHECKING, 1000.00));
 That line compiles. What kind of account is it?
 
 <div class="page-nav" markdown>
-[Back to the module](index.md){ .page-nav__next }
+[Promises a class must keep](abstract-classes.md){ .page-nav__next }
 </div>
