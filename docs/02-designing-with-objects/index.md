@@ -62,7 +62,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Your `main` method reads input, does arithmetic and prints results. Splitting the model from the thing that talks.
 
-    Lecture opens in week 6.
+    [:octicons-arrow-right-24: Lecture 1](one-job.md)
 
 -   :material-format-list-checks:{ .lg .middle } **A fixed set of values**
 
@@ -70,7 +70,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Three strings that the compiler never checked. Enums, and constants that carry data of their own.
 
-    Lecture opens in week 6.
+    [:octicons-arrow-right-24: Lecture 2](enums.md)
 
 -   :material-laptop:{ .lg .middle } **Splitting what you built**
 
@@ -100,7 +100,7 @@ The same shape as Module 1. Four hours, split in two.
 
     One object in two layers. `extends`, `super`, and why `protected` is usually the wrong answer.
 
-    Lecture opens in week 7.
+    [:octicons-arrow-right-24: Lecture 1](inheritance.md)
 
 -   :material-alert-outline:{ .lg .middle } **When inheritance hurts**
 
@@ -108,7 +108,7 @@ The same shape as Module 1. Four hours, split in two.
 
     Overriding, `@Override`, and the subclass that compiles, looks sensible and breaks every caller.
 
-    Lecture opens in week 7.
+    [:octicons-arrow-right-24: Lecture 2](inheritance-hurts.md)
 
 -   :material-laptop:{ .lg .middle } **A family of things**
 

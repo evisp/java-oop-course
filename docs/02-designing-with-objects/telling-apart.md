@@ -257,5 +257,5 @@ Week 5 gave the bank somewhere to put a rule, and gave your classes a way to say
 Next week you look at what that growth has done to `main`, which by now reads input, does arithmetic and prints results all in the same place. Open your own Sprint 1 code before the lecture. You will recognise the problem.
 
 <div class="page-nav" markdown>
-[Back to the module](index.md){ .page-nav__next }
+[One job per class](one-job.md){ .page-nav__next }
 </div>
