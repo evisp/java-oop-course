@@ -14,23 +14,30 @@ The same shape as Module 1. Four hours, split in two.
 
 **The seminar, two hours.** You keep building [the university system](../01-objects-and-state/university-system.md), the same one from Module 1. It now needs things that work together, things that know what makes them the same, and a family of people who are not all the same kind of person.
 
+<!-- =====================================================================
+     RELEASING A WEEK ON THIS PAGE
+     In that week's section, change "grid cards locked" to "grid cards",
+     and replace each "Opens in week N." line with the link in the comment
+     under it. Do this with the matching edits in mkdocs.yml.
+     ===================================================================== -->
+
 ## Week 5. Working together
 
 <div class="grid cards" markdown>
 
--   :material-bank-transfer:{ .lg .middle } **Objects working together**
+-   :material-bank-transfer:{ .lg .middle } **Object Collaboration: Responsibility and Delegation**
 
     ---
 
-    Ada wants to send 200 to Alan and no class can do it. Writing the class that exists because a job needed a home.
+    A rule that belongs to two objects at once, the class that owns it, and why the risky step goes first.
 
     [:octicons-arrow-right-24: Lecture 1](working-together.md)
 
--   :material-equal:{ .lg .middle } **Telling objects apart**
+-   :material-equal:{ .lg .middle } **Object Equality: equals and hashCode**
 
     ---
 
-    What makes two of your objects the same object. `equals`, `hashCode`, and the mistake that compiles and never runs.
+    Identity and equality, values and entities, and the contract that keeps `HashSet` honest.
 
     [:octicons-arrow-right-24: Lecture 2](telling-apart.md)
 
@@ -54,7 +61,7 @@ The same shape as Module 1. Four hours, split in two.
 
 ## Week 6. One job each
 
-<div class="grid cards" markdown>
+<div class="grid cards locked" markdown>
 
 -   :material-scissors-cutting:{ .lg .middle } **One job per class**
 
@@ -62,7 +69,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Your `main` method reads input, does arithmetic and prints results. Splitting the model from the thing that talks.
 
-    [:octicons-arrow-right-24: Lecture 1](one-job.md)
+    Opens in week 6.
+    <!-- [:octicons-arrow-right-24: Lecture 1](one-job.md) -->
 
 -   :material-format-list-checks:{ .lg .middle } **A fixed set of values**
 
@@ -70,7 +78,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Three strings that the compiler never checked. Enums, and constants that carry data of their own.
 
-    [:octicons-arrow-right-24: Lecture 2](enums.md)
+    Opens in week 6.
+    <!-- [:octicons-arrow-right-24: Lecture 2](enums.md) -->
 
 -   :material-laptop:{ .lg .middle } **Splitting what you built**
 
@@ -78,7 +87,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Take the printing out of your own classes, then find the strings that should have been an enum.
 
-    [:octicons-arrow-right-24: Seminar](seminar-6.md)
+    Opens in week 6.
+    <!-- [:octicons-arrow-right-24: Seminar](seminar-6.md) -->
 
 -   :material-file-document-outline:{ .lg .middle } **Week 6 slides**
 
@@ -92,7 +102,7 @@ The same shape as Module 1. Four hours, split in two.
 
 ## Week 7. A family of things
 
-<div class="grid cards" markdown>
+<div class="grid cards locked" markdown>
 
 -   :material-file-tree:{ .lg .middle } **Building on another class**
 
@@ -100,7 +110,8 @@ The same shape as Module 1. Four hours, split in two.
 
     One object in two layers. `extends`, `super`, and why `protected` is usually the wrong answer.
 
-    [:octicons-arrow-right-24: Lecture 1](inheritance.md)
+    Opens in week 7.
+    <!-- [:octicons-arrow-right-24: Lecture 1](inheritance.md) -->
 
 -   :material-alert-outline:{ .lg .middle } **When inheritance hurts**
 
@@ -108,7 +119,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Overriding, `@Override`, and the subclass that compiles, looks sensible and breaks every caller.
 
-    [:octicons-arrow-right-24: Lecture 2](inheritance-hurts.md)
+    Opens in week 7.
+    <!-- [:octicons-arrow-right-24: Lecture 2](inheritance-hurts.md) -->
 
 -   :material-laptop:{ .lg .middle } **A family of things**
 
@@ -116,7 +128,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Students and lecturers are both people. Find the thing in your design that looks like inheritance and is not.
 
-    [:octicons-arrow-right-24: Seminar](seminar-7.md)
+    Opens in week 7.
+    <!-- [:octicons-arrow-right-24: Seminar](seminar-7.md) -->
 
 -   :material-file-document-outline:{ .lg .middle } **Week 7 slides**
 
@@ -130,7 +143,7 @@ The same shape as Module 1. Four hours, split in two.
 
 ## Week 8. Promises and questions
 
-<div class="grid cards" markdown>
+<div class="grid cards locked" markdown>
 
 -   :material-shape-outline:{ .lg .middle } **Promises a class must keep**
 
@@ -138,7 +151,8 @@ The same shape as Module 1. Four hours, split in two.
 
     `abstract`. The class you should not be able to build, and the method the parent must not be allowed to guess.
 
-    [:octicons-arrow-right-24: Lecture 1](abstract-classes.md)
+    Opens in week 8.
+    <!-- [:octicons-arrow-right-24: Lecture 1](abstract-classes.md) -->
 
 -   :material-call-split:{ .lg .middle } **Many classes, one call**
 
@@ -146,7 +160,8 @@ The same shape as Module 1. Four hours, split in two.
 
     Interfaces. Why `List` is on the left and `ArrayList` on the right, and how to sort in one line.
 
-    [:octicons-arrow-right-24: Lecture 2](interfaces.md)
+    Opens in week 8.
+    <!-- [:octicons-arrow-right-24: Lecture 2](interfaces.md) -->
 
 -   :material-laptop:{ .lg .middle } **Many kinds, one loop**
 
@@ -154,7 +169,8 @@ The same shape as Module 1. Four hours, split in two.
 
     One loop over a mixed list of your own objects. Sprint 2 is briefed in this session.
 
-    [:octicons-arrow-right-24: Seminar](seminar-8.md)
+    Opens in week 8.
+    <!-- [:octicons-arrow-right-24: Seminar](seminar-8.md) -->
 
 -   :material-file-document-outline:{ .lg .middle } **Week 8 slides**
 

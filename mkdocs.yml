@@ -24,6 +24,25 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # it, including seminars that are not listed separately.
 # ===========================================================================
 draft_docs: |
+  # Module 2, released one week at a time. Delete a week's lines to release it.
+  # The overview goes out with week 5.
+  02-designing-with-objects/index.md
+  02-designing-with-objects/working-together.md
+  02-designing-with-objects/telling-apart.md
+  02-designing-with-objects/seminar-5.md
+  # week 6
+  02-designing-with-objects/one-job.md
+  02-designing-with-objects/enums.md
+  02-designing-with-objects/seminar-6.md
+  # week 7
+  02-designing-with-objects/inheritance.md
+  02-designing-with-objects/inheritance-hurts.md
+  02-designing-with-objects/seminar-7.md
+  # week 8
+  02-designing-with-objects/abstract-classes.md
+  02-designing-with-objects/interfaces.md
+  02-designing-with-objects/seminar-8.md
+  # Modules 3 and 4 and the sprints
   03-robust-and-modern-java/
   04-building-an-application/
   projects/
@@ -123,20 +142,29 @@ nav:
   # =========================================================================
 
   # --- Module 2, weeks 5 to 8 ----------------------------------------------
-  - Designing with Objects:
-       - Overview: 02-designing-with-objects/index.md
-       - L5.1 Objects working together: 02-designing-with-objects/working-together.md
-       - L5.2 Telling objects apart: 02-designing-with-objects/telling-apart.md
-       - S5 Making them work together: 02-designing-with-objects/seminar-5.md
-       - L6.1 One job per class: 02-designing-with-objects/one-job.md
-       - L6.2 A fixed set of values: 02-designing-with-objects/enums.md
-       - S6 Splitting what you built: 02-designing-with-objects/seminar-6.md
-       - L7.1 Building on another class: 02-designing-with-objects/inheritance.md
-       - L7.2 When inheritance hurts: 02-designing-with-objects/inheritance-hurts.md
-       - S7 A family of things: 02-designing-with-objects/seminar-7.md
-       - L8.1 Promises a class must keep: 02-designing-with-objects/abstract-classes.md
-       - L8.2 Many classes, one call: 02-designing-with-objects/interfaces.md
-       - S8 Many kinds, one loop: 02-designing-with-objects/seminar-8.md
+  # Released one week at a time. To release a week, uncomment its lines here
+  # (and the section line and Overview, with week 5) and delete the same
+  # files from draft_docs above. Until then, preview drafts with mkdocs serve
+  # at their URL, e.g. http://127.0.0.1:8000/java-oop-course/02-designing-with-objects/working-together/
+  # (mkdocs serve lists every draft URL when it starts).
+  # - Designing with Objects:
+  #     - Overview: 02-designing-with-objects/index.md
+  #     # week 5
+  #     - L5.1 Object Collaboration: 02-designing-with-objects/working-together.md
+  #     - L5.2 Object Equality: 02-designing-with-objects/telling-apart.md
+  #     - S5 Making them work together: 02-designing-with-objects/seminar-5.md
+  #     # week 6
+  #     - L6.1 One job per class: 02-designing-with-objects/one-job.md
+  #     - L6.2 A fixed set of values: 02-designing-with-objects/enums.md
+  #     - S6 Splitting what you built: 02-designing-with-objects/seminar-6.md
+  #     # week 7
+  #     - L7.1 Building on another class: 02-designing-with-objects/inheritance.md
+  #     - L7.2 When inheritance hurts: 02-designing-with-objects/inheritance-hurts.md
+  #     - S7 A family of things: 02-designing-with-objects/seminar-7.md
+  #     # week 8
+  #     - L8.1 Promises a class must keep: 02-designing-with-objects/abstract-classes.md
+  #     - L8.2 Many classes, one call: 02-designing-with-objects/interfaces.md
+  #     - S8 Many kinds, one loop: 02-designing-with-objects/seminar-8.md
 
   # --- Module 3, weeks 9 to 12 ---------------------------------------------
   # - Robust and Modern Java:
