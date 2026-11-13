@@ -25,11 +25,7 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 # ===========================================================================
 draft_docs: |
   # Module 2, released one week at a time. Delete a week's lines to release it.
-  # The overview goes out with week 5.
-  02-designing-with-objects/index.md
-  02-designing-with-objects/working-together.md
-  02-designing-with-objects/telling-apart.md
-  02-designing-with-objects/seminar-5.md
+  # Week 5 and the overview are released.
   # week 6
   02-designing-with-objects/one-job.md
   02-designing-with-objects/enums.md
@@ -143,16 +139,15 @@ nav:
 
   # --- Module 2, weeks 5 to 8 ----------------------------------------------
   # Released one week at a time. To release a week, uncomment its lines here
-  # (and the section line and Overview, with week 5) and delete the same
-  # files from draft_docs above. Until then, preview drafts with mkdocs serve
+  # and delete the same files from draft_docs above. Until then, preview drafts with mkdocs serve
   # at their URL, e.g. http://127.0.0.1:8000/java-oop-course/02-designing-with-objects/working-together/
   # (mkdocs serve lists every draft URL when it starts).
-  # - Designing with Objects:
-  #     - Overview: 02-designing-with-objects/index.md
-  #     # week 5
-  #     - L5.1 Object Collaboration: 02-designing-with-objects/working-together.md
-  #     - L5.2 Object Equality: 02-designing-with-objects/telling-apart.md
-  #     - S5 Making them work together: 02-designing-with-objects/seminar-5.md
+  - Designing with Objects:
+      - Overview: 02-designing-with-objects/index.md
+      # week 5 (released)
+      - L5.1 Object Collaboration: 02-designing-with-objects/working-together.md
+      - L5.2 Object Equality: 02-designing-with-objects/telling-apart.md
+      - S5 Making them work together: 02-designing-with-objects/seminar-5.md
   #     # week 6
   #     - L6.1 One job per class: 02-designing-with-objects/one-job.md
   #     - L6.2 A fixed set of values: 02-designing-with-objects/enums.md

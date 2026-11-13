@@ -59,7 +59,7 @@ You stop writing lists of instructions and start building things that hold their
 </div>
 </div>
 
-<div class="rm-step" data-state="locked" markdown>
+<div class="rm-step" data-state="open" markdown>
 <div class="rm-art">
 <svg viewBox="0 0 120 120" role="img" xmlns="http://www.w3.org/2000/svg"><title>Objects connected to one another</title><desc>Three small rounded rectangles joined by lines, showing objects that collaborate rather than standing alone.</desc><line x1="42" y1="38" x2="78" y2="38" stroke="var(--c-border)" stroke-width="1.5"/><line x1="36" y1="52" x2="56" y2="76" stroke="var(--c-border)" stroke-width="1.5"/><line x1="84" y1="52" x2="64" y2="76" stroke="var(--c-border)" stroke-width="1.5"/><rect x="12" y="24" width="48" height="28" rx="6" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><rect x="60" y="24" width="48" height="28" rx="6" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><rect x="36" y="76" width="48" height="28" rx="6" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><line x1="20" y1="34" x2="40" y2="34" stroke="var(--c-accent)" stroke-width="4" stroke-linecap="round"/><line x1="68" y1="34" x2="88" y2="34" stroke="var(--c-accent)" stroke-width="4" stroke-linecap="round"/><line x1="44" y1="86" x2="64" y2="86" stroke="var(--c-accent)" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="44" x2="52" y2="44" stroke="var(--c-muted)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/><line x1="68" y1="44" x2="100" y2="44" stroke="var(--c-muted)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/><line x1="44" y1="96" x2="76" y2="96" stroke="var(--c-muted)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/></svg>
 </div>
@@ -81,8 +81,7 @@ One class is easy. The skill is deciding how classes relate to each other, and k
 -   Write code against an interface instead of a specific class
 
 <div class="rm-foot" markdown>
-<span class="rm-when">Opens in week 5</span>
-<!-- [Open module](02-designing-with-objects/index.md){ .md-button } -->
+[Open module](02-designing-with-objects/index.md){ .md-button }
 <span class="rm-flag">Sprint 2 opens in week 8</span>
 </div>
 
