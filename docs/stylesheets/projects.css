@@ -1,0 +1,111 @@
+/* =========================================================================
+   Projects: timeline, project idea cards, checklists.
+   Uses only the colour variables from custom.css, so dark mode follows.
+   ========================================================================= */
+
+/* ---------- timeline ---------------------------------------------------- */
+.md-typeset .pj-timeline > ul {
+  list-style: none;
+  margin: 1rem 0 1.8rem .4rem;
+  padding: 0 0 0 1.4rem;
+  border-left: 2px solid var(--c-border);
+}
+[dir] .md-typeset .pj-timeline > ul > li {
+  position: relative;
+  margin: 0 0 1rem;
+  padding: 0;
+  line-height: 1.55;
+}
+.md-typeset .pj-timeline > ul > li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.4rem - 7px);
+  top: .35em;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--c-accent);
+  border-radius: 50%;
+  background: var(--c-surface);
+}
+.md-typeset .pj-timeline > ul > li:nth-child(5)::before {
+  background: var(--c-accent);
+}
+.md-typeset .pj-timeline > ul > li > strong:first-child {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--c-ink);
+}
+
+/* ---------- project idea cards ------------------------------------------ */
+.md-typeset .pj-idea {
+  margin: .5rem 0 2rem;
+  padding: 1rem 1.2rem .4rem;
+  border: 1px solid var(--c-border);
+  border-top: 3px solid var(--c-accent);
+  border-radius: 12px;
+  background: var(--c-surface);
+}
+.md-typeset .pj-idea > p { font-size: .76rem; }
+.md-typeset .pj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 .6rem;
+}
+.md-typeset .pj-tags span {
+  padding: .1rem .55rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  font: .6rem var(--font-mono);
+  color: var(--c-muted);
+}
+.md-typeset .pj-tags span.pj-level {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  font-weight: 700;
+}
+.md-typeset .pj-tags span.pj-level--standard {
+  background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+}
+.md-typeset .pj-tags span.pj-level--ambitious {
+  background: var(--c-accent);
+  color: var(--c-surface);
+}
+.md-typeset .pj-idea dl {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: .1rem 1rem;
+  margin: .2rem 0 .8rem;
+  font-size: .74rem;
+}
+.md-typeset .pj-idea dt {
+  margin: 0;
+  padding: .5rem 0;
+  border-top: 1px solid var(--c-border);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+[dir] .md-typeset .pj-idea dd {
+  margin: 0;
+  padding: .4rem 0;
+  border-top: 1px solid var(--c-border);
+}
+.md-typeset .pj-idea dd p { margin: 0; }
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .pj-idea dl { grid-template-columns: 1fr; }
+  [dir] .md-typeset .pj-idea dd { border-top: 0; padding-top: 0; }
+}
+
+/* ---------- checklists -------------------------------------------------- */
+.md-typeset .pj-check {
+  margin: .6rem 0 1.4rem;
+  padding: .6rem 1rem .2rem;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-raised);
+}
+.md-typeset .pj-check ul { margin-top: .2rem; }
+.md-typeset .pj-check li { font-size: .76rem; line-height: 1.55; }

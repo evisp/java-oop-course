@@ -53,7 +53,7 @@ You stop writing lists of instructions and start building things that hold their
 
 <div class="rm-foot" markdown>
 [Open module](01-objects-and-state/index.md){ .md-button }
-<span class="rm-flag">Sprint 1 opens in week 4</span>
+<span class="rm-flag">Part of Sprint 1</span>
 </div>
 
 </div>
@@ -82,7 +82,7 @@ One class is easy. The skill is deciding how classes relate to each other, and k
 
 <div class="rm-foot" markdown>
 [Open module](02-designing-with-objects/index.md){ .md-button }
-<span class="rm-flag">Sprint 2 opens in week 8</span>
+<span class="rm-flag">Sprint 1 demos 14 to 18 December</span>
 </div>
 
 </div>
@@ -112,7 +112,7 @@ Code that survives bad input, saves what it made, and proves it works. This is w
 <div class="rm-foot" markdown>
 <span class="rm-when">Opens in week 9</span>
 <!-- [Open module](03-robust-and-modern-java/index.md){ .md-button } -->
-<span class="rm-flag">Sprint 3 opens in week 12</span>
+<span class="rm-flag">Part of Sprint 2</span>
 </div>
 
 </div>
@@ -141,7 +141,7 @@ You put a window on the program you have been growing all semester. If the desig
 <div class="rm-foot" markdown>
 <span class="rm-when">Opens in week 13</span>
 <!-- [Open module](04-building-an-application/index.md){ .md-button } -->
-<span class="rm-flag">Sprint 3 due in week 14</span>
+<span class="rm-flag">Sprint 2 demos at the end</span>
 </div>
 
 </div>
@@ -149,23 +149,19 @@ You put a window on the program you have been growing all semester. If the desig
 
 </div>
 
-## The three sprints
+## The two sprints
 
-One application. You do not start over, you keep going.
+One application, one team of two to four. You do not start over, you keep going. The [project pages](projects/index.md) have the details.
 
 <div class="rm-sprints" markdown>
 
--   **Sprint 1** &middot; weeks 4 to 7
+-   **Sprint 1** &middot; Modules 1 and 2 &middot; 10 points
 
-    Your first working program, built from classes you designed yourself. It runs in the console and it does something real.
+    Your first working program, built from classes your team designed. It runs in the console and it does something real. Demos in the week of 14 December.
 
--   **Sprint 2** &middot; weeks 8 to 12
+-   **Sprint 2** &middot; Modules 3 and 4 &middot; 20 points
 
-    The same program, redesigned now that you know what a weak design costs. It saves your data, it handles mistakes, and it has tests.
-
--   **Sprint 3** &middot; weeks 12 to 14
-
-    The same program again, with a window on top and packaged so you can send it to someone.
+    The same program, finished. It handles mistakes, saves its data, has tests, and gets a window on top, packaged so you can send it to someone.
 
 </div>
 

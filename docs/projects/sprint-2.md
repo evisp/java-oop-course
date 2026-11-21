@@ -1,71 +1,28 @@
-# Sprint 2: OOP Principles and File I/O Integration
+# Sprint 2
 
-Expand your Sprint 1 project using inheritance hierarchies, polymorphism, and abstract classes to create flexible, maintainable designs. Integrate robust error handling with exceptions and persistent data storage using file I/O to build a professional-grade application.
+*The same program, finished*
 
-![Sprint 2](https://i.imgur.com/lh9XNGu.png)
+<p class="meta"><span class="badge">20 points</span><span class="badge">Same team, same idea</span><span class="badge badge--accent">Demos at the end of the semester</span></p>
 
-> Master Advanced OOP: Design with inheritance and interfaces, implement polymorphic behavior, enforce encapsulation with access modifiers, and handle real-world challenges through exception handling and file persistence.
+Sprint 2 continues the program you built for Sprint 1. You do not start over. You make it survive bad input, keep its data between runs, prove that it works, and put a window on top.
 
-## Key Elements
+The full brief, with the requirements and the rubric, opens after Sprint 1 is graded.
 
-| Element | Details |
-| --- | --- |
-| Topics covered | Inheritance, Polymorphism, Abstract Classes, Interfaces, Exception Handling, File I/O |
-| Teams | Same teams as Sprint 1 (2–4 students per team) |
-| Points | Sprint 2: 10 points |
-| Deadline | December 16 (end of day) |
-| Submission | One team submission: repository link (or ZIP) containing updated requirements, revised class diagram (PNG/PDF), exception handling documentation, and source code |
+## What it will cover
 
-## What to Deliver
+| Module 3 | Module 4 |
+|---|---|
+| Exceptions: failing with a clear message instead of crashing | Maven: building the project and managing its libraries |
+| Tests with JUnit, for the rules your program depends on | A JavaFX window on top of your model |
+| Saving your data to files and loading it back | Keeping the model out of the window |
+| Records and streams, where they make the code shorter | Packaging it so someone else can run it |
 
-You must deliver **one zipped folder per group that contains all Sprint 2 materials**. The zipped folder must include:
+If your Sprint 1 design keeps the rules in the model and the talking in the console, most of Sprint 2 is adding things, not rewriting them.
 
-- **Updated document**: Revise your Sprint 1 requirements to reflect new scope. Include a discussion of your inheritance hierarchy (parent/child classes, abstract classes, or interfaces), the exception handling strategy employed, and the file I/O design (what data is persisted, file format, and how it integrates with your application). Embed an **updated UML class diagram** showing inheritance relationships, abstract classes/interfaces, and associations.
+## Grading
 
-- **Exception handling documentation**: Make sure your document explains
+Twenty points in four areas, the same four as Sprint 1, with the demo again carrying the most weight. The points per area are in the full brief.
 
-  - What exceptions your application throws and catches
-  - Which situations trigger exceptions (file not found, invalid input, etc.)
-  - How your application recovers gracefully
-  
-- **Source code**: Extend your Sprint 1 code with:
-
-  - At least one abstract class **or** interface defining shared behavior across related classes
-  - At least two concrete subclasses that extend/implement the abstract parent
-  - Polymorphic method calls demonstrating runtime behavior selection
-  - Exception handling with try-catch blocks for at least two distinct error scenarios
-  - File I/O operations (read and write) using try-with-resources or appropriate resource management
-  - Clean, professional code with proper access modifiers (private, protected, public) enforcing encapsulation
-
-## Project Scope
-
-**Expand your Sprint 1 project** by:
-
-- Identifying opportunities for inheritance (e.g., different types of users, items, or entities that share common behavior)
-- Creating an abstract parent class or interface that captures shared functionality
-- Implementing at least two specialized subclasses with unique behavior
-- Adding user input validation and file operations with robust exception handling
-- Persisting core data to a file and restoring it on application restart
-
-## Grading Rubric
-
-| Category | Points | Criteria |
-| --- | --- | --- |
-| Project Defense | 3 | Team presents design decisions, explains inheritance strategy, demonstrates exception handling in action |
-|  Design & Implementation | 3 | Updated code shows inheritance hierarchy, interfaces, proper associations; design rationale documented |
-| Exception Handling & File I/O | 2 | At least 2 distinct exceptions caught and handled gracefully; File I/O with try-with-resources; data persists and restores correctly |
-| Code Quality & Documentation | 2 | Clean code with proper access modifiers; comments explain non-obvious logic; documentation is professional and complete |
-| **Total** | **10** | |
-
-## Submission Checklist
-
-Make sure to check the following before you submit
-
-- Same team as Sprint 1
-- Updated requirements document (3-5 pages)
-- Revised UML class diagram with inheritance and relationships
-- Fully functional source code with inheritance, polymorphism, exceptions, and file I/O
-- All files compressed into one ZIP folder
-- Submitted by December 16
-
-
+<div class="page-nav" markdown>
+[Back to the project overview](index.md){ .page-nav__next }
+</div>

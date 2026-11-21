@@ -34,10 +34,11 @@ draft_docs: |
   02-designing-with-objects/abstract-classes.md
   02-designing-with-objects/interfaces.md
   02-designing-with-objects/seminar-8.md
-  # Modules 3 and 4 and the sprints
+  # Modules 3 and 4
   03-robust-and-modern-java/
   04-building-an-application/
-  projects/
+  # Sprint 2, released after Sprint 1 is graded
+  projects/sprint-2.md
 
 exclude_docs: |
   **/solutions/
@@ -85,6 +86,7 @@ theme:
 extra_css:
   - stylesheets/custom.css
   - stylesheets/key-concepts.css
+  - stylesheets/projects.css
 
 extra_javascript:
   - javascripts/key-concepts.js
@@ -196,12 +198,14 @@ nav:
   #     - L14.2 Handing it to someone else: 04-building-an-application/shipping.md
   #     - S14 Finishing it: 04-building-an-application/seminar-14.md
 
-  # --- Sprints. Released one at a time, not as a module. -------------------
-  # - Projects:
-  #     - Overview: projects/index.md
-  #     - Sprint 1, your first system: projects/sprint-1.md
-  #     - Sprint 2, designed properly: projects/sprint-2.md
-  #     - Sprint 3, finished: projects/sprint-3.md
+  # --- Projects. Sprint 2 is released after Sprint 1: uncomment its line and
+  # delete projects/sprint-2.md from draft_docs above. ---------------------
+  - Projects:
+      - Overview: projects/index.md
+      - Project ideas: projects/ideas.md
+      - Project card: projects/project-card.md
+      - Sprint 1: projects/sprint-1.md
+  #     - Sprint 2: projects/sprint-2.md
 
   # --- Key Concepts, a tab of its own. It grows with the released weeks. ---
   - Key Concepts:
