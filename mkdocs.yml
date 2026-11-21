@@ -149,8 +149,8 @@ nav:
       - L5.2 Object Equality: 02-designing-with-objects/telling-apart.md
       - S5 Making them work together: 02-designing-with-objects/seminar-5.md
   #     # week 6
-  #     - L6.1 One job per class: 02-designing-with-objects/one-job.md
-  #     - L6.2 A fixed set of values: 02-designing-with-objects/enums.md
+  #     - L6.1 The Single Responsibility Principle: 02-designing-with-objects/one-job.md
+  #     - L6.2 Enumerations: 02-designing-with-objects/enums.md
   #     - S6 Splitting what you built: 02-designing-with-objects/seminar-6.md
   #     # week 7
   #     - L7.1 Building on another class: 02-designing-with-objects/inheritance.md

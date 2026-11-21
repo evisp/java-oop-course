@@ -1,55 +1,105 @@
-# A fixed set of values
+# Enumerations
 
-<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 6, session 2</span><span class="badge badge--accent">Needs: One job per class</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-06-one-job-per-class">Lecture code</a></p>
+*A fixed set of values the compiler checks*
 
-By the end of this page you can replace a set of strings with a type the compiler checks, attach data to each of its values, and tell the difference between a problem an enum fixes and one it cannot.
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 6, session 2</span><span class="badge badge--accent">Needs: The Single Responsibility Principle</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-06-one-job-per-class">Lecture code</a></p>
 
-Week 4 left this in your code, and at the time it was the best you could do:
+**What you will learn**
+
+- How to replace a set of strings with a type whose values the compiler checks
+- How each value of that type can carry data of its own
+- How to tell what an enum can solve from what it cannot
+
+## The problem
+
+Grace's café takes orders on a printed slip. Next to *Size*, the slip has an empty line, and customers write whatever they like on it.
+
+Over one morning, customers write "large", "Large", "L", "big" and "venti". The barista has to guess what each one means. "Big" is probably large. "Venti" is a size from another café entirely. One customer writes "medum".
+
+Nobody did anything strange. A blank line accepts anything, so anything is what Grace gets. The mistakes only come to light later, at the coffee machine, when someone has to decide what was meant.
+
+Now picture the same slip with three boxes to tick: ☐ Small ☐ Medium ☐ Large. Every slip is now readable. There is no way to write "medum", because there is nothing to write.
+
+Programs have blank lines too. How do you give a Java program boxes to tick?
+
+## Building the idea
+
+### A fixed list of options
+
+The tick boxes work because the list of options is decided once, when the slip is printed, and nothing outside that list can appear. A slip can be wrong in only one way: a customer can tick the wrong box. It can no longer be unreadable.
+
+<svg viewBox="0 0 520 230" role="img" xmlns="http://www.w3.org/2000/svg"><title>A free-text field compared with tick boxes</title><desc>Two order slips. On the left, a slip with a blank size line, surrounded by the different things customers wrote: large, Large, L, big, venti and medum, several shown in a warning colour. On the right, a slip with three tick boxes, Small, Medium and Large, with Large ticked. Only the three listed options can appear.</desc><g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)"><text x="16" y="22">A blank line</text><text x="284" y="22">Boxes to tick</text></g><line x1="262" y1="34" x2="262" y2="200" stroke="var(--c-border)" stroke-width="1.5" stroke-dasharray="5 5"/><rect x="16" y="40" width="150" height="70" rx="6" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"/><text x="28" y="62" font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)">Order slip</text><text x="28" y="92" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c-ink)">Size:</text><line x1="70" y1="94" x2="150" y2="94" stroke="var(--c-muted)" stroke-width="1.5"/><g font-family="JetBrains Mono, monospace" font-size="11"><text x="28" y="140" fill="var(--c-ink)">large</text><text x="88" y="140" fill="var(--c-ink)">Large</text><text x="148" y="140" fill="var(--c-ink)">L</text><text x="28" y="164" fill="var(--c-accent)">big</text><text x="88" y="164" fill="var(--c-accent)">venti</text><text x="148" y="164" fill="var(--c-accent)">medum</text></g><text x="28" y="192" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">anything can be written</text><rect x="284" y="40" width="210" height="140" rx="6" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="298" y="62" font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)">Order slip</text><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="1.5"><rect x="300" y="80" width="14" height="14" rx="2"/><rect x="300" y="110" width="14" height="14" rx="2"/></g><rect x="300" y="140" width="14" height="14" rx="2" fill="var(--c-accent)" stroke="var(--c-accent)" stroke-width="1.5"/><polyline points="303,147 306,151 312,143" fill="none" stroke="var(--c-surface)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-ink)"><text x="326" y="92">Small</text><text x="326" y="122">Medium</text><text x="326" y="152">Large</text></g><text x="284" y="200" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">only these three can appear</text><text x="16" y="222" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">A blank line accepts anything. A list of boxes accepts only what is on the list.</text></svg>
+
+### Options can carry information
+
+Grace's menu says more than the names of the sizes. Each size comes with its own facts:
+
+| Size | Volume | Price |
+|---|---|---|
+| Small | 250 ml | 1.50 EUR |
+| Medium | 350 ml | 2.00 EUR |
+| Large | 450 ml | 2.50 EUR |
+
+Once the order says "Large", the volume and the price follow from it. Nobody needs a separate price list kept somewhere else, because the facts travel with the option. Add a fourth size, and you add one row, with its facts, in one place.
+
+### Where that stops working
+
+The café also has a fixed list of payment methods: cash, card and voucher. It looks like the same kind of list, but look at what changes from one option to the next.
+
+<svg viewBox="0 0 520 230" role="img" xmlns="http://www.w3.org/2000/svg"><title>Options that differ in data compared with options that differ in behaviour</title><desc>Two panels. On the left, coffee sizes Small, Medium and Large each carry a volume and a price, which are values and fit in a table. On the right, payment methods Cash, Card and Voucher each need a different procedure: count the change, ask the bank, check the expiry date. These are actions, not values.</desc><g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)"><text x="16" y="22">Differ in data</text><text x="276" y="22">Differ in behaviour</text></g><line x1="262" y1="34" x2="262" y2="200" stroke="var(--c-border)" stroke-width="1.5" stroke-dasharray="5 5"/><g fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"><rect x="16" y="40" width="232" height="40" rx="6"/><rect x="16" y="90" width="232" height="40" rx="6"/><rect x="16" y="140" width="232" height="40" rx="6"/></g><g font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)"><text x="28" y="65">Small</text><text x="28" y="115">Medium</text><text x="28" y="165">Large</text></g><g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c-accent)"><text x="104" y="65">250 ml  1.50</text><text x="104" y="115">350 ml  2.00</text><text x="104" y="165">450 ml  2.50</text></g><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="276" y="40" width="228" height="40" rx="6"/><rect x="276" y="90" width="228" height="40" rx="6"/><rect x="276" y="140" width="228" height="40" rx="6"/></g><g font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)"><text x="288" y="65">Cash</text><text x="288" y="115">Card</text><text x="288" y="165">Voucher</text></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)"><text x="358" y="65">count the change</text><text x="358" y="115">ask the bank</text><text x="358" y="165">check the expiry date</text></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)"><text x="16" y="200">values: fit in a table</text><text x="276" y="200">steps: do not fit in a table</text></g><text x="16" y="222" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">A fixed list works for both. Only the left side is fully described by its data.</text></svg>
+
+The sizes differ in **data**: numbers you can write in a table. The payment methods differ in **behaviour**: each one needs a different procedure. "Count the change" is not a number you can put in a column. A fixed list still helps with payments, because it stops anyone writing "chequ" on the slip, but the list alone cannot say what each option does.
+
+Keep that distinction in mind. It decides how far the tool in this lecture can take you.
+
+## Naming it
+
+!!! abstract "Definitions"
+
+    **Enumeration (enum).** A type with a fixed set of values, listed once in its declaration. Java's `enum` keyword creates one, and no value outside the list can exist.
+
+    **Enum constant.** One of those values, such as `SAVINGS`. Each constant is an object, created once when the program starts, so it can hold fields and answer method calls.
+
+    **Type safety.** The compiler's guarantee that a variable can only hold values of its declared type. With an enum, a misspelt constant is a compile error instead of a bug you find later.
+
+## In our bank
+
+### Account types were a blank line
+
+In week 4 the bank kept its account types like this:
 
 ```java
-List<String> accountTypes = List.of("CHECKING", "SAVINGS", "DEPOSIT");
+List<String> types = List.of("CHECKING", "SAVINGS", "DEPOSIT");
 ```
 
-## Three ways a string lets you down
-
-All three of these compile. None of them works.
+A `String` is the blank line on the slip. All three of these compile, and none of them works:
 
 ```java
-if (type.equals("checking")) { ... }   // never matches. Wrong case.
-if (type.equals("CHEKING"))  { ... }   // never matches. Typo.
+if (type.equals("checking")) { ... }   // never matches: wrong case
+if (type.equals("CHEKING"))  { ... }   // never matches: typo
 account.setType("CRYPTO");             // not an account type at all
 ```
 
-The first two are silent. The code runs, the branch never fires, and the only sign is a feature that quietly does nothing. The third one is worse: it succeeds, and now there is an account in your bank of a kind that does not exist.
+The first two fail silently: the code runs, and a branch that should fire never does. The third succeeds, and now the bank holds an account of a type that does not exist. The compiler could have caught all three, but to the compiler any text is a perfectly good `String`.
 
-The compiler could have caught all three. It did not, because to a compiler `"CHEKING"` is a perfectly good `String`. Any string is a good `String`. That is the problem, and it is a problem with the type, not with your care.
+### Tick boxes for account types
 
-## A type whose values are listed once
+In its simplest form, an enum is just the list of options:
 
 ```java
 public enum AccountType {
 
     CHECKING,
     SAVINGS,
-    TERM_DEPOSIT;
+    TERM_DEPOSIT
 }
 ```
 
-Three values. There are no others, and there is no way to make one.
+Three values, and no way to create a fourth from outside. A field declared as `AccountType` can hold one of those three, or `null`, and nothing else. `AccountType.CHEKING` does not compile, so the typo is caught in the editor, before the program ever runs.
 
-The important half of that is invisible. There is no longer any line anywhere in this program that compiles with a misspelt account type, because `AccountType.CHEKING` is not something you can write. The compiler stops you in the editor, before the program has ever run.
+### Facts that travel with the type
 
-```java
-private final AccountType type;
-```
-
-A field of this type can hold one of exactly three things, or `null`. Compare that with a `String` field, which can hold anything anybody ever types.
-
-## A constant is an object
-
-This is the part that catches people out, so read it slowly.
-
-An enum is **not** a list of names. It is a small fixed set of objects, and you gave each one a name. Objects can hold fields, so these can too.
+Like the coffee sizes, each account type comes with facts of its own: a name a customer should see, and a monthly interest rate. Because each constant is an object, those facts can live on it:
 
 ```java
 public enum AccountType {
@@ -73,32 +123,53 @@ public enum AccountType {
     public double getMonthlyInterestRate() {
         return monthlyInterestRate;
     }
-}
 ```
 
-The three lines at the top are calls to the constructor below them. `CHECKING` is an object that was built once, when the program started, and it will be the same object every time you mention it for as long as the program runs.
+Each of the first three lines calls the constructor below it. `SAVINGS` is an object built once, with the label "Savings account" and the rate 0.0025, and it is the same object every time you write `AccountType.SAVINGS`.
 
-The constructor has no `public` or `private` in front of it, and neither is allowed. The only code that can ever call it is those three lines.
+The constructor cannot be `public` or `protected`. Only those three lines are allowed to call it, which is what keeps the list fixed.
 
 <svg viewBox="0 0 520 250" role="img" xmlns="http://www.w3.org/2000/svg"><title>An account type field pointing at one of three constant objects</title><desc>On the left, an Account object holds a number and a field called type. That field holds an arrow pointing at one of three objects on the right, which are the three constants of the AccountType enum. Each constant is an object holding its own label and its own monthly interest rate.</desc><text x="240" y="16" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)">AccountType</text><rect x="20" y="80" width="150" height="84" rx="8" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="36" y="104" font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)">Account</text><line x1="36" y1="112" x2="154" y2="112" stroke="var(--c-border)" stroke-width="1.5"/><text x="36" y="130" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">AC-1001</text><rect x="36" y="136" width="118" height="20" rx="3" fill="none" stroke="var(--c-border)" stroke-width="1.5"/><text x="44" y="150" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">type</text><circle cx="146" cy="146" r="4" fill="var(--c-accent)"/><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="146" y1="146" x2="234" y2="122"/><polyline points="223,120 234,122 226,129"/></g><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="240" y="26" width="190" height="54" rx="6"/><rect x="240" y="158" width="190" height="54" rx="6"/></g><rect x="240" y="92" width="190" height="54" rx="6" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c-ink)"><text x="256" y="48">CHECKING</text><text x="256" y="114">SAVINGS</text><text x="256" y="180">TERM_DEPOSIT</text></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)"><text x="256" y="68">Current account   0.0000</text><text x="256" y="200">Term deposit      0.0040</text></g><text x="256" y="134" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">Savings account   0.0025</text><text x="20" y="238" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Three objects, built once. The field holds an arrow to one of them.</text></svg>
 
-## values, name and valueOf
-
-Three things every enum can do for free.
+`Account` now has a field of this type, set once in the constructor:
 
 ```java
-for (AccountType type : AccountType.values()) {
-    System.out.println(type.name() + "  " + type.getLabel());
-}
+    private final AccountType type;
 ```
+
+### Data: interest without a single decision
+
+Because the rate travels with the type, paying interest needs no decision about what kind of account this is:
+
+```java
+    public double applyMonthlyInterest() {
+        double interest = balance * type.getMonthlyInterestRate();
+        balance += interest;
+        return interest;
+    }
+```
+
+This is the coffee price following from the size. Add a fourth account type with its own rate, and this method does not change at all. `TypesApp` runs it for one account of each type:
 
 ```text
-CHECKING  Current account
-SAVINGS  Savings account
-TERM_DEPOSIT  Term deposit
+--- Every type, listed once ---
+CHECKING       Current account   0.00% a month
+SAVINGS        Savings account   0.25% a month
+TERM_DEPOSIT   Term deposit      0.40% a month
+
+--- Interest: the rate is data ---
+Current account AC-1001: 500.00 EUR
+Savings account AC-1002: 2000.00 EUR
+Term deposit AC-1003: 5000.00 EUR
+Paid 25.00 EUR of interest
+Current account AC-1001: 500.00 EUR
+Savings account AC-1002: 2005.00 EUR
+Term deposit AC-1003: 5020.00 EUR
 ```
 
-`values()` gives you every constant, in the order you declared them. That is what builds the menu in the console:
+### values() and valueOf()
+
+Every enum comes with two methods you do not write yourself. `values()` returns all the constants in the order they were declared, and the console builds its menu from it:
 
 ```java
     private AccountType askForType() {
@@ -108,20 +179,76 @@ TERM_DEPOSIT  Term deposit
         }
 ```
 
-The menu cannot drift out of step with the enum, because it is made from it. Add a fourth account type and the menu has four options with no further work. A list of strings typed out by hand in the console could be wrong the day somebody edits one file and not the other.
-
-`valueOf` goes the other way, from text back to a constant, and it refuses anything it does not recognise:
-
-```java
-AccountType.valueOf("SAVINGS");   // the SAVINGS constant
-AccountType.valueOf("CRYPTO");    // throws
+```text
+  1  Current account
+  2  Savings account
+  3  Term deposit
 ```
+
+The menu cannot fall out of step with the enum, because it is made from it. A fourth constant appears in the menu without a change to `BankConsole`.
+
+`valueOf()` goes the other way, from text to a constant, and refuses text it does not recognise:
 
 ```text
-java.lang.IllegalArgumentException: No enum constant AccountType.CRYPTO
+valueOf("SAVINGS")  : Savings account
+valueOf("CRYPTO")   : No enum constant AccountType.CRYPTO
 ```
 
-This is the only place a bad value can still get in, which is exactly where you want it: at the edge, where text from outside becomes something inside.
+This is the one place where unchecked text can still try to get in, and it is exactly where you want the check: at the edge of the program, where text from outside becomes a value inside.
+
+### Behaviour: withdrawing is a different story
+
+Withdrawing is where the payment-methods problem comes back. How much may be taken out depends on the type, and it is not a number:
+
+- a current account may go down to zero;
+- a savings account must keep 100 EUR in;
+- a term deposit refuses every withdrawal.
+
+Those are three different rules, like cash, card and voucher. No field on the enum can hold them, so `Account.withdraw` has to decide by type:
+
+```java
+        boolean allowed = switch (type) {
+            case CHECKING -> balance - amount >= 0.00;
+            case SAVINGS -> balance - amount >= 100.00;
+            case TERM_DEPOSIT -> false;
+        };
+```
+
+This is a **switch expression**: it produces a value, here a `boolean`, and the arrow form runs exactly one branch. Because it produces a value, the compiler insists that every constant of `AccountType` is covered. Add a fourth constant and this line stops compiling:
+
+```text
+error: the switch expression does not cover all possible input values
+```
+
+That is the enum's type safety working for you again: the compiler finds the place you forgot.
+
+```text
+--- Withdrawing: the rule is behaviour ---
+500 from the current account : true
+2000 from the savings account: false
+100 from the savings account : true
+100 from the term deposit    : false
+```
+
+??? note "The older switch statement"
+
+    You will also see the older form, a switch *statement* that assigns inside each branch:
+
+    ```java
+    double lowestAllowed;
+    switch (type) {
+        case CHECKING -> lowestAllowed = 0.00;
+        case SAVINGS -> lowestAllowed = 100.00;
+        case TERM_DEPOSIT -> { return false; }
+        default -> { return false; }
+    }
+    ```
+
+    A statement does not have to cover every constant, so the compiler cannot be sure `lowestAllowed` was given a value, and it makes you write a `default` branch. That branch hides a later mistake: add a fourth type, forget to update this switch, and the new type silently takes the `default`. Prefer the switch expression whenever you are choosing a value.
+
+The switch expression is safe, but notice where the rules are. Everything that makes a savings account a savings account, its minimum balance and its withdrawal rule, sits inside `Account`, next to the rules for every other type. If more methods start to depend on the type, each one needs its own switch, and the rules for one kind of account end up spread across many methods. Next week takes the other approach and gives each kind of account a class of its own.
+
+## Common mistakes
 
 !!! mistake "Showing `name()` to a person"
 
@@ -133,133 +260,77 @@ This is the only place a bad value can still get in, which is exactly where you 
     Account type: TERM_DEPOSIT
     ```
 
-    `name()` returns the constant exactly as it is written in the source, shouting and with an underscore in it. It is for your code, not for a reader.
+    `name()` returns the constant exactly as it is written in the source code, in capitals and with an underscore. It is for code. A person should see the label. Keeping the two apart also means you can rename a constant without changing what users read.
 
-    That is why there is a `label` field. `name()` is what the programmer called it. `getLabel()` is what a person should see. Those are two jobs, and keeping them apart is yesterday's lesson at a smaller scale.
+!!! mistake "Using an enum for a list that changes"
 
-    The giveaway is that nobody can rename a constant without breaking whatever displays it. Once the label is a field, you can rename `TERM_DEPOSIT` to anything you like and the screen does not change.
+    An enum is fixed when the program is compiled. The account types a bank offers change rarely, and only when the bank changes its products, so an enum fits. The bank's branches, or the list of its customers, change while the program is running, and an enum cannot grow at run time. Those belong in ordinary data, such as a `List` you can add to.
 
-## What the enum removed
+## The bigger picture
 
-```java
-    public double applyMonthlyInterest() {
-        double interest = balance * type.getMonthlyInterestRate();
-        balance += interest;
-        return interest;
-    }
-```
+Java's own library uses enums for fixed sets everywhere: `DayOfWeek` has exactly seven values, `Month` has twelve. Whenever you see a set of values that will not change while the program runs, and a typo in one of them would be a bug, an enum is usually the right tool.
 
-One line of arithmetic, and no mention of what kind of account this is.
+The distinction from this lecture is worth carrying forward. When the options differ only in **data**, an enum with fields describes them completely, as it does for interest rates. When they differ in **behaviour**, an enum can still list them, but the behaviour has to live somewhere, and a switch over the type is only a first answer.
 
-Before the enum carried its own rate, this method had to decide: checking pays nothing, savings pays this, term deposits pay that. Three branches, in a method about interest, and the same three branches again anywhere else that needed a rate.
+??? note "Can each constant have its own method?"
 
-An interest rate is **data**. Data fits in a field. Put it on the type and the branches disappear. Add a fourth account type with its own rate and this method does not change at all.
+    Yes. Java lets each enum constant override a method with its own body, and you will meet code that does it. It works well for small, self-contained behaviour. When the behaviour grows, with state of its own or rules that change often, separate classes usually describe it better. That is the subject of next week.
 
-The same thing happened to `toString`, which used to need a branch to know what to call itself and now just asks:
+## Summary
 
-```java
-    @Override
-    public String toString() {
-        return String.format("%s %s: %.2f EUR", type.getLabel(), accountNumber, balance);
-    }
-```
+- An enum is a type with a fixed list of values, checked by the compiler. A misspelt value does not compile.
+- Each constant is an object, so it can carry data, like a label and a rate, that travels with it.
+- `values()` lists every constant; `valueOf()` turns text into a constant and refuses anything else.
+- An enum fully describes options that differ in data. Options that differ in behaviour still need code that decides, and a switch expression at least makes the compiler check that every option is handled.
 
-## What it could not remove
+**Key terms:** enumeration, enum constant, type safety, switch expression.
 
-Now open `withdraw`.
+## Practice
 
-```java
-    public boolean withdraw(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("A withdrawal must be positive: " + amount);
-        }
+**Quick checks.** Enum or not?
 
-        double lowestAllowed;
-        switch (type) {
-            case CHECKING -> lowestAllowed = 0.00;
-            case SAVINGS -> lowestAllowed = 100.00;
-            case TERM_DEPOSIT -> {
-                return false;
-            }
-            default -> {
-                return false;
-            }
-        }
+1.  The days of the week.
+2.  The bank's branches in Tirana, Durrës and Vlorë.
+3.  The card networks a payment terminal accepts.
+4.  The grades a course can give, from A to F.
 
-        if (balance - amount < lowestAllowed) {
-            return false;
-        }
-        balance -= amount;
-        return true;
-    }
-```
+??? success "Answers"
 
-The switch is still here, and no field is going to remove it.
+    1.  Enum. The set is fixed and will not change.
+    2.  Not an enum. Branches open and close while the system is in use; keep them as data.
+    3.  It depends. If the list changes only with a new version of the software, an enum fits. If the bank adds networks without releasing new code, it belongs in data.
+    4.  Enum, and a good one: each grade can carry its grade points as a field. You will build this in the seminar.
 
-How much may be taken out is not a number. A current account stops at zero. A savings account has to keep a hundred in. A term deposit refuses outright and does not have a limit at all. Those are three different **rules**, not three different values, and a rule does not fit in a `double`.
+!!! verify "Coding exercise"
 
-Two things to notice in that method, because both of them are the point.
-
-The `case` branches use an arrow rather than a colon. No `break`, and no falling through to the next case by accident, which is a bug you can write in C and cannot write here.
-
-And then the `default`. Every constant of `AccountType` is listed above it. There is no fourth value and no way to make one. The branch can never run, and the compiler makes you write it anyway, because to the compiler `lowestAllowed` might otherwise never be given a value.
-
-Sit with that for a second. The language is forcing you to write code that cannot execute, as the price of asking an object what kind of thing it is. That is not a flaw in enums. It is the switch telling you it is the wrong tool for this job.
-
-Worse, look at what happens when a fourth account type is added. `applyMonthlyInterest` keeps working. `toString` keeps working. `withdraw` compiles without a murmur, takes the `default` branch, and refuses every withdrawal from the new account type. A silent bug, in the one method where money moves.
-
-Leave it. That is next week.
-
-??? note "Can a constant have behaviour of its own?"
-
-    Yes, and Java will let each constant override a method with its own version. You will meet code that does this.
-
-    It also tells you something. The moment the constants need different behaviour rather than different data, you are describing things that differ in what they *do*, and Java already has a tool for that. It is the one week 7 is about.
-
-    An enum that has grown a method body per constant is usually a set of classes wearing a disguise.
-
-> **If you remember one thing.** An enum is right when the only thing that differs is data. The moment behaviour differs, you are looking at classes.
-
-## Check yourself
-
-!!! verify "Add a fourth type and find out what breaks"
-
-    Add this constant to `AccountType`, above `TERM_DEPOSIT` so the
-    semicolon stays on the last one:
+    Add a fourth constant to `AccountType`, above `TERM_DEPOSIT`, so that the semicolon stays on the last line:
 
     ```java
     YOUTH_SAVINGS("Youth savings", 0.0030),
     ```
 
-    Run `TypesApp`. The new type appears in the list, the interest is paid at its own rate, the console menu has four options. You changed one file and three things started working.
+    Compile. Read the error and find which line it points at. Then write the rule for the new type: a youth savings account may go down to zero, but no single withdrawal may be larger than 200 EUR.
 
-    Now open an account of that type and try to take money out of it.
+    Run `TypesApp` and the console. List every file you changed, and every place that started working without a change.
 
-    ```java
-    Account youth = ada.openAccount(AccountType.YOUTH_SAVINGS, 1000.00);
-    System.out.println(youth.withdraw(100.00));
-    ```
+**Think about it.**
 
-    Write down what it printed, which file you forgot to open, and how you would have found out if `TypesApp` had not asked.
+1.  `valueOf("CRYPTO")` throws an exception instead of returning `null`. Is that the right choice when the text came from a person typing in the console? What about when it came from a file saved by an older version of the program?
 
-    Then say how many methods would need the same treatment if the bank had six account types and four rules each.
+    ??? success "Hint"
 
-## Think about it
+        Think about what each caller would do with a `null`, and how soon a mistake would be noticed.
 
-1.  `valueOf("CRYPTO")` throws rather than returning `null`. Decide whether that is the right choice, given that the text usually came from a person typing. Then suppose it came from a file written by last year's version of your own program.
+2.  In the seminar, students have a level (undergraduate, masters, doctoral) and a set of grades. For each, decide whether it is a fixed list that differs only in data, or one that differs in behaviour. Which rule about graduation will need a switch?
 
-2.  The label lives on the enum, which means the enum knows what language the program is in. That is the same objection you raised against `describe()` yesterday. Say whether it is a real problem here, then say what it would cost to fix it properly.
+    ??? success "Hint"
 
-3.  `AccountType` is a fixed set because a bank decides what account types exist. Find something in your university system that looks like a fixed set and is not, and say how you would know the difference before you wrote the enum rather than after.
-
-4.  The `default` branch in `withdraw` can never run. Suppose you delete it and give `lowestAllowed` a starting value of zero instead. The code compiles and the branch problem is gone. Say exactly what you have traded away, and which of the two versions you would rather inherit from somebody else.
+        A maximum number of courses is data. "Doctoral students also need a submitted thesis" is a rule that applies to one level only.
 
 ## Next
 
-Your model does not print, and your account types are checked by the compiler. One switch is left, it cannot be removed with anything you know, and it will quietly break the next time somebody adds an account type.
-
-Next week that switch disappears, and the three kinds of account stop being a field and become three classes.
+The switch in `withdraw` is safe, and it still gathers the rules for every kind of account into one class. Next week, each kind of account becomes a class of its own, and that switch disappears.
 
 <div class="page-nav" markdown>
-[Building on another class](inheritance.md){ .page-nav__next }
+[Inheritance](inheritance.md){ .page-nav__next }
 </div>

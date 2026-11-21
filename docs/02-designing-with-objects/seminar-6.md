@@ -1,6 +1,6 @@
 # Seminar 6. Splitting what you built
 
-<p class="meta"><span class="badge">2 hours</span><span class="badge">Week 6 seminar</span><span class="badge badge--accent">Follows: One job per class, A fixed set of values</span></p>
+<p class="meta"><span class="badge">2 hours</span><span class="badge">Week 6 seminar</span><span class="badge badge--accent">Follows: The Single Responsibility Principle, Enumerations</span></p>
 
 By the end of this session nothing in your model prints anything, and the strings the compiler never checked are gone.
 
@@ -128,12 +128,11 @@ Note what just happened to that limit. It was a number in an `if`, and now it is
 
 Undergraduate and masters students need their credits. Doctoral students need the credits **and** a submitted thesis, so `Student` also needs a `thesisSubmitted` flag.
 
-Write it with a `switch` on the level. Then look at what you had to write:
+Write it with a switch expression on the level, the same shape as `withdraw` in the lecture. The compiler will make you cover all three levels, and if you add a fourth it will point at this method.
 
-- A `default` branch that can never run, because every constant is listed above it.
-- A method that will quietly give the wrong answer the day somebody adds a fourth level.
+Then look at where the rules ended up. The thesis rule belongs to doctoral students only, yet it lives in `Student`, next to the rules for everyone else. Every new rule that depends on the level will need another switch in another method.
 
-Leave it exactly as it is and bring it to next week. That switch is the whole subject of week 7.
+Leave it as it is and bring it to next week. Week 7 gives each level a class of its own.
 
 ---
 
@@ -164,7 +163,7 @@ git push
 - [ ] `Grade` carries its own grade points
 - [ ] `gpa()` is calculated and the `gpa` field is gone
 - [ ] `StudentLevel` carries the course limit, and no `if` decides it
-- [ ] `isEligibleToGraduate` has a switch with a `default` you cannot delete
+- [ ] `isEligibleToGraduate` is a switch expression with no `default`
 - [ ] `BreakIt` scores zero
 
 ## Going further

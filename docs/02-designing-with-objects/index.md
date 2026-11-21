@@ -63,20 +63,20 @@ The same shape as Module 1. Four hours, split in two.
 
 <div class="grid cards locked" markdown>
 
--   :material-scissors-cutting:{ .lg .middle } **One job per class**
+-   :material-scissors-cutting:{ .lg .middle } **The Single Responsibility Principle**
 
     ---
 
-    Your `main` method reads input, does arithmetic and prints results. Splitting the model from the thing that talks.
+    One class, one reason to change. Separating the bank, which decides, from the console, which talks.
 
     Opens in week 6.
     <!-- [:octicons-arrow-right-24: Lecture 1](one-job.md) -->
 
--   :material-format-list-checks:{ .lg .middle } **A fixed set of values**
+-   :material-format-list-checks:{ .lg .middle } **Enumerations**
 
     ---
 
-    Three strings that the compiler never checked. Enums, and constants that carry data of their own.
+    A fixed set of values the compiler checks. Account types that carry their own data, and a rule that still needs a switch.
 
     Opens in week 6.
     <!-- [:octicons-arrow-right-24: Lecture 2](enums.md) -->
@@ -94,7 +94,7 @@ The same shape as Module 1. Four hours, split in two.
 
     ---
 
-    The model that stops talking, and the switch an enum cannot remove.
+    A café with one person doing every job, and an order slip with boxes to tick.
 
     Slides open in week 6.
 
