@@ -26,10 +26,6 @@ copyright: Copyright &copy; 2026 Evis Plaku - Course Materials
 draft_docs: |
   # Module 2, released one week at a time. Delete a week's lines to release it.
   # Week 5 and the overview are released.
-  # week 6
-  02-designing-with-objects/one-job.md
-  02-designing-with-objects/enums.md
-  02-designing-with-objects/seminar-6.md
   # week 7
   02-designing-with-objects/inheritance.md
   02-designing-with-objects/inheritance-hurts.md
