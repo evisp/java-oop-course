@@ -1,0 +1,255 @@
+# Key Concepts, Module 2. Same fields as module-1.yml.
+# Add weeks 7 and 8 here when their lectures are written. Cards for a
+# lecture that is still in draft_docs stay hidden on the public site.
+
+module: module-2
+page: key-concepts/module-2.md
+weeks:
+  5: Objects working together
+  6: One job each
+
+concepts:
+
+  - id: responsibility
+    term: Responsibility
+    week: 5
+    lecture: 02-designing-with-objects/working-together.md
+    source: L5.1 Object Collaboration
+    definition: >-
+      A job or a rule that a class owns. Deciding which class owns which rule
+      is called assigning responsibilities. The usual answer is the class that
+      holds the information needed to decide.
+    example: |
+      // Bank holds every customer, so Bank owns the transfer rule.
+      public boolean transfer(String fromNumber, String toNumber,
+                              double amount) {
+          ...
+      }
+    related: [delegation, srp]
+
+  - id: delegation
+    term: Delegation
+    week: 5
+    lecture: 02-designing-with-objects/working-together.md
+    source: L5.1 Object Collaboration
+    definition: >-
+      Asking the object that owns some data to do the work, instead of
+      reaching into that data yourself.
+    example: |
+      // Bank asks each customer. It never loops over their accounts.
+      for (Customer customer : customers) {
+          Account account = customer.findAccount(accountNumber);
+          if (account != null) {
+              return account;
+          }
+      }
+      return null;
+    confused: >-
+      **Reaching in.** Calling `customer.getAccounts()` and looping in `Bank`
+      works, and it puts the customer's job in the wrong class.
+    related: [responsibility, has-a]
+
+  - id: identity
+    term: Identity
+    week: 5
+    lecture: 02-designing-with-objects/telling-apart.md
+    source: L5.2 Object Equality
+    definition: >-
+      Two references point to the very same object. In Java, `==` tests
+      identity.
+    example: |
+      Account restored = new Account(number, 500.00);
+      System.out.println(account == restored);   // false
+    confused: >-
+      **Equality.** Two objects can be equal by the class's rule and still be
+      two separate objects.
+    related: [equality, reference]
+
+  - id: equality
+    term: Equality
+    week: 5
+    lecture: 02-designing-with-objects/telling-apart.md
+    source: L5.2 Object Equality
+    definition: >-
+      Two objects count as the same thing according to a rule the class
+      defines in its `equals` method. A class that does not override `equals`
+      falls back to identity.
+    example: |
+      @Override
+      public boolean equals(Object other) {
+          if (this == other) {
+              return true;
+          }
+          if (!(other instanceof Account)) {
+              return false;
+          }
+          Account that = (Account) other;
+          return accountNumber.equals(that.accountNumber);
+      }
+    related: [identity, value-entity, hashcode]
+
+  - id: value-entity
+    term: Value and entity
+    week: 5
+    lecture: 02-designing-with-objects/telling-apart.md
+    source: L5.2 Object Equality
+    definition: >-
+      A value is equal to another when all its parts match, like an amount of
+      money. An entity is equal to another when its identifier matches, like
+      an account and its account number.
+    example: |
+      // Account is an entity: only the number decides.
+      return accountNumber.equals(that.accountNumber);
+    related: [equality]
+
+  - id: hashcode
+    term: "`hashCode` and its contract"
+    week: 5
+    lecture: 02-designing-with-objects/telling-apart.md
+    source: L5.2 Object Equality
+    definition: >-
+      `hashCode` returns a number that collections such as `HashSet` and
+      `HashMap` use to choose a group, called a bucket, for each object. The
+      contract: objects that are equal must have equal hash codes, so override
+      both methods or neither.
+    example: |
+      @Override
+      public int hashCode() {
+          return Objects.hash(accountNumber);
+      }
+    confused: >-
+      **Equality.** Equal hash codes do not make two objects equal. Different
+      accounts may share a hash code.
+    related: [equality]
+
+  - id: srp
+    term: Single Responsibility Principle
+    week: 6
+    lecture: 02-designing-with-objects/one-job.md
+    source: L6.1 The Single Responsibility Principle
+    definition: >-
+      A class should have one reason to change: one person, or one kind of
+      request, can ask for a change to it. Named by Robert C. Martin; the S in
+      SOLID.
+    example: |
+      // Account, Customer, Bank: the rules about money change
+      // BankConsole: the wording or the menu changes
+      // ConsoleApp:  the way the program is put together changes
+    related: [responsibility, separation, model-ui]
+
+  - id: separation
+    term: Separation of concerns
+    week: 6
+    lecture: 02-designing-with-objects/one-job.md
+    source: L6.1 The Single Responsibility Principle
+    definition: >-
+      Keeping code for different concerns, such as rules, presentation and
+      storage, in different places, so that a change to one does not disturb
+      the others.
+    example: |
+      Bank bank = new Bank("Bank of Tirana");       // the rules
+      BankConsole console = new BankConsole(bank, input);
+      console.run();                                // the talking
+    related: [srp, model-ui]
+
+  - id: model-ui
+    term: Model and user interface
+    week: 6
+    lecture: 02-designing-with-objects/one-job.md
+    source: L6.1 The Single Responsibility Principle
+    definition: >-
+      The model holds the data and enforces the rules; it never reads input or
+      prints. The user interface talks to people and turns their requests into
+      method calls on the model.
+    example: |
+      // The console asks, the bank decides, the console reports.
+      if (bank.transfer(from, to, amount)) {
+          System.out.printf("Sent %.2f EUR.%n", amount);
+      } else {
+          System.out.println("That transfer did not go through.");
+      }
+    related: [separation, srp]
+
+  - id: enum
+    term: Enumeration (`enum`)
+    week: 6
+    lecture: 02-designing-with-objects/enums.md
+    source: L6.2 Enumerations
+    definition: >-
+      A type with a fixed set of values, listed once in its declaration. No
+      value outside the list can exist.
+    example: |
+      public enum AccountType {
+
+          CHECKING,
+          SAVINGS,
+          TERM_DEPOSIT
+      }
+    confused: >-
+      **A set of `String` constants.** The compiler cannot check text:
+      `"CHEKING"` compiles.
+    related: [enum-constant, type-safety, switch-expression]
+
+  - id: enum-constant
+    term: Enum constant
+    week: 6
+    lecture: 02-designing-with-objects/enums.md
+    source: L6.2 Enumerations
+    definition: >-
+      One value of an enum, such as `AccountType.SAVINGS`. Each constant is an
+      object created once when the program starts, so it can hold fields and
+      answer method calls.
+    example: |
+      SAVINGS("Savings account", 0.0025),
+
+      AccountType.SAVINGS.getMonthlyInterestRate();   // 0.0025
+    related: [enum, values-valueof]
+
+  - id: type-safety
+    term: Type safety
+    week: 6
+    lecture: 02-designing-with-objects/enums.md
+    source: L6.2 Enumerations
+    definition: >-
+      The compiler's guarantee that a variable holds only values of its
+      declared type. An `AccountType` variable holds one of the three
+      constants, or `null`, and nothing else.
+    example: |
+      AccountType type = AccountType.CHEKING;   // does not compile
+    related: [enum]
+
+  - id: switch-expression
+    term: Switch expression
+    week: 6
+    lecture: 02-designing-with-objects/enums.md
+    source: L6.2 Enumerations
+    definition: >-
+      A `switch` that produces a value. Over an enum, the compiler checks that
+      every constant is covered, so adding a constant points you at every
+      switch you need to update.
+    example: |
+      boolean allowed = switch (type) {
+          case CHECKING -> balance - amount >= 0.00;
+          case SAVINGS -> balance - amount >= 100.00;
+          case TERM_DEPOSIT -> false;
+      };
+    confused: >-
+      **The switch statement**, which runs code instead of producing a value
+      and needs a `default` branch to compile in cases like this one.
+    related: [enum, enum-constant]
+
+  - id: values-valueof
+    term: "`values()` and `valueOf()`"
+    week: 6
+    lecture: 02-designing-with-objects/enums.md
+    source: L6.2 Enumerations
+    definition: >-
+      Methods every enum has without writing them. `values()` returns all the
+      constants in declaration order; `valueOf` turns text into a constant and
+      throws an exception for text it does not recognise.
+    example: |
+      for (AccountType type : AccountType.values()) {
+          System.out.println(type.getLabel());
+      }
+      AccountType.valueOf("CRYPTO");   // IllegalArgumentException
+    related: [enum, enum-constant]

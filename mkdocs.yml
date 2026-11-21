@@ -84,6 +84,19 @@ theme:
 
 extra_css:
   - stylesheets/custom.css
+  - stylesheets/key-concepts.css
+
+extra_javascript:
+  - javascripts/key-concepts.js
+
+# Key Concepts: the cards, maps and pairs are built from concepts/*.yml by
+# this hook. A card appears once its lecture is released (out of draft_docs).
+hooks:
+  - hooks/key_concepts.py
+
+watch:
+  - concepts
+  - hooks
 
 plugins:
   - search
@@ -189,6 +202,13 @@ nav:
   #     - Sprint 1, your first system: projects/sprint-1.md
   #     - Sprint 2, designed properly: projects/sprint-2.md
   #     - Sprint 3, finished: projects/sprint-3.md
+
+  # --- Key Concepts, a tab of its own. It grows with the released weeks. ---
+  - Key Concepts:
+      - Overview: key-concepts/index.md
+      - Objects and State: key-concepts/module-1.md
+      - Designing with Objects: key-concepts/module-2.md
+      - Commonly confused: key-concepts/commonly-confused.md
 
 markdown_extensions:
   - abbr

@@ -1,0 +1,382 @@
+# Key Concepts, Module 1. One entry per concept, in teaching order.
+#
+#   id          used for the card's anchor (#kc-<id>) and in the map
+#   term        the name on the card; `backticks` for code
+#   week        groups the cards on the page
+#   lecture     the page that teaches it. A card only appears on the public
+#               site once that page is released (it is not in draft_docs).
+#   source      the label for the link to that page
+#   definition  one or two sentences, Markdown allowed
+#   example     Java from the bank, under 64 characters per line
+#   confused    optional: what students mix it up with, and why
+#   related     optional: ids of other concepts, in any module
+
+module: module-1
+page: key-concepts/module-1.md
+weeks:
+  1: Thinking in objects
+  2: Classes, objects and references
+  3: Protecting an object's state
+  4: Many objects
+
+concepts:
+
+  - id: object
+    term: Object
+    week: 1
+    lecture: 01-objects-and-state/thinking-in-things.md
+    source: L1.1 Thinking in things
+    definition: >-
+      A thing in a running program that keeps its own data and offers actions
+      on that data. Each bank account in the program is one object.
+    example: |
+      Account ada = new Account("AC-1001", "Ada Lovelace", 500.00);
+      ada.withdraw(200.00);   // ask the object to act
+    confused: >-
+      **Class.** The class is the description; objects are made from it, and
+      one class can produce any number of them.
+    related: [class, state-behaviour, reference]
+
+  - id: state-behaviour
+    term: State and behaviour
+    week: 1
+    lecture: 01-objects-and-state/thinking-in-things.md
+    source: L1.1 Thinking in things
+    definition: >-
+      An object's state is what it knows at this moment, held in its fields.
+      Its behaviour is what it can do, written as its methods.
+    example: |
+      private double balance;                    // state
+
+      public boolean withdraw(double amount) {   // behaviour
+          ...
+      }
+    related: [field, method]
+
+  - id: class
+    term: Class
+    week: 2
+    lecture: 01-objects-and-state/first-class.md
+    source: L2.1 Your first class
+    definition: >-
+      A description of one kind of object: which fields every object of that
+      kind has, and which methods it can run. Writing a class creates no
+      objects; `new` does.
+    example: |
+      public class Account {
+
+          private String accountNumber;
+          private String ownerName;
+          private double balance;
+
+          // constructor and methods
+      }
+    confused: >-
+      **Object.** `Account` is written once; the bank creates thousands of
+      account objects from it.
+    related: [object, constructor, field, method]
+
+  - id: field
+    term: Field
+    week: 2
+    lecture: 01-objects-and-state/first-class.md
+    source: L2.1 Your first class
+    definition: >-
+      A variable declared inside a class but outside every method. Each object
+      gets its own copy, and it lives as long as the object does.
+    example: |
+      public class Account {
+          private double balance;   // every account has its own
+      }
+    confused: >-
+      **Local variable.** A local variable is declared inside a method and
+      disappears when the method ends.
+    related: [state-behaviour, encapsulation, final]
+
+  - id: constructor
+    term: Constructor
+    week: 2
+    lecture: 01-objects-and-state/first-class.md
+    source: L2.1 Your first class
+    definition: >-
+      Code that runs once, when `new` creates an object, to give its fields
+      their first values. It has the class's name and no return type.
+    example: |
+      public Account(String accountNumber, String ownerName,
+                     double openingBalance) {
+          this.accountNumber = accountNumber;
+          this.ownerName = ownerName;
+          this.balance = openingBalance;
+      }
+    confused: >-
+      **Method.** A constructor runs once per object, at creation. A method
+      can be called on the object any number of times.
+    related: [class, object, this]
+
+  - id: this
+    term: "`this`"
+    week: 2
+    lecture: 01-objects-and-state/first-class.md
+    source: L2.1 Your first class
+    definition: >-
+      Inside a constructor or method, `this` is a reference to the object the
+      code is running on. `this.ownerName` means this object's field, even
+      when a parameter has the same name.
+    example: |
+      this.ownerName = ownerName;   // field = parameter
+    confused: >-
+      **Leaving it out.** `ownerName = ownerName;` assigns the parameter to
+      itself, and the field keeps its old value.
+    related: [constructor, field]
+
+  - id: method
+    term: Method
+    week: 2
+    lecture: 01-objects-and-state/first-class.md
+    source: L2.1 Your first class
+    definition: >-
+      An action an object can perform, written inside its class. It can read
+      and change the object's fields and can return a result.
+    example: |
+      public boolean deposit(double amount) {
+          if (amount <= 0) {
+              return false;
+          }
+          balance += amount;
+          return true;
+      }
+    related: [state-behaviour, encapsulation]
+
+  - id: reference
+    term: Reference
+    week: 2
+    lecture: 01-objects-and-state/references.md
+    source: L2.2 What a variable really holds
+    definition: >-
+      What a variable of a class type actually holds: an arrow to an object,
+      not the object itself. Copying the variable copies the arrow, so both
+      names reach the same object.
+    example: |
+      Account ada = new Account("AC-1001", "Ada Lovelace", 500.00);
+      Account backup = ada;        // a second arrow, same account
+      backup.withdraw(200.00);
+      System.out.println(ada.getBalance());   // 300.0
+    confused: >-
+      **Object.** `backup = ada` creates no new account. Only `new` creates
+      objects.
+    related: [object, "null", passing]
+
+  - id: "null"
+    term: "`null`"
+    week: 2
+    lecture: 01-objects-and-state/references.md
+    source: L2.2 What a variable really holds
+    definition: >-
+      The value of a reference that points at no object. Calling a method
+      through it throws a `NullPointerException`.
+    example: |
+      Account closed = null;
+      closed.getBalance();   // NullPointerException
+    confused: >-
+      **Empty.** A `null` list is no list at all. An empty list is a real list
+      with nothing in it.
+    related: [reference]
+
+  - id: passing
+    term: Passing an object to a method
+    week: 2
+    lecture: 01-objects-and-state/references.md
+    source: L2.2 What a variable really holds
+    definition: >-
+      Java copies the value of each argument into the parameter. For an object
+      that value is the reference, so the method works on the caller's object,
+      not on a copy of it.
+    example: |
+      public static void applyFee(Account account) {
+          account.withdraw(5.00);
+      }
+
+      applyFee(ada);   // ada's balance drops by 5
+    related: [reference]
+
+  - id: invariant
+    term: Invariant
+    week: 3
+    lecture: 01-objects-and-state/objects-that-refuse.md
+    source: L3.1 Objects that refuse
+    definition: >-
+      A rule about an object's state that must hold from the moment it is
+      constructed and after every method call. For an account: the balance is
+      never negative.
+    example: |
+      if (openingBalance < 0) {
+          throw new IllegalArgumentException(
+                  "Opening balance cannot be negative: "
+                  + openingBalance);
+      }
+    related: [encapsulation, constructor]
+
+  - id: encapsulation
+    term: Encapsulation
+    week: 3
+    lecture: 01-objects-and-state/objects-that-refuse.md
+    source: L3.1 Objects that refuse
+    definition: >-
+      Keeping an object's fields `private`, so the only way to change them is
+      through methods that check the change first. The object can then keep
+      its own invariants.
+    example: |
+      private double balance;
+
+      public void deposit(double amount) {
+          if (amount <= 0) {
+              throw new IllegalArgumentException(
+                      "Deposit must be positive: " + amount);
+          }
+          balance += amount;
+      }
+    confused: >-
+      **Private fields with a setter for each.** A setter that accepts any
+      value protects nothing.
+    related: [invariant, getter-setter, field]
+
+  - id: getter-setter
+    term: Getter and setter
+    week: 3
+    lecture: 01-objects-and-state/objects-that-refuse.md
+    source: L3.1 Objects that refuse
+    definition: >-
+      A getter returns a field's value. A setter changes a field, and should
+      refuse values that break the object's rules. Write a setter only for a
+      field that is allowed to change.
+    example: |
+      public double getBalance() {
+          return balance;
+      }
+
+      public void setOwnerName(String ownerName) {
+          this.ownerName = requireText(ownerName, "Owner name");
+      }
+    related: [encapsulation]
+
+  - id: final
+    term: "`final`"
+    week: 3
+    lecture: 01-objects-and-state/what-belongs-to-whom.md
+    source: L3.2 What belongs to whom
+    definition: >-
+      A `final` field gets its value once, in the constructor, and can never be
+      reassigned. Use it for facts that do not change, such as an account
+      number.
+    example: |
+      private final String accountNumber;
+    confused: >-
+      **Immutable.** A `final` field cannot be pointed at another object, but
+      the object it points at can still change.
+    related: [immutable, field]
+
+  - id: immutable
+    term: Immutable object
+    week: 3
+    lecture: 01-objects-and-state/what-belongs-to-whom.md
+    source: L3.2 What belongs to whom
+    definition: >-
+      An object whose state cannot change after it is built: every field is
+      `final` and there are no setters. `String` is immutable; its methods
+      return new strings.
+    example: |
+      String name = "ada lovelace";
+      name.toUpperCase();          // returns a new String
+      System.out.println(name);    // ada lovelace
+      name = name.toUpperCase();   // keep the new one
+    related: [final]
+
+  - id: static
+    term: "`static`"
+    week: 3
+    lecture: 01-objects-and-state/what-belongs-to-whom.md
+    source: L3.2 What belongs to whom
+    definition: >-
+      A `static` field or method belongs to the class itself, not to any
+      object. There is one copy, shared by every object, and you reach it
+      through the class name.
+    example: |
+      private static int lastNumberIssued = 1000;   // one for all
+
+      Account.getAccountsOpened();   // called on the class
+    confused: >-
+      **Instance fields.** Every object has its own `balance`; there is only
+      one `lastNumberIssued`.
+    related: [class, field]
+
+  - id: list
+    term: "`List` and `ArrayList`"
+    week: 4
+    lecture: 01-objects-and-state/many-objects.md
+    source: L4.1 Many objects
+    definition: >-
+      `List` describes what an ordered collection can do; `ArrayList` is a
+      class that does it, and it grows as you add items. A list holds
+      references to objects, not copies of them.
+    example: |
+      List<Account> accounts = new ArrayList<>();
+      accounts.add(new Account("Ada Lovelace", 500.00));
+      accounts.get(0);    // the first account
+      accounts.size();    // how many there are
+    confused: >-
+      **Array.** An array's length is fixed when it is created. A list grows
+      and shrinks.
+    related: [reference, foreach, has-a]
+
+  - id: foreach
+    term: for-each loop
+    week: 4
+    lecture: 01-objects-and-state/many-objects.md
+    source: L4.1 Many objects
+    definition: >-
+      A loop that visits every element of a collection in order, without an
+      index. The loop variable holds each reference in turn, so you can call
+      methods on the objects but cannot replace them in the list.
+    example: |
+      for (Account account : accounts) {
+          account.deposit(10.00);   // every account gains 10
+      }
+    related: [list]
+
+  - id: has-a
+    term: Has-a relationship
+    week: 4
+    lecture: 01-objects-and-state/owning-objects.md
+    source: L4.2 Objects that own other objects
+    definition: >-
+      One object keeps others in its fields and is responsible for them. A
+      customer has accounts: it opens them, finds them and totals them, and no
+      other class changes its list.
+    example: |
+      public class Customer {
+
+          private final List<Account> accounts = new ArrayList<>();
+
+          public Account openAccount(double openingBalance) {
+              ...
+          }
+      }
+    confused: >-
+      **Is-a**, the relationship behind inheritance, which you meet in week 7.
+      A customer has accounts; a customer is not an account.
+    related: [list, defensive-copy, delegation]
+
+  - id: defensive-copy
+    term: Defensive copy
+    week: 4
+    lecture: 01-objects-and-state/owning-objects.md
+    source: L4.2 Objects that own other objects
+    definition: >-
+      Returning a copy of an internal list instead of the list itself, so the
+      caller can read it but cannot add or remove items behind the owner's
+      back.
+    example: |
+      public List<Account> getAccounts() {
+          return List.copyOf(accounts);
+      }
+    related: [has-a, encapsulation]
