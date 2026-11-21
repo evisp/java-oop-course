@@ -1,0 +1,2561 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn Java object-oriented programming by building. Course materials for University Metropolitan Tirana.">
+      
+      
+        <meta name="author" content="evisp">
+      
+      
+        <link rel="canonical" href="https://evisp.github.io/java-oop-course/02-designing-with-objects/telling-apart/">
+      
+      
+        <link rel="prev" href="../working-together/">
+      
+      
+        <link rel="next" href="../seminar-5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>L5.2 Object Equality - Java OOP Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/key-concepts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/projects.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#object-equality-equals-and-hashcode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Java OOP Course" class="md-header__button md-logo" aria-label="Java OOP Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java OOP Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              L5.2 Object Equality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/evisp/java-oop-course" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    evisp/java-oop-course
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../00-tools/" class="md-tabs__link">
+          
+  
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-objects-and-state/" class="md-tabs__link">
+          
+  
+  
+  Objects and State
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Designing with Objects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../key-concepts/" class="md-tabs__link">
+          
+  
+  
+  Key Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Java OOP Course" class="md-nav__button md-logo" aria-label="Java OOP Course" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java OOP Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/evisp/java-oop-course" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    evisp/java-oop-course
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/eclipse-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Eclipse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-tools/git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git and GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objects and State
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Objects and State
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/university-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference, the university system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/thinking-in-things/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1.1 Thinking in things
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/why-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L1.2 Why objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/seminar-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S1 Setting up and designing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/first-class/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2.1 Your first class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2.2 What a variable really holds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/seminar-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S2 Your first classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/objects-that-refuse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3.1 Objects that refuse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/what-belongs-to-whom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L3.2 What belongs to whom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/seminar-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 Making them refuse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/many-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4.1 Many objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/owning-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L4.2 Objects that own other objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-objects-and-state/seminar-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S4 Connecting the system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing with Objects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Designing with Objects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working-together/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5.1 Object Collaboration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5.2 Object Equality
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L5.2 Object Equality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building the idea
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building the idea">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-duplicates-quickly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finding duplicates quickly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-our-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In our bank
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In our bank">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-objects-one-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two objects, one account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-equals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing equals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-equals-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What equals gives you
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-hashcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing hashCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-is-an-entity-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer is an entity too
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bigger-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bigger picture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S5 Making them work together
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-job/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6.1 The Single Responsibility Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L6.2 Enumerations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seminar-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S6 Splitting what you built
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/ideas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/project-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sprint-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprint 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Key Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../key-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../key-concepts/module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Objects and State
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../key-concepts/module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Designing with Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../key-concepts/commonly-confused/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commonly confused
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building the idea
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building the idea">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-duplicates-quickly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finding duplicates quickly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-our-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In our bank
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In our bank">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-objects-one-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two objects, one account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-equals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing equals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-equals-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What equals gives you
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-hashcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing hashCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-is-an-entity-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer is an entity too
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bigger-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bigger picture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Designing with Objects
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="object-equality-equals-and-hashcode">Object Equality: equals and hashCode<a class="headerlink" href="#object-equality-equals-and-hashcode" title="Link to this section">&para;</a></h1>
+<p><em>Same object, or same thing?</em></p>
+<p class="meta"><span class="badge">50 minutes</span><span class="badge">Week 5, session 2</span><span class="badge badge--accent">Needs: Object Collaboration</span><a class="badge badge--link" href="https://github.com/evisp/java-oop-lectures/tree/main/week-05-objects-together">Lecture code</a></p>
+
+<p><strong>What you will learn</strong></p>
+<ul>
+<li>The difference between two objects being <em>identical</em> and two objects being <em>equal</em></li>
+<li>How to decide what "equal" should mean for a class you design</li>
+<li>How to write <code>equals</code> and <code>hashCode</code> so that Java's collections agree with your decision</li>
+</ul>
+<h2 id="the-problem">The problem<a class="headerlink" href="#the-problem" title="Link to this section">&para;</a></h2>
+<p>Open the contacts on your phone and you will probably find someone saved twice. Maybe your friend Ana appears as "Ana" and again as "Ana Hoxha (work)". Your phone notices and offers to merge the duplicates.</p>
+<p>To do that, the phone has to answer a question that sounds simple: <strong>when are two contacts the same person?</strong></p>
+<p>Try a few answers.</p>
+<p><em>Same name?</em> Then two different friends who are both called Ana get merged into one, and you lose a contact.</p>
+<p><em>Same name and same number?</em> Then "Ana" and "Ana Hoxha (work)" are never merged, because the names differ, even though it is obviously the same person.</p>
+<p><em>Same phone number?</em> That is much closer. Ana can change how she is saved, or even change her surname, and she is still the same person, because her number has not changed.</p>
+<p>Nobody could have answered this for the phone in advance. Somebody who understood what a contact <em>represents</em> had to make a decision. Java has exactly the same problem with your objects, and it leaves the decision to you.</p>
+<h2 id="building-the-idea">Building the idea<a class="headerlink" href="#building-the-idea" title="Link to this section">&para;</a></h2>
+<p>The word "same" is hiding two different questions.</p>
+<p><strong>Is it the same object?</strong> Your phone might show Ana under "Favourites" and under "Recent calls". Those are two ways of reaching one contact card. Edit the card in one place and the change appears in the other, because there is only one card.</p>
+<p><strong>Does it count as the same thing?</strong> The two cards "Ana" and "Ana Hoxha (work)" are separate cards. Editing one does not touch the other. Yet they describe the same person, and you would like the phone to treat them that way.</p>
+<p><svg viewBox="0 0 520 250" role="img" xmlns="http://www.w3.org/2000/svg"><title>Same object compared with same thing, using phone contacts</title><desc>Two panels. On the left, titled same object, two labels, Favourites and Recent calls, both point with arrows at a single contact card for Ana with her phone number. On the right, titled same thing, two separate contact cards, one saved as Ana and one saved as Ana Hoxha work, show the same phone number. A note between them asks whether they are the same person and says that you decide.</desc><g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)"><text x="16" y="22">Same object</text><text x="284" y="22">Same thing</text></g><line x1="262" y1="34" x2="262" y2="222" stroke="var(--c-border)" stroke-width="1.5" stroke-dasharray="5 5"/><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="16" y="52" width="104" height="34" rx="6"/><rect x="16" y="168" width="104" height="34" rx="6"/></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-ink)"><text x="28" y="73">Favourites</text><text x="28" y="189">Recent calls</text></g><circle cx="112" cy="69" r="4" fill="var(--c-accent)"/><circle cx="112" cy="185" r="4" fill="var(--c-accent)"/><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="112" y1="69" x2="146" y2="112"/><polyline points="138,108 147,113 146,103"/><line x1="112" y1="185" x2="146" y2="142"/><polyline points="145,151 147,141 138,146"/></g><rect x="150" y="98" width="100" height="58" rx="8" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="162" y="120" font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)">Ana</text><text x="162" y="142" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">069 000 1234</text><g fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"><rect x="290" y="52" width="150" height="58" rx="8"/><rect x="290" y="150" width="150" height="58" rx="8"/></g><g font-family="Source Serif 4, Georgia, serif" font-size="13" font-weight="700" fill="var(--c-ink)"><text x="302" y="74">Ana</text><text x="302" y="172">Ana Hoxha (work)</text></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)"><text x="302" y="96">069 000 1234</text><text x="302" y="194">069 000 1234</text></g><rect x="396" y="114" width="100" height="32" rx="4" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="1.5"/><text x="406" y="127" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">same person?</text><text x="406" y="140" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">you decide</text><text x="16" y="240" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Left: one card reached two ways. Right: two cards that may describe one person.</text></svg></p>
+<p>The first question has a fixed answer that never needs your help. The second question has no fixed answer, because it depends on what the thing represents. And once you look at a few examples, a pattern appears: things fall into two groups.</p>
+<p>Some things are equal when <strong>everything about them</strong> matches. Two 10-euro notes are interchangeable when you pay for coffee. A date is a date: 5 November 2026 is the same day whoever writes it down. These are <em>values</em>.</p>
+<p>Other things are equal when <strong>their identity</strong> matches, however much else changes. A person who changes their name is still the same person. A contact is the same contact as long as the number is the same. These have an identifier that says who they are, and everything else is just information about them.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Equal when</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Value</strong></td>
+<td>Every part matches</td>
+<td>An amount of money, a date, a colour, a point on a map</td>
+</tr>
+<tr>
+<td><strong>Entity</strong></td>
+<td>The identifier matches, whatever else has changed</td>
+<td>A person, a contact, an order, a bank account</td>
+</tr>
+</tbody>
+</table>
+<h3 id="finding-duplicates-quickly">Finding duplicates quickly<a class="headerlink" href="#finding-duplicates-quickly" title="Link to this section">&para;</a></h3>
+<p>There is one more part of the story. A phone with two thousand contacts cannot compare every card with every other card, because that is about two million comparisons. Instead it sorts the cards into groups, say by the first letter of the name, and only compares cards within the same group.</p>
+<p>That works only if two cards that count as the same person always land in the same group. Look at what goes wrong here:</p>
+<p><svg viewBox="0 0 520 256" role="img" xmlns="http://www.w3.org/2000/svg"><title>Two contacts for one person filed in different groups</title><desc>Four drawers labelled A, B, an ellipsis, and H represent contacts grouped by the first letter of the name. A card saved as Ana with number 069 000 1234 sits in drawer A. A card saved as Hoxha, Ana with the same number sits in drawer H. The duplicate finder only compares cards inside each drawer, so these two cards, which count as the same person because their numbers match, are never compared.</desc><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="16" y="50" width="116" height="120" rx="6"/><rect x="144" y="50" width="116" height="120" rx="6"/><rect x="272" y="50" width="96" height="120" rx="6" stroke-dasharray="4 4"/><rect x="380" y="50" width="124" height="120" rx="6"/></g><g font-family="Source Serif 4, Georgia, serif" font-size="15" font-weight="700" fill="var(--c-ink)"><text x="28" y="74">A</text><text x="156" y="74">B</text><text x="304" y="74">...</text><text x="392" y="74">H</text></g><g fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="1.5"><rect x="26" y="92" width="96" height="46" rx="4"/><rect x="390" y="92" width="104" height="46" rx="4"/></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-ink)"><text x="34" y="110">Ana</text><text x="398" y="110">Hoxha, Ana</text></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)"><text x="34" y="128">069 000 1234</text><text x="398" y="128">069 000 1234</text></g><text x="156" y="110" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">Besa</text><text x="156" y="128" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">Bledi</text><path d="M74 172 C 120 206 400 206 442 172" fill="none" stroke="var(--c-accent)" stroke-width="1.5" stroke-dasharray="5 4"/><text x="176" y="222" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">same person, never compared</text><text x="16" y="34" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)">Grouped by the first letter of the name</text><text x="16" y="248" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Equal by number, grouped by name: the duplicate finder never sees the pair.</text></svg></p>
+<p>The phone decided that sameness depends on the number, but it chose the group using the name. The two cards for Ana sit in different drawers and are never compared, so the duplicate is never found.</p>
+<p>The fix is a rule worth remembering: <strong>whatever information decides "same" must also decide the group.</strong> If cards are equal by number, group them by something taken from the number, such as its last digit. Then equal cards always land in the same group.</p>
+<h2 id="naming-it">Naming it<a class="headerlink" href="#naming-it" title="Link to this section">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Definitions</p>
+<p><strong>Identity.</strong> Two references point to the very same object in memory. In Java, <code>==</code> tests identity.</p>
+<p><strong>Equality.</strong> Two objects count as the same thing according to a rule the class defines. In Java, the <code>equals</code> method tests equality, and you write that method.</p>
+<p><strong>Value and entity.</strong> A value is equal to another when all its parts match. An entity is equal to another when its identifier matches.</p>
+<p><strong>Hash code.</strong> A number calculated from an object, used by some collections to decide which group (Java calls it a <em>bucket</em>) the object goes into. It is computed by the <code>hashCode</code> method.</p>
+<p><strong>The hash code contract.</strong> Objects that are equal must have equal hash codes. This is the "same information decides the group" rule from the contacts story.</p>
+</div>
+<h2 id="in-our-bank">In our bank<a class="headerlink" href="#in-our-bank" title="Link to this section">&para;</a></h2>
+<h3 id="two-objects-one-account">Two objects, one account<a class="headerlink" href="#two-objects-one-account" title="Link to this section">&para;</a></h3>
+<p>The bank meets this problem as soon as account data comes from outside the program. When accounts are saved and loaded back, or arrive from another system, they already have numbers. <code>Account</code> has a second constructor for that case, which accepts an existing number instead of issuing a new one:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Account</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div>
+<p>That means the program can end up holding two objects for one account: the one Ada opened, and a copy that came from outside.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Account</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ada</span><span class="p">.</span><span class="na">openAccount</span><span class="p">(</span><span class="mf">500.00</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">String</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">getAccountNumber</span><span class="p">();</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">Account</span><span class="w"> </span><span class="n">restored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Account</span><span class="p">(</span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="mf">500.00</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Account AC-1001: 500.00 EUR
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Account AC-1001: 500.00 EUR
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>account == restored      : false
+</span></code></pre></div>
+<p><code>==</code> reports <code>false</code>. It is testing identity, and these are two separate objects. But anyone working at the bank would say they are the same account, just as the two cards are the same Ana.</p>
+<p>So which kind of thing is an account? It has an identifier, the account number, and its balance changes every day without making it a different account. An account is an <strong>entity</strong>, and two accounts are equal when their numbers match.</p>
+<p><svg viewBox="0 0 520 270" role="img" xmlns="http://www.w3.org/2000/svg"><title>Two objects for one account: identity says different, equality says the same</title><desc>On the left, two variables named account and restored each hold an arrow to a separate Account object. Both objects hold the number AC-1001; one holds 500 and the other 1500. Two labels sit between the objects. The first says double equals compares the arrows and gives false. The second says equals compares the numbers and gives true. The balance is shown faded, because it is not part of the comparison.</desc><g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)"><text x="20" y="22">Variables</text><text x="240" y="22">Objects</text></g><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="20" y="48" width="118" height="40" rx="6"/><rect x="20" y="172" width="118" height="40" rx="6"/></g><g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-ink)"><text x="34" y="73">account</text><text x="34" y="197">restored</text></g><circle cx="130" cy="68" r="4" fill="var(--c-accent)"/><circle cx="130" cy="192" r="4" fill="var(--c-accent)"/><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="130" y1="68" x2="234" y2="62"/><polyline points="227,57 235,62 227,67"/><line x1="130" y1="192" x2="234" y2="198"/><polyline points="227,193 235,198 227,203"/></g><g fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"><rect x="240" y="32" width="200" height="60" rx="8"/><rect x="240" y="168" width="200" height="60" rx="8"/></g><g font-family="Source Serif 4, Georgia, serif" font-size="14" font-weight="700" fill="var(--c-ink)"><text x="256" y="54">Account</text><text x="256" y="190">Account</text></g><g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-accent)"><text x="256" y="78">AC-1001</text><text x="256" y="214">AC-1001</text></g><g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--c-muted)" opacity="0.55"><text x="360" y="78">500.00</text><text x="360" y="214">1500.00</text></g><rect x="150" y="112" width="160" height="36" rx="4" fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="1.5"/><text x="160" y="127" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">== compares arrows</text><text x="160" y="141" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-ink)">false</text><rect x="326" y="112" width="180" height="36" rx="4" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="1.5"/><text x="336" y="127" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">equals compares numbers</text><text x="336" y="141" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">true</text><text x="20" y="258" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Two objects, so not the same arrow. One number, so the same account.</text></svg></p>
+<h3 id="writing-equals">Writing equals<a class="headerlink" href="#writing-equals" title="Link to this section">&para;</a></h3>
+<p>Every Java class inherits an <code>equals</code> method from the built-in <code>Object</code> class, and by default it does the same as <code>==</code>. To give <code>Account</code> the rule we just decided on, you replace that method with your own version. Replacing an inherited method like this is called <strong>overriding</strong>.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">Account</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">Account</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="n">other</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">accountNumber</span><span class="p">);</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<p>Read it as four short steps:</p>
+<ol>
+<li><code>this == other</code>: if it is literally the same object, there is nothing to compare.</li>
+<li><code>other instanceof Account</code>: the parameter is an <code>Object</code>, so someone could pass a <code>String</code>, or <code>null</code>. Both fail this test, which also saves you a separate null check.</li>
+<li>The cast is safe now, because step 2 proved that <code>other</code> is an <code>Account</code>.</li>
+<li>The decision: compare the account numbers, and nothing else.</li>
+</ol>
+<p><code>@Override</code> asks the compiler to confirm that you really are replacing an inherited method. You will see in a moment why that matters.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>account == restored      : false
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>account.equals(restored) : true
+</span></code></pre></div>
+<h3 id="what-equals-gives-you">What equals gives you<a class="headerlink" href="#what-equals-gives-you" title="Link to this section">&para;</a></h3>
+<p>Java's collections call <code>equals</code> whenever they search for something. Before <code>Account</code> had its own <code>equals</code>, a list could only find the exact object you put in. Now it can find the account:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ada</span><span class="p">.</span><span class="na">getAccounts</span><span class="p">();</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"contains(restored)       : "</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">accounts</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">restored</span><span class="p">));</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"indexOf(restored)        : "</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">accounts</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">restored</span><span class="p">));</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>contains(restored)       : true
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>indexOf(restored)        : 0
+</span></code></pre></div>
+<p>Without your <code>equals</code>, those lines print <code>false</code> and <code>-1</code>.</p>
+<p>This also explains the line in last session's <code>Bank.transfer</code> that refuses a transfer from an account to itself, <code>from.equals(to)</code>. The decision about what makes two accounts the same now lives in one place, inside <code>Account</code>, and every other class simply asks.</p>
+<p>The balance plays no part, exactly as we decided. After a deposit into the copy, the two still count as one account:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Account AC-1001: 1500.00 EUR
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>still equal              : true
+</span></code></pre></div>
+<h3 id="writing-hashcode">Writing hashCode<a class="headerlink" href="#writing-hashcode" title="Link to this section">&para;</a></h3>
+<p><code>ArrayList</code> searches by checking each element in turn, so it only needs <code>equals</code>. But Java also has <code>HashSet</code> and <code>HashMap</code>, which find things fast by sorting objects into buckets, just like the phone sorting contacts into groups. They choose the bucket from the object's hash code.</p>
+<p>The default <code>hashCode</code> is based on the object's identity, so two separate objects almost always get different hash codes, and land in different buckets. For our two equal accounts, that is the "Ana under A, Hoxha under H" problem again:</p>
+<p><svg viewBox="0 0 520 260" role="img" xmlns="http://www.w3.org/2000/svg"><title>A hash set files an object in one drawer and searches in another</title><desc>A row of five drawers numbered zero to four represents a hash set. In the top half, labelled add, an account object with number AC-1001 is filed in drawer one. In the bottom half, labelled contains, an equal account object with the same number is looked up. Without a matching hashCode its hash leads to drawer three, which is empty, so the search reports false even though an equal object is in the set.</desc><g font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--c-muted)"><text x="20" y="24">add(account)</text><text x="20" y="226">contains(restored)</text></g><rect x="20" y="40" width="120" height="36" rx="6" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="32" y="63" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c-ink)">AC-1001</text><rect x="20" y="180" width="120" height="36" rx="6" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="2"/><text x="32" y="203" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c-ink)">AC-1001</text><g fill="var(--c-surface)" stroke="var(--c-border)" stroke-width="2"><rect x="200" y="104" width="56" height="46" rx="5"/><rect x="262" y="104" width="56" height="46" rx="5"/><rect x="324" y="104" width="56" height="46" rx="5"/><rect x="386" y="104" width="56" height="46" rx="5"/><rect x="448" y="104" width="56" height="46" rx="5"/></g><g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)"><text x="206" y="118">0</text><text x="268" y="118">1</text><text x="330" y="118">2</text><text x="392" y="118">3</text><text x="454" y="118">4</text></g><rect x="268" y="124" width="44" height="18" rx="3" fill="var(--c-raised)" stroke="var(--c-accent)" stroke-width="1.5"/><text x="272" y="137" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--c-accent)">AC-1001</text><g stroke="var(--c-accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M140 58 C 220 58 270 70 288 98"/><polyline points="281,92 289,99 290,89"/></g><text x="168" y="52" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-accent)">hash leads to drawer 1</text><g stroke="var(--c-muted)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"><path d="M140 198 C 260 198 390 190 412 156"/></g><polyline points="404,162 413,155 414,166" fill="none" stroke="var(--c-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="228" y="214" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--c-muted)">a different hash leads to drawer 3: empty</text><text x="20" y="252" font-family="Inter, sans-serif" font-size="12" fill="var(--c-muted)">Equal objects with different hash codes are filed in one drawer and searched for in another.</text></svg></p>
+<p>The cure is the same as for the phone. Build the hash code from the same information that <code>equals</code> uses:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">accountNumber</span><span class="p">);</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>Objects.hash</code> combines the fields you give it into one number. Give it exactly the fields that <code>equals</code> compares, no more and no fewer, and equal objects will always land in the same bucket.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>equal objects            : true
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>equal hash codes         : true
+</span></code></pre></div>
+<h3 id="customer-is-an-entity-too">Customer is an entity too<a class="headerlink" href="#customer-is-an-entity-too" title="Link to this section">&para;</a></h3>
+<p>A customer has an id, and the name is only information about them. So <code>Customer</code> makes the same decision:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">Customer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="n">Customer</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Customer</span><span class="p">)</span><span class="w"> </span><span class="n">other</span><span class="p">;</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">customerId</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">customerId</span><span class="p">);</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="nd">@Override</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">hashCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">hash</span><span class="p">(</span><span class="n">customerId</span><span class="p">);</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<p>And just like Ana in the contacts, a customer who changes her name stays the same customer:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">ada</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Ada Byron"</span><span class="p">);</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">Customer</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bank</span><span class="p">.</span><span class="na">findCustomer</span><span class="p">(</span><span class="n">ada</span><span class="p">.</span><span class="na">getCustomerId</span><span class="p">());</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"after a name change      : "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ada</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">found</span><span class="p">));</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>after a name change      : true
+</span></code></pre></div>
+<h2 id="common-mistakes">Common mistakes<a class="headerlink" href="#common-mistakes" title="Link to this section">&para;</a></h2>
+<div class="admonition mistake">
+<p class="admonition-title">Writing <code>equals(Account other)</code></p>
+<p>This compiles:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">accountNumber</span><span class="p">);</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>It does not replace the inherited <code>equals(Object)</code>. It adds a second method with the same name but a different parameter type, which is called <strong>overloading</strong>. Your own code might call the new method and seem to work. Java's collections only know about <code>equals(Object)</code>, so <code>contains</code>, <code>indexOf</code> and <code>remove</code> quietly go back to comparing identity.</p>
+<p>With <code>@Override</code> on it, the compiler checks that the method really does replace an inherited one, and refuses this version. Always put <code>@Override</code> on <code>equals</code>.</p>
+</div>
+<div class="admonition mistake">
+<p class="admonition-title">Writing equals and forgetting hashCode</p>
+<p>Everything appears to work, because lists only use <code>equals</code>. The problem stays hidden until the first <code>HashSet</code> or <code>HashMap</code> in the program, possibly weeks later, in code that looks perfectly correct. The method that is wrong is not the one that fails, which is what makes this bug so hard to find. Write the two methods together, from the same fields.</p>
+</div>
+<h2 id="the-bigger-picture">The bigger picture<a class="headerlink" href="#the-bigger-picture" title="Link to this section">&para;</a></h2>
+<p>Every database uses this idea. A table of customers has a <em>primary key</em>, an id column, and two rows describe the same customer exactly when their keys match. That is the entity decision, made by the people who designed the table.</p>
+<p>Values get easier later in the course. In week 12 you will meet <em>records</em>, a kind of Java class that writes <code>equals</code> and <code>hashCode</code> for you from all of its fields. That suits values perfectly. For entities like <code>Account</code>, where only the identifier should count, you will still write them yourself.</p>
+<details class="note">
+<summary><code>instanceof</code> or <code>getClass()</code>?</summary>
+<p>You will also see <code>equals</code> written like this:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">getClass</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The difference only matters once one class extends another, which happens in week 7. With <code>instanceof</code>, a savings account and a plain account with the same number count as equal. With <code>getClass()</code>, they do not. Which is right depends on what you mean. This course uses <code>instanceof</code>, because an account number identifies one account at one bank, whatever kind of account it is.</p>
+</details>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this section">&para;</a></h2>
+<ul>
+<li><code>==</code> tests <strong>identity</strong>: are these the very same object?</li>
+<li><code>equals</code> tests <strong>equality</strong>: do these count as the same thing? You decide what that means.</li>
+<li>Values are equal when all their parts match. Entities, such as accounts and customers, are equal when their identifiers match.</li>
+<li>Equal objects must have equal hash codes, so build <code>hashCode</code> from exactly the fields <code>equals</code> uses.</li>
+</ul>
+<p><strong>Key terms:</strong> identity, equality, value, entity, overriding, overloading, hash code, hash code contract.</p>
+<h2 id="practice">Practice<a class="headerlink" href="#practice" title="Link to this section">&para;</a></h2>
+<p><strong>Quick checks.</strong></p>
+<ol>
+<li>For each of these, would <code>equals</code> compare one identifying field or every field? An amount of money with a currency. A customer. A transaction with a transaction id. A date.</li>
+<li>After <code>restored.deposit(1000.00)</code>, what does <code>account.equals(restored)</code> return?</li>
+<li><code>equals</code> compares account numbers, but <code>hashCode</code> is built from the balance. Two equal accounts hold different balances. Is the contract broken?</li>
+</ol>
+<details class="success">
+<summary>Answers</summary>
+<ol>
+<li>Money: every field, so the amount and the currency, because it is a value. Customer: the id. Transaction: its id. Date: every field, because it is a value.</li>
+<li><code>true</code>. The balance is not part of the decision.</li>
+<li>Yes. The accounts are equal but will almost certainly have different hash codes, so a <code>HashSet</code> can store one and fail to find the other. The hash code must come only from fields that <code>equals</code> compares.</li>
+</ol>
+</details>
+<div class="admonition verify">
+<p class="admonition-title">Coding exercise</p>
+<p>First, add the balance to the comparison in <code>Account.equals</code>:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">return</span><span class="w"> </span><span class="n">accountNumber</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">accountNumber</span><span class="p">)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">balance</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Run <code>EqualityApp</code> and look at "still equal" after the deposit. Write one sentence on what is wrong with an account that stops being itself when money is paid in. Then put it back.</p>
+<p>Second, delete <code>hashCode</code> from <code>Account</code> entirely and run <code>EqualityApp</code> again. Everything looks fine. Now add these lines at the end of <code>main</code>, with <code>import java.util.HashSet;</code> and <code>import java.util.Set;</code> at the top:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">account</span><span class="p">));</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"set.contains(restored)   : "</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">set</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">restored</span><span class="p">));</span>
+</span></code></pre></div>
+<p>Explain the result using the contacts story, then put <code>hashCode</code> back and run it once more.</p>
+</div>
+<p><strong>Think about it.</strong></p>
+<ol>
+<li>
+<p>One <code>Account</code> object was loaded from last night's backup, and another is the live one. Their balances differ, and <code>equals</code> says they are the same account. Is that a problem with <code>equals</code>, or with something else? Who should decide which balance is right?</p>
+<details class="success">
+<summary>Hint</summary>
+<p><code>equals</code> answers "is this the same account?", not "is this information up to date?". Those are different questions, and they may belong to different classes.</p>
+</details>
+</li>
+<li>
+<p>The bank discovers that customers <code>C-1001</code> and <code>C-1340</code> are the same person, who registered twice. This is the contacts problem again. What does <code>equals</code> say about them now, what should it say, and what would it cost to make it say that?</p>
+<details class="success">
+<summary>Hint</summary>
+<p><code>equals</code> can only be as good as the identifier it compares. Where would a better identifier come from, and what happens to the accounts already attached to each id?</p>
+</details>
+</li>
+</ol>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Link to this section">&para;</a></h2>
+<p>The bank now has classes that collaborate and know what makes them the same. Next week looks at what each class should be responsible for, starting with the <code>main</code> method you wrote for Sprint 1.</p>
+<div class="page-nav">
+<p><a class="page-nav__next" href="../one-job/">One job per class</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../working-together/" class="md-footer__link md-footer__link--prev" aria-label="Previous: L5.1 Object Collaboration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                L5.1 Object Collaboration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../seminar-5/" class="md-footer__link md-footer__link--next" aria-label="Next: S5 Making them work together">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                S5 Making them work together
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Evis Plaku - Course Materials
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/evisp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/key-concepts.js"></script>
+      
+    
+  </body>
+</html>
